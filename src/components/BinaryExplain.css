@@ -1,0 +1,66 @@
+.binaryRoot{
+    background-color: #F6F9FD;
+    padding-top: 3%;
+    padding-bottom: 2%;
+    height: 100vh;
+}
+
+.biContainer{
+    text-align: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: white;
+    border: 1px solid #cdcdcd;
+    border-radius: 10px;
+    box-shadow: 0px 0px 7px #dcdcdc;
+}
+
+.biExplain{
+    text-align: left;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+}
+
+.binaryFigure{
+    text-align: center;
+}
+
+.binaryFigure p{
+    margin-top: 0%;
+    margin-bottom: 3%;
+    text-align: left;
+}
+
+.binaryImage{
+    width: 65%;
+}
+
+.linkArea{
+    border-top: 2px solid rgb(232, 232, 232);
+    margin-left: 2%;
+    margin-right: 2%;
+    display: flex;
+}
+
+.toHome{
+    margin-left: 0%;
+    color: gray;
+    cursor: pointer;
+}
+
+.toHome:hover{
+    color: rgb(100, 100, 100);
+    border-bottom: 1px solid rgb(100, 100, 100);
+}
+
+.toBinaryPractice{
+    margin-left: auto;
+    margin-right: 0%;
+    color: blue;
+    cursor: pointer;
+}
+
+.toBinaryPractice:hover{
+    border-bottom: 1px solid blue;
+}
