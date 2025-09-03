@@ -118,7 +118,7 @@ function LinearPractice(){
         {isCorrectQ2 && (
           <div className="liQuestion3">
             <h3>問3</h3>
-            <p>以下のカードを左から線形探索すると1のカードは何回目の探索で見つけられますか</p>
+            <p>以下の並べられたカードを左から線形探索すると1のカードは何回目の探索で見つけられますか</p>
             <div className="liQ3figure">
               {
                 cardsQ3.map((card, index) => (
