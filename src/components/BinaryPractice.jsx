@@ -27,7 +27,7 @@ function BinaryPractice(){
   const [isCorrectQ2, setIsCorrectQ2] = useState(false);
   const [isCorrectQ3, setIsCorrectQ3] = useState(false);
 
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const cardClickQ1 = (index) => {
     if(!isCorrectQ1){

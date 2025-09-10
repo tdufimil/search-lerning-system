@@ -1,0 +1,154 @@
+.haPraRoot {
+   background-color: #F6F9FD;
+   padding-top: 3%;
+   padding-bottom: 45%;
+   height: 100vh;
+}
+
+.haPraContainer {
+   text-align: center;
+   margin-left: 25%;
+   margin-right: 25%;
+   background-color: white;
+   border: 1px solid #cdcdcd;
+   border-radius: 10px;
+   box-shadow: 0px 0px 7px #dcdcdc;
+}
+
+.haQuestion1{
+   text-align: left;
+   margin-left: 2%;
+   margin-right: 2%;
+   margin-top: 2%;
+}
+
+.haQ1Figure{
+    text-align: center;
+}
+
+.haQ1Image{
+    width: 20%;
+}
+
+.haQ1Answer{
+   margin-bottom: 2%;
+}
+
+.haQ1Answer button{
+    margin-top: 2%;
+    margin-left: 2%;
+}
+
+.haQ1Answer p{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.haQ1Answer h3{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.haQuestion2{
+   text-align: left;
+   margin-left: 2%;
+   margin-right: 2%;
+   margin-top: 2%;
+}
+
+.haQ2Figure{
+    text-align: center;
+}
+
+.haQ2Image{
+    width: 20%;
+}
+
+.haQ2Answer{
+   margin-bottom: 2%;
+}
+
+.haQ2Answer button{
+    margin-top: 2%;
+    margin-left: 2%;
+}
+
+.haQ2Answer p{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.haQ2Answer h3{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.haQuestion3{
+   text-align: left;
+   margin-left: 2%;
+   margin-right: 2%;
+   margin-top: 2%;
+}
+
+.haQ3Figure{
+    text-align: center;
+}
+
+.haQ3Image{
+    width: 20%;
+}
+
+.haQ3Answer{
+   margin-bottom: 2%;
+}
+
+.haQ3Answer button{
+    margin-top: 2%;
+    margin-left: 2%;
+}
+
+.haQ3Answer p{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.haQ3Answer h3{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.linkArea{
+    border-top: 2px solid rgb(232, 232, 232);
+    margin-left: 2%;
+    margin-right: 2%;
+    display: flex;
+}
+
+.toHome{
+    margin-left: 0%;
+    color: gray;
+    cursor: pointer;
+}
+
+.toHome:hover{
+    color: rgb(100, 100, 100);
+    border-bottom: 1px solid rgb(100, 100, 100);
+}
+
+.toLinearExplain{
+    margin-left: auto;
+    margin-right: 0%;
+    color: gray;
+    cursor: pointer;
+}
+
+.toLinearExplain:hover{
+    color: rgb(100, 100, 100);
+    border-bottom: 1px solid rgb(100, 100, 100);
+}
