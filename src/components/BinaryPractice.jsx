@@ -18,7 +18,8 @@ function BinaryPractice(){
   const cardsQ2 = [card01, card02, card04, card07, card08, card09];
   const cardsQ3 = [card01, card03, card04, card06, card07, card08, card10];
   const [flipped, setFlipped] = useState(Array(cardsQ1.length).fill(false));
-  const [nextIndexQ1, setNextIndexQ1] = useState(2);
+  const [numQ1, setNumQ1] = useState(1);
+  let isOk = false;
   const [answerQ3, setAnswerQ3] = useState("");
   const [messageQ1, setMessageQ1] = useState("");
   const [messageQ2, setMessageQ2] = useState("");
@@ -26,12 +27,27 @@ function BinaryPractice(){
   const [isCorrectQ1, setIsCorrectQ1] = useState(false);
   const [isCorrectQ2, setIsCorrectQ2] = useState(false);
   const [isCorrectQ3, setIsCorrectQ3] = useState(false);
+  
 
+// || (numQ1 === 3 && index === 1) || (numQ1 === 2 && index === 1)
   const navigate = useNavigate();
 
   const cardClickQ1 = (index) => {
     if(!isCorrectQ1){
-      if(index !== nextIndexQ1){
+      if(numQ1 === 1 && index === 2){
+        isOk = true;
+        setNumQ1(2);
+      }else if(numQ1 === 2 && index === 0 || numQ1 === 2 && index === 1){
+        isOk = true;
+        setNumQ1(3);
+      }else if(numQ1 === 3 && index === 1){
+        isOk = true;
+      }else{
+        isOk = false;
+      }
+    console.log("s"+numQ1)
+    console.log(index)
+      if(!isOk){
         setMessageQ1("探索する順番が違います");
         return;
       }
@@ -46,19 +62,12 @@ function BinaryPractice(){
      }else{
       setMessageQ1("");
      }
-
-    if(index === 2){
-      setNextIndexQ1(0);
-    }else if(index === 0){
-      setNextIndexQ1(1);
-    }   
-    
     }
   }
 
   const  cardClickQ2 = (index) => {
     if(!isCorrectQ2){
-      if(index === 4){
+      if(index === 4 || index === 5){
         setMessageQ2("正解！");
         setIsCorrectQ2(true);
       }else{
@@ -69,7 +78,7 @@ function BinaryPractice(){
   
   const answerCheck = () => {
     if(!isCorrectQ3){
-      if(answerQ3.includes("3")){
+      if(answerQ3.includes("3") || answerQ3.includes("2")){
         setMessageQ3("正解！");
         setIsCorrectQ3(true);
       }else{
@@ -118,7 +127,7 @@ function BinaryPractice(){
         {isCorrectQ2 && (
           <div className="biQuestion3">
             <h3>問3</h3>
-            <p>以下の並べられたカードから二分探索で4のカードを探す時何回の探索で見つけることができますか。</p>
+            <p>以下の並べられたカードから二分探索で4のカードを探す時何回目の探索で見つけることができますか。</p>
             <div className="biQ3Figure">
               {cardsQ3.map((card, index) => (
                 <img

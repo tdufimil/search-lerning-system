@@ -1,7 +1,7 @@
 .hashRoot{
     background-color: #F6F9FD;
     padding-top: 3%;
-    padding-bottom: 22%;
+    padding-bottom: 40%;
     height: 100vh;
 }
 
@@ -32,8 +32,12 @@
     text-align: left;
 }
 
-.hashImage{
-    width: 65%;
+.hashImage1{
+    width: 55%;
+}
+
+.hashImage2{
+    width: 45%;
 }
 
 .linkArea{

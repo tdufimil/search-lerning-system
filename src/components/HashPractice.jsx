@@ -61,7 +61,7 @@ function HashPractice(){
       <div className="haPraContainer">
         <div className="haQuestion1">
           <h3>問1</h3>
-          <p>以下のハッシュ表に5を格納する時、格納される番号を答えなさい。ハッシュ関数は7で割った余りとし、衝突が発生した場合はオープンアドレス法を用いなさい。</p>
+          <p>以下のハッシュ表に5を格納する時、格納される番号を答えなさい。ハッシュ関数は7で割った余りとし、衝突が発生した場合はオープンアドレス法の線形探査を用いなさい。</p>
           <div className="haQ1Figure">
             <img  src={hashQ1} className="haQ1Image" alt="ハッシュ法Q1" />
           </div>
@@ -80,7 +80,7 @@ function HashPractice(){
         {isCorrectQ1 && (
           <div className="haQuestion2">
             <h3>問2</h3>
-            <p>以下のハッシュ表に82格納する時、格納される番号を答えなさい。ハッシュ関数は10で割った余りとし、衝突が発生した場合はオープンアドレス法を用いなさい。</p>
+            <p>以下のハッシュ表に82格納する時、格納される番号を答えなさい。ハッシュ関数は10で割った余りとし、衝突が発生した場合はオープンアドレス法の線形探査を用いなさい。</p>
             <div className="haQ2Figure">
               <img  src={hashQ2} className="haQ2Image" alt="ハッシュ法Q2" />
             </div>
@@ -99,7 +99,7 @@ function HashPractice(){
         {isCorrectQ2 && (
           <div className="haQuestion3">
             <h3>問3</h3>
-            <p>以下のハッシュ表から43を探索する時何回の探索で見つけることができますか。</p>
+            <p>以下のハッシュ表から43を探索する時何回の探索で見つけることができますか。ハッシュ関数は10で割った余りとし、衝突が発生した場合はオープンアドレス法の線形探査を用いなさい。</p>
             <div className="haQ3Figure">
               <img  src={hashQ3} className="haQ3Image" alt="ハッシュ法Q3" />
             </div>
