@@ -6,7 +6,6 @@ import hashQ2 from "../img/hashQ2.jpg" ;
 import hashQ3 from "../img/hashQ3.jpg" ;
 
 
-
 function HashPractice(){
 
   const [answerQ1, setAnswerQ1] = useState("");
@@ -99,7 +98,7 @@ function HashPractice(){
         {isCorrectQ2 && (
           <div className="haQuestion3">
             <h3>問3</h3>
-            <p>以下のハッシュ表から43を探索する時何回の探索で見つけることができますか。ハッシュ関数は10で割った余りとし、衝突が発生した場合はオープンアドレス法の線形探査を用いなさい。</p>
+            <p>以下のハッシュ表から43を探索する時何回目の探索で見つけることができますか。ハッシュ関数は10で割った余りとし、衝突が発生した場合はオープンアドレス法の線形探査を用いなさい。</p>
             <div className="haQ3Figure">
               <img  src={hashQ3} className="haQ3Image" alt="ハッシュ法Q3" />
             </div>
@@ -107,7 +106,7 @@ function HashPractice(){
               <select value={answerQ3} onChange={(e) => setAnswerQ3(e.target.value)}>
                 <option value="">回答を選択</option>
                 {nums.map((num) => (
-                  <option value={num}>{num}</option>
+                  <option value={num}>{num}回目</option>
                 ))}
               </select>
               <button onClick={answerCheckQ3}>回答する</button>

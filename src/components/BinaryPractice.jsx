@@ -29,7 +29,6 @@ function BinaryPractice(){
   const [isCorrectQ3, setIsCorrectQ3] = useState(false);
   
 
-// || (numQ1 === 3 && index === 1) || (numQ1 === 2 && index === 1)
   const navigate = useNavigate();
 
   const cardClickQ1 = (index) => {
@@ -45,8 +44,7 @@ function BinaryPractice(){
       }else{
         isOk = false;
       }
-    console.log("s"+numQ1)
-    console.log(index)
+
       if(!isOk){
         setMessageQ1("探索する順番が違います");
         return;

@@ -1,8 +1,8 @@
 import "./HashExplain.css"
 import hafig1 from "../img/hafig1.JPG" 
 import hafig2 from "../img/hafig2.JPG" 
-import hafig3 from "../img/hafig3.JPG" 
-import hafig4 from "../img/hafig4.JPG" 
+import hafig3 from "../img/hafig3.jpg" 
+import hafig4 from "../img/hafig4.jpg" 
 
 import { useNavigate } from "react-router-dom";
 
