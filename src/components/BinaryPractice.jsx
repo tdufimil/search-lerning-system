@@ -76,7 +76,7 @@ function BinaryPractice(){
   
   const answerCheck = () => {
     if(!isCorrectQ3){
-      if(answerQ3.includes("3") || answerQ3.includes("2")){
+      if(answerQ3.includes("3")){
         setMessageQ3("正解！");
         setIsCorrectQ3(true);
       }else{

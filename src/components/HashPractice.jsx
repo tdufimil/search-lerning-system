@@ -11,7 +11,7 @@ function HashPractice(){
   const [answerQ1, setAnswerQ1] = useState("");
   const [answerQ2, setAnswerQ2] = useState("");
   const [answerQ3, setAnswerQ3] = useState("");
-  const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   const [messageQ1, setMessageQ1] = useState("");
   const [messageQ2, setMessageQ2] = useState("");
   const [messageQ3, setMessageQ3] = useState("");
@@ -106,14 +106,13 @@ function HashPractice(){
               <select value={answerQ3} onChange={(e) => setAnswerQ3(e.target.value)}>
                 <option value="">回答を選択</option>
                 {nums.map((num) => (
-                  <option value={num}>{num}回目</option>
+                  <option value={num}>{num+1}回目</option>
                 ))}
               </select>
               <button onClick={answerCheckQ3}>回答する</button>
               {messageQ3.includes("正解！") ? <h3 style={{color : "green"}}>{messageQ3}</h3> : <p style={{color : "red"}}>{messageQ3}</p>}
             </div>
           </div>
-
         )}
         <div className="linkArea">
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
