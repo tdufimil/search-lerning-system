@@ -4,6 +4,7 @@ import Home from "./components/Home"
 import LinearExplain from "./components/LinearExplain"
 import BinaryExplain from "./components/BinaryExplain"
 import HashExplain from "./components/HashExplain"
+import LinearCode from "./components/LinearCode"
 import LinearPractice from "./components/LinearPractice"
 import BinaryPractice from "./components/BinaryPractice"
 import HashPractice from "./components/HashPractice"
@@ -18,6 +19,7 @@ function App() {
           <Route path="/LinearExplain" element={<LinearExplain />} />
           <Route path="/BinaryExplain" element={<BinaryExplain />} />
           <Route path="/HashExplain" element={<HashExplain />} />
+          <Route path="/LinearCode" element={<LinearCode />} />
           <Route path="/LinearPractice" element={<LinearPractice />} />
           <Route path="/BinaryPractice" element={<BinaryPractice />} />
           <Route path="/HashPractice" element={<HashPractice />} />

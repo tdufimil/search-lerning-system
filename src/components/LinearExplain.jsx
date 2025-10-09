@@ -37,7 +37,6 @@ function LinearExplain() {
       }else if(nextIndex === 3){
         setText("7のカードを見つけたので探索終了です。");
       }
-
     }
 
   }
@@ -60,14 +59,14 @@ function LinearExplain() {
               />
               ))}
           </div>
-          {nextIndex >= 4 && (
-           <p>今回の例では4回目の探索で7のカードを見つけたため、探索回数は4回となります。線形探索では、目的のデータが先頭にあれば1回で見つかるのに対し、最後にある場合はデータの数と同じ回数探す必要があります。
-          つまりデータの数がn個のとき最大の探索回数はn回となり、データが多いと探索回数も多くなるという特徴があります。</p>
+          {nextIndex >= 4 && ( 
+            <p>今回の例では4回目の探索で7のカードを見つけたため、探索回数は4回となります。線形探索では、目的のデータが先頭にあれば1回で見つかるのに対し、最後にある場合はデータの数と同じ回数探す必要があります。
+            つまりデータの数がn個のとき最大の探索回数はn回となり、データが多いと探索回数も多くなるという特徴があります。続いて線形探索を疑似言語で実装してみましょう。</p>
           )}
-        </div>      
+        </div>
         <div className='linkArea'>
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-          <p className="toLinearPractice" onClick={() => navigate("/LinearPractice")}>問題を解く⇒</p>
+          <p className="toLinearCode" onClick={() => navigate("/LinearCode")}>疑似言語で実装する⇒</p>
         </div> 
       </div>
     </div>
