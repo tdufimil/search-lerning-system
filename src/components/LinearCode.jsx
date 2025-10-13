@@ -12,11 +12,11 @@ function LinearCode() {
       <div className="liCodeArea">
         <h2>疑似言語で実装</h2>
         <p>線形探索を疑似言語で実装してみます。具体的にはデータ群の各要素を順に調べて探したいデータと同じものがあればその要素の番号を、見つからなければ -1 を出力します。</p>
-        <p>まず探索対象のデータ群、探したいデータ、データ群の要素番号、結果をいれる変数を順に定義します。</p>
+        <p>まず探索対象のデータ群(array)、探したいデータ(target)、データ群の要素番号(i)、結果をいれる変数(result)を定義します。</p>
         <div className="liCode">
-          <p>整数型の配列:&ensp;array ← {"{2, 5, 8, 9, 13}"}</p>
+          <p>整数型の配列:&ensp;array ← {"{9, 2, 8, 5, 13}"}</p>
           <p>整数型:&ensp;target ← 8</p>
-          <p>整数型:&ensp;i ← 0</p>
+          <p>整数型:&ensp;i ← 1</p>
           <p>整数型:&ensp;result ← -1</p>
         </div>
         <p>つぎに探索をしていきます。arrayの各要素とtargetを比較していきます。もし同じ値を見つけたら、その要素番号をresultに代入し探索を終了します。</p>
@@ -34,7 +34,7 @@ function LinearCode() {
         </div>
         <p>説明を省いて疑似言語の部分だけを書くと次のようになります。</p>
         <div className="liCode">
-          <p>整数型の配列:&ensp;array ← {"{2, 5, 8, 9, 13}"}</p>
+          <p>整数型の配列:&ensp;array ← {"{9, 2, 8, 5, 13}"}</p>
           <p>整数型:&ensp;target ← 8</p>
           <p>整数型:&ensp;i ← 1</p>
           <p>整数型:&ensp;result ← -1</p>
