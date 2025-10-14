@@ -92,6 +92,44 @@
     justify-content: center;
 }
 
+.biQuestion4{
+   text-align: left;
+   margin-left: 2%;
+   margin-right: 2%;
+   margin-top: 2%;
+   margin-bottom: 2%;
+}
+
+.biQ4Code{
+    background-color: #e5e5e5;
+}
+
+.biQ4Code p{
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+.biQ4Answer p{
+    margin-bottom: 0%;
+}
+
+.biQ4Image{
+    width: 40%;
+    margin-bottom: 2%;
+}
+
+.biQ4Answer select{
+    display: flex;
+    flex-direction: column; 
+}
+
+.biQ4AnsMess{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    
+}
+
 .linkArea{
     border-top: 2px solid rgb(232, 232, 232);
     margin-left: 2%;
@@ -110,14 +148,25 @@
     border-bottom: 1px solid rgb(100, 100, 100);
 }
 
-.toLinearExplain{
+.toBinaryExplain{
     margin-left: auto;
     margin-right: 0%;
     color: gray;
     cursor: pointer;
 }
 
-.toLinearExplain:hover{
+.toBinaryExplain:hover{
+    color: rgb(100, 100, 100);
+    border-bottom: 1px solid rgb(100, 100, 100);
+}
+
+.toBinaryCode{
+    margin-left: auto;
+    color: gray;
+    cursor: pointer;
+}
+
+.toBinaryCode:hover{
     color: rgb(100, 100, 100);
     border-bottom: 1px solid rgb(100, 100, 100);
 }

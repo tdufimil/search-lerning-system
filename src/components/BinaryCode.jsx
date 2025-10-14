@@ -28,7 +28,7 @@ function BinaryCode() {
           </p>
           <div className="biCode">
             <p>while&ensp;(leftがright以下 かつ resultが-1)</p>
-            <p>&ensp;&ensp;mid ← (left+right)/2</p>            
+            <p>&ensp;&ensp;mid ← (left + right) / 2</p>            
             <p>&ensp;&ensp;if&ensp;(array[mid]がtargetと同じならば)</p>   
             <p>&ensp;&ensp;&ensp;&ensp;result ← mid</p>
             <p>&ensp;&ensp;endif</p>

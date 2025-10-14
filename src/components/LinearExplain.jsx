@@ -1,10 +1,6 @@
 import './LinearExplain.css';
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
-// import lifig1 from "../img/lifig1.JPG" 
-// import lifig2 from "../img/lifig2.JPG" 
-// import lifig3 from "../img/lifig3.JPG" 
-// import lifig4 from "../img/lifig4.JPG" 
 import cardBack from "../img/cardBack.jpg" ;
 import card02 from "../img/card02.jpg" ;
 import card03 from "../img/card03.jpg" ;
@@ -66,7 +62,7 @@ function LinearExplain() {
         </div>
         <div className='linkArea'>
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-          <p className="toLinearCode" onClick={() => navigate("/LinearCode")}>疑似言語で実装する⇒</p>
+          <p className="toLinearCodea" onClick={() => navigate("/LinearCode")}>疑似言語で実装する⇒</p>
         </div> 
       </div>
     </div>

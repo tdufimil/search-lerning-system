@@ -66,7 +66,7 @@ function LinearExplain() {
           </div>
           <div className="linkArea">
             <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-            <p className="toBinaryCode" onClick={() => navigate("/BinaryCode")}>疑似言語で実装する⇒</p>
+            <p className="toBinaryCodea" onClick={() => navigate("/BinaryCode")}>疑似言語で実装する⇒</p>
           </div>
         </div>
       </div>

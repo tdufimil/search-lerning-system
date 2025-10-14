@@ -12,8 +12,10 @@ import card07 from "../img/card07.jpg" ;
 import card08 from "../img/card08.jpg" ;
 import card09 from "../img/card09.jpg" ;
 import card10 from "../img/card10.jpg" ;
+import biq4ans from "../img/biq4ans.jpg" ;
 
 function BinaryPractice(){
+  const nums = [1, 2, 3, 4, 5, 6, 7, 8];
   const cardsQ1 = [card02, card05, card08, card09, card10];
   const cardsQ2 = [card01, card02, card04, card07, card08, card09];
   const cardsQ3 = [card01, card03, card04, card06, card07, card08, card10];
@@ -21,12 +23,16 @@ function BinaryPractice(){
   const [numQ1, setNumQ1] = useState(1);
   let isOk = false;
   const [answerQ3, setAnswerQ3] = useState("");
+  const [answerQ4_1, setAnswerQ4_1] = useState("");
+  const [answerQ4_2, setAnswerQ4_2] = useState("");
   const [messageQ1, setMessageQ1] = useState("");
   const [messageQ2, setMessageQ2] = useState("");
   const [messageQ3, setMessageQ3] = useState("");
+  const [messageQ4, setMessageQ4] = useState("");
   const [isCorrectQ1, setIsCorrectQ1] = useState(false);
   const [isCorrectQ2, setIsCorrectQ2] = useState(false);
   const [isCorrectQ3, setIsCorrectQ3] = useState(false);
+  const [isCorrectQ4, setIsCorrectQ4] = useState(false);
   
 
   const navigate = useNavigate();
@@ -81,6 +87,21 @@ function BinaryPractice(){
         setIsCorrectQ3(true);
       }else{
         setMessageQ3("違います")
+      }
+    }
+  }
+  
+  const q4answerCheck = () => {
+    if(!isCorrectQ4){
+      if(answerQ4_1.includes("2") && answerQ4_2.includes("2")){
+        setMessageQ4("正解！");
+        setIsCorrectQ4(true);
+      }else if(!answerQ4_1.includes("2") && answerQ4_2.includes("2")){
+        setMessageQ4("(a)(b)の組み合わせが違います")
+      }else if(answerQ4_1.includes("2") && !answerQ4_2.includes("2")){
+        setMessageQ4("実行結果が違います")
+      }else{
+        setMessageQ4("どちらも違います")
       }
     }
   }
@@ -149,9 +170,60 @@ function BinaryPractice(){
             </div>    
           </div>  
         )}
+        {isCorrectQ3 && (
+          <>
+          <div className="biQuestion4">
+            <h3>問4</h3>
+            <p>以下のプログラムはarrayに二分探索を行いtargetと同じものがあればその要素が何番目かを出力し、見つからなければ-1を出力する。プログラム中の(a)と(b)に入る正しい組み合わせを選択肢から選んで答えなさい。また、実行結果を答えなさい。</p>
+            <div className="biQ4Code">
+              <p>整数型の配列:&ensp;array ← {"{1, 4, 5, 9, 11, 15, 17, 18}"}</p>
+              <p>整数型:&ensp;target ← 15</p>
+              <p>整数型:&ensp;result ← -1</p>
+              <p>整数型:&ensp;left ← 1</p>
+              <p>整数型:&ensp;right ← arrayの要素数</p>
+              <p>整数型:&ensp;mid</p>
+              <p>&ensp;</p>
+              <p>while&ensp;(leftがright以下 かつ resultが-1)</p>
+              <p>&ensp;&ensp;mid ← (left+right)/2</p>            
+              <p>&ensp;&ensp;if&ensp;(array[mid]がtargetと同じならば)</p>   
+              <p>&ensp;&ensp;&ensp;&ensp;result ← mid</p>
+              <p>&ensp;&ensp;endif</p>
+              <p>&ensp;&ensp;if&ensp;(array[mid]がtargetよりも大きいならば)</p>
+              <p>&ensp;&ensp;&ensp;&ensp;right ← (a)</p>
+              <p>&ensp;&ensp;endif</p>
+              <p>&ensp;&ensp;if&ensp;(array[mid]がtargetよりも小さいならば)</p>
+              <p>&ensp;&ensp;&ensp;&ensp;left ← (b)</p>
+              <p>&ensp;&ensp;endif</p>
+              <p>endwhile</p>
+              <p>&ensp;</p>
+              <p>print(result)</p>
+            </div>
+            <div className="biQ4Answer">
+               <p>選択肢</p>
+               <img src={biq4ans} className="biQ4Image" alt="選択肢" />
+               <select value={answerQ4_1} onChange={(e) => setAnswerQ4_1(e.target.value)}>
+                 <option value="">組み合わせを選択</option>
+                 <option value="1">1</option>
+                 <option value="2">2</option>
+                 <option value="3">3</option>
+                 <option value="4">4</option>
+               </select>
+               <select value={answerQ4_2} onChange={(e) => setAnswerQ4_2(e.target.value)}>
+                 <option value="">実行結果を選択</option>
+                   {nums.map((num) => (
+                     <option value={num}>{num}</option>
+                   ))}
+               </select>
+               <button onClick={q4answerCheck}>回答する</button>
+               {messageQ4.includes("正解！") ? <h3 className="biQ4AnsMess" style={{color : "green"}}>{messageQ4}</h3> : <p className="biQ4AnsMess" style={{color : "red"}}>{messageQ4}</p>}
+            </div>
+          </div>
+          </>
+        )}
         <div className="linkArea">
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-          <p className="toLinearExplain" onClick={() => navigate("/BinaryExplain")}>解説へ戻る</p>
+          <p className="toBinaryExplain" onClick={() => navigate("/BinaryExplain")}>解説へ戻る</p>
+          <p className="toBinaryCode" onClick={() => navigate("/BinaryCode")}>疑似言語での実装へ戻る</p>
         </div>        
       </div>
     </div>
