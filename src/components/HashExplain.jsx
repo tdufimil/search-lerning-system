@@ -50,7 +50,7 @@ function HashExplain() {
           </div>
           <div className="linkArea">
             <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-            <p className="toHashPractice" onClick={() => navigate("/HashPractice")}>問題を解く⇒</p>
+            <p className="toHashPractice" onClick={() => navigate("/HashCode")}>疑似言語で実装する⇒</p>
           </div>
         </div>
       </div>

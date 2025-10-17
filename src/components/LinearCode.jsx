@@ -11,7 +11,7 @@ function LinearCode() {
     <div className="liContainer">
       <div className="liCodeArea">
         <h2>疑似言語で実装</h2>
-        <p>線形探索を疑似言語で実装してみます。具体的にはデータ群の各要素を順に調べて探したいデータと同じものがあればその要素の番号を、見つからなければ -1 を出力します。</p>
+        <p>線形探索を疑似言語で実装してみます。配列の要素番号は1から始まるものとします。具体的にはデータ群の各要素を順に調べて探したいデータと同じものがあればその要素の番号を、見つからなければ -1 を出力します。</p>
         <p>まず探索対象のデータ群(array)、探したいデータ(target)、データ群の要素番号(i)、結果をいれる変数(result)を定義します。</p>
         <div className="liCode">
           <p>整数型の配列:&ensp;array ← {"{9, 2, 8, 5, 13}"}</p>
@@ -19,7 +19,7 @@ function LinearCode() {
           <p>整数型:&ensp;i ← 1</p>
           <p>整数型:&ensp;result ← -1</p>
         </div>
-        <p>つぎに探索をしていきます。arrayの各要素とtargetを比較していきます。もし同じ値を見つけたら、その要素番号をresultに代入し探索を終了します。</p>
+        <p>つぎに探索をしていきます。arrayの各要素を順番にtargetを比較していきます。もし同じ値を見つけたら、その要素番号をresultに代入し探索を終了します。</p>
         <div className="liCode">
           <p>while&ensp;(iがarrayの要素数以下 かつ resultが-1)</p>
           <p>&ensp;&ensp;if&ensp;(array[i]がtargetと同じならば)</p>            
@@ -28,7 +28,7 @@ function LinearCode() {
           <p>&ensp;&ensp;i ← i + 1</p>
           <p>endwhile</p>
         </div>
-        <p>最後に探索結果を出力します。print()はかっこの中の変数に代入されている値を出力する手続きです。</p>
+        <p>最後に探索結果を出力します。print()はかっこの中の変数に代入されている値を出力します。</p>
         <div className="liCode">
           <p>print(result)</p>
         </div>
