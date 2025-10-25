@@ -4,20 +4,24 @@ import { useNavigate } from "react-router-dom";
 import hashQ1 from "../img/hashQ1.jpg" ;
 import hashQ2 from "../img/hashQ2.jpg" ;
 import hashQ3 from "../img/hashQ3.jpg" ;
-
+import haQ4Ans from "../img/haq4ans.jpg";
 
 function HashPractice(){
 
   const [answerQ1, setAnswerQ1] = useState("");
   const [answerQ2, setAnswerQ2] = useState("");
   const [answerQ3, setAnswerQ3] = useState("");
+  const [answerQ4_1, setAnswerQ4_1] = useState("");
+  const [answerQ4_2, setAnswerQ4_2] = useState("");
   const nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   const [messageQ1, setMessageQ1] = useState("");
   const [messageQ2, setMessageQ2] = useState("");
   const [messageQ3, setMessageQ3] = useState("");
+  const [messageQ4, setMessageQ4] = useState("");
   const [isCorrectQ1, setIsCorrectQ1] = useState(false);
   const [isCorrectQ2, setIsCorrectQ2] = useState(false);
   const [isCorrectQ3, setIsCorrectQ3] = useState(false);
+  const [isCorrectQ4, setIsCorrectQ4] = useState(false);
 
   const navigate = useNavigate();
 
@@ -45,11 +49,27 @@ function HashPractice(){
 
   const answerCheckQ3 = () => {
     if(!isCorrectQ3){
+      console.log(answerQ3)
       if(answerQ3.includes("4")){
         setMessageQ3("正解！");
         setIsCorrectQ3(true);
       }else{
         setMessageQ3("違います")
+      }
+    }
+  }
+
+  const q4answerCheck = () => {
+    if(!isCorrectQ4){
+      if(answerQ4_1.includes("1") && answerQ4_2.includes("{-1, 8, 2, 3, -1, -1, -1}")){
+        setMessageQ4("正解！");
+        setIsCorrectQ4(true);
+      }else if(!answerQ4_1.includes("1") && answerQ4_2.includes("{-1, 8, 2, 3, -1, -1, -1}")){
+        setMessageQ4("(a)(b)の組み合わせが違います")
+      }else if(answerQ4_1.includes("1") && !answerQ4_2.includes("{-1, 8, 2, 3, -1, -1, -1}")){
+        setMessageQ4("実行後のarrayが違います")
+      }else{
+        setMessageQ4("どちらも違います")
       }
     }
   }
@@ -106,7 +126,7 @@ function HashPractice(){
               <select value={answerQ3} onChange={(e) => setAnswerQ3(e.target.value)}>
                 <option value="">回答を選択</option>
                 {nums.map((num) => (
-                  <option value={num}>{num+1}回目</option>
+                  <option value={num+1}>{num+1}回目</option>
                 ))}
               </select>
               <button onClick={answerCheckQ3}>回答する</button>
@@ -114,13 +134,93 @@ function HashPractice(){
             </div>
           </div>
         )}
+        {isCorrectQ3 && (
+          <>
+          <div className="haQuestion4">
+            <h3>問4</h3>
+            <p>以下のプログラムはハッシュ法による探索、格納を行う。関数addはarrayに格納できればtrueを返しできなければfalseを返す。また、関数searchは引数valueがarrayに格納されているか探索し格納されていればその要素番号を返し、格納されていなければ
+              -1を返す。</p>
+            <p>手続きtestの実行結果の空欄(a)、(b)に入る正しい組み合わせを選択肢から選んで答えなさい。また、手続きtest実行後のarrayの内容を答えなさい。配列の要素番号は0からはじまる。</p>
+            <div className="haQ4Code">
+              <p>○整数型:&ensp;calcHash1(整数型:&ensp;value)</p>
+              <p>&ensp;&ensp;return&ensp;value mod arrayの要素数</p>
+              <p>&ensp;</p>
+              <p>○整数型:&ensp;calcHash2(整数型:&ensp;value)</p>
+              <p>&ensp;&ensp;return&ensp;(value + 1) mod arrayの要素数 </p>
+              <p>&ensp;</p>
+              <p>○論理型:&ensp;add(整数型:&ensp;value)</p>
+              <p>&ensp;&ensp;整数型:&ensp;i ← calcHash1(value)</p>
+              <p>&ensp;&ensp;if(array[i]が-1ならば)</p>
+              <p>&ensp;&ensp;&ensp;&ensp;array[i] ← value</p>
+              <p>&ensp;&ensp;&ensp;&ensp;return&ensp;true</p>
+              <p>&ensp;&ensp;endif</p>
+              <p>&ensp;&ensp;i ← calcHash2(value)</p>
+              <p>&ensp;&ensp;if(array[i]が-1ならば)</p>
+              <p>&ensp;&ensp;&ensp;&ensp;array[i] ← value</p>
+              <p>&ensp;&ensp;&ensp;&ensp;return&ensp;true</p>
+              <p>&ensp;&ensp;endif</p>
+              <p>&ensp;&ensp;return false</p>
+              <p>&ensp;</p>
+              <p>○整数型:&ensp;search(整数型:&ensp;value)</p>
+              <p>&ensp;&ensp;整数型:&ensp;i ← calcHash1(value)</p>
+              <p>&ensp;&ensp;if&ensp;(array[i]がvalueと同じならば)</p>
+              <p>&ensp;&ensp;&ensp;&ensp;return&ensp;i</p>
+              <p>&ensp;&ensp;endif</p>
+              <p>&ensp;&ensp;i ← calcHash2(value)</p>
+              <p>&ensp;&ensp;if&ensp;(array[i]がvalueと同じならば)</p>
+              <p>&ensp;&ensp;&ensp;&ensp;return&ensp;i</p>
+              <p>&ensp;&ensp;endif</p>
+              <p>&ensp;&ensp;return&ensp;-1</p>
+              <p>&ensp;</p>
+              <p>○test</p>
+              <p>&ensp;&ensp;array ← {"{-1, -1, -1, -1, -1, -1, -1}"}</p>
+              <p>&ensp;&ensp;print(add(2))</p>
+              <p>&ensp;&ensp;print(add(3))</p>
+              <p>&ensp;&ensp;print(add(8))</p>
+              <p>&ensp;&ensp;print(add(9))</p>
+              <p>&ensp;&ensp;print(search(0))</p>
+              <p>&ensp;&ensp;print(search(3))</p>
+              <p>&ensp;&ensp;print(search(8))</p>
+              <p>&ensp;</p>
+              <p>testを実行した結果:</p>
+              <p>true</p>
+              <p>true</p>
+              <p>true</p>
+              <p>(a)</p>
+              <p>-1</p>
+              <p>3</p>
+              <p>(b)</p>
+            </div>
+            <div className="haQ4Answer">
+              <p>選択肢</p>
+              <img src={haQ4Ans} className="haQ4Image" alt="選択肢" />
+              <select value={answerQ4_1} onChange={(e) => setAnswerQ4_1(e.target.value)}>
+                <option value="">組み合わせを選択</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+              <select value={answerQ4_2} onChange={(e) => setAnswerQ4_2(e.target.value)}>
+                <option value="">実行後のarrayを選択</option>
+                <option value="{-1, 8, 9, 3, -1, -1, -1}">{`{-1, 8, 9, 3, -1, -1, -1}`}</option>
+                <option value="{-1, 8, 2, 3, -1, -1, -1}">{`{-1, 8, 2, 3, -1, -1, -1}`}</option>
+                <option value="{-1, 8, 9, 2, -1, -1, -1}">{`{-1, 8, 9, 2, -1, -1, -1}`}</option>
+                <option value="{8, 2, 3, -1, -1, -1, -1}">{`{8, 2, 3, -1, -1, -1, -1}`}</option>
+              </select>
+               <button onClick={q4answerCheck}>回答する</button>
+               {messageQ4.includes("正解！") ? <h3 className="haQ4AnsMess" style={{color : "green"}}>{messageQ4}</h3> : <p className="haQ4AnsMess" style={{color : "red"}}>{messageQ4}</p>}
+            </div>
+          </div>
+          </>
+        )}
         <div className="linkArea">
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-          <p className="toLinearExplain" onClick={() => navigate("/HashExplain")}>解説へ戻る</p>
+          <p className="toHashExplain" onClick={() => navigate("/HashExplain")}>解説へ戻る</p>
+          <p className="toHashCode" onClick={() => navigate("/HashCode")}>疑似言語での実装へ戻る</p>
         </div>
       </div>  
     </div>    
-        
     </>
     )
 }

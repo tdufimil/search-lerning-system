@@ -62,14 +62,56 @@ function HashCode(){
         <p>最後に手続きtestを実装します。まずはハッシュ表となるarrayに-1をいれます。addやseachを実行してarrayにデータの格納、探索を行いその結果を出力します。</p>
         <div className="haCode">
           <p>○test</p>
-          <p>&ensp;array ← {"{-1, -1, -1, -1, -1, -1, -1}"}</p>
-          <p>&ensp;print(add(1))</p>
-          <p>&ensp;print(add(2))</p>
-          <p>&ensp;print(add(5))</p>
-          <p>&ensp;print(add(22))</p>
-          <p>&ensp;print(search(2))</p>
-          <p>&ensp;print(search(5))</p>
-          <p>&ensp;print(search(7))</p>
+          <p>&ensp;&ensp;array ← {"{-1, -1, -1, -1, -1, -1, -1}"}</p>
+          <p>&ensp;&ensp;print(add(1))</p>
+          <p>&ensp;&ensp;print(add(2))</p>
+          <p>&ensp;&ensp;print(add(5))</p>
+          <p>&ensp;&ensp;print(add(22))</p>
+          <p>&ensp;&ensp;print(search(2))</p>
+          <p>&ensp;&ensp;print(search(5))</p>
+          <p>&ensp;&ensp;print(search(7))</p>
+        </div>
+        <p>説明を省いて疑似言語の部分だけを書くと次のようになります。</p>
+        <div className="haCode">
+          <p>○整数型:&ensp;calcHash1(整数型:&ensp;value)</p>
+          <p>&ensp;&ensp;return&ensp;value mod arrayの要素数</p>
+          <p>&ensp;</p>
+          <p>○整数型:&ensp;calcHash2(整数型:&ensp;value)</p>
+          <p>&ensp;&ensp;return&ensp;(value + 1) mod arrayの要素数 </p>
+          <p>&ensp;</p>
+          <p>○論理型:&ensp;add(整数型:&ensp;value)</p>
+          <p>&ensp;&ensp;整数型:&ensp;i ← calcHash1(value)</p>
+          <p>&ensp;&ensp;if(array[i]が-1ならば)</p>
+          <p>&ensp;&ensp;&ensp;&ensp;array[i] ← value</p>
+          <p>&ensp;&ensp;&ensp;&ensp;return&ensp;true</p>
+          <p>&ensp;&ensp;endif</p>
+          <p>&ensp;&ensp;i ← calcHash2(value)</p>
+          <p>&ensp;&ensp;if(array[i]が-1ならば)</p>
+          <p>&ensp;&ensp;&ensp;&ensp;array[i] ← value</p>
+          <p>&ensp;&ensp;&ensp;&ensp;return&ensp;true</p>
+          <p>&ensp;&ensp;endif</p>
+          <p>&ensp;&ensp;return false</p>
+          <p>&ensp;</p>
+          <p>○整数型:&ensp;search(整数型:&ensp;value)</p>
+          <p>&ensp;&ensp;整数型:&ensp;i ← calcHash1(value)</p>
+          <p>&ensp;&ensp;if&ensp;(array[i]がvalueと同じならば)</p>
+          <p>&ensp;&ensp;&ensp;&ensp;return&ensp;i</p>
+          <p>&ensp;&ensp;endif</p>
+          <p>&ensp;&ensp;i ← calcHash2(value)</p>
+          <p>&ensp;&ensp;if&ensp;(array[i]がvalueと同じならば)</p>
+          <p>&ensp;&ensp;&ensp;&ensp;return&ensp;i</p>
+          <p>&ensp;&ensp;endif</p>
+          <p>&ensp;&ensp;return&ensp;-1</p>
+          <p>&ensp;</p>
+          <p>○test</p>
+          <p>&ensp;&ensp;array ← {"{-1, -1, -1, -1, -1, -1, -1}"}</p>
+          <p>&ensp;&ensp;print(add(1))</p>
+          <p>&ensp;&ensp;print(add(2))</p>
+          <p>&ensp;&ensp;print(add(5))</p>
+          <p>&ensp;&ensp;print(add(22))</p>
+          <p>&ensp;&ensp;print(search(2))</p>
+          <p>&ensp;&ensp;print(search(5))</p>
+          <p>&ensp;&ensp;print(search(7))</p>
           <p>&ensp;</p>
           <p>testを実行した結果:</p>
           <p>true</p>
@@ -80,6 +122,7 @@ function HashCode(){
           <p>5</p>
           <p>-1</p>
         </div>
+        <p>最後に問題を解いてハッシュ法の復習をしましょう。</p>
       </div>
       <div className="linkArea">
         <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>

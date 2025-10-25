@@ -80,7 +80,7 @@ function BinaryPractice(){
     }
   }
   
-  const answerCheck = () => {
+  const q3answerCheck = () => {
     if(!isCorrectQ3){
       if(answerQ3.includes("3")){
         setMessageQ3("正解！");
@@ -93,12 +93,12 @@ function BinaryPractice(){
   
   const q4answerCheck = () => {
     if(!isCorrectQ4){
-      if(answerQ4_1.includes("2") && answerQ4_2.includes("2")){
+      if(answerQ4_1.includes("2") && answerQ4_2.includes("6")){
         setMessageQ4("正解！");
         setIsCorrectQ4(true);
-      }else if(!answerQ4_1.includes("2") && answerQ4_2.includes("2")){
+      }else if(!answerQ4_1.includes("2") && answerQ4_2.includes("6")){
         setMessageQ4("(a)(b)の組み合わせが違います")
-      }else if(answerQ4_1.includes("2") && !answerQ4_2.includes("2")){
+      }else if(answerQ4_1.includes("2") && !answerQ4_2.includes("6")){
         setMessageQ4("実行結果が違います")
       }else{
         setMessageQ4("どちらも違います")
@@ -165,7 +165,7 @@ function BinaryPractice(){
                   ))
                 }
               </select>
-              <button onClick={answerCheck}>回答する</button>
+              <button onClick={q3answerCheck}>回答する</button>
               {messageQ3.includes("正解！") ? <h3 style={{color : "green"}}>{messageQ3}</h3> : <p style={{color : "red"}}>{messageQ3}</p>}
             </div>    
           </div>  
