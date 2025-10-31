@@ -44,6 +44,11 @@ function Home() {
            </div>
           </div>   
         </div>
+        <div className="research">
+          <h3>アンケート</h3>
+          <p>以下のリンクからアンケートの回答をお願いします。</p>
+          <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=ixIOAf0kL06CbvxAt5p-YWUrbDyN8qtLmjvYfIJZ-g9UQk9NMzVBUDc0VFQ4VFhYM1AwR1NMNkZRUC4u">https://forms.office.com/r/wB2Zc0Lpim</a>
+        </div>
       </div>
     </div>
   )
