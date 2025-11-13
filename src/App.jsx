@@ -4,6 +4,8 @@ import Home from "./components/Home"
 import LinearExplain from "./components/LinearExplain"
 import BinaryExplain from "./components/BinaryExplain"
 import HashExplain from "./components/HashExplain"
+import LinearExplainEdit from "./components/LinearExplainEdit"
+import BinaryExplainEdit from "./components/BinaryExplainEdit"
 import LinearCode from "./components/LinearCode"
 import BinaryCode from "./components/BinaryCode"
 import HashCode from "./components/HashCode"
@@ -11,8 +13,8 @@ import LinearPractice from "./components/LinearPractice"
 import BinaryPractice from "./components/BinaryPractice"
 import HashPractice from "./components/HashPractice"
 import AddAlgorithm from "./components/AddAlgorithm"
-import NewAlgorithm from "./components/NewAlgorithm"
 import ScrollToTop  from './components/ScrollToTop'
+import AddClone  from './components/AddClone'
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/LinearExplain" element={<LinearExplain />} />
           <Route path="/BinaryExplain" element={<BinaryExplain />} />
           <Route path="/HashExplain" element={<HashExplain />} />
+          <Route path="/LinearExplainEdit" element={<LinearExplainEdit />} />
+          <Route path="/BinaryExplainEdit" element={<BinaryExplainEdit />} />
           <Route path="/LinearCode" element={<LinearCode />} />
           <Route path="/BinaryCode" element={<BinaryCode />} />
           <Route path="/HashCode" element={<HashCode />} />
@@ -30,7 +34,7 @@ function App() {
           <Route path="/BinaryPractice" element={<BinaryPractice />} />
           <Route path="/HashPractice" element={<HashPractice />} />
           <Route path="/AddAlgorithm" element={<AddAlgorithm />} />
-          <Route path="/NewAlgorithm" element={<NewAlgorithm />} />
+          <Route path="/AddClone" element={<AddClone />} />
         </Routes>
     </BrowserRouter>
   );

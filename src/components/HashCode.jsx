@@ -7,7 +7,7 @@ function HashCode(){
 
   return(
   <>
-  <div className="hashRoot">
+  <div className="hashCRoot">
     <div className="haContainer">
       <div className="haCodeArea">
         <h2>疑似言語で実装</h2>

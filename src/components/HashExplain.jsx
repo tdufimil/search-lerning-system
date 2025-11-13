@@ -16,7 +16,6 @@ function HashExplain() {
   }
 
   return (
-    <>
       <div className="hashRoot">
         <div className="haContainer">
           <div className="haExplain">
@@ -54,7 +53,6 @@ function HashExplain() {
           </div>
         </div>
       </div>
-    </>
   )
 }
 

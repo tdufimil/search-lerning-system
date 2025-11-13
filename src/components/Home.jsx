@@ -1,17 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import './Home.css';
-import {db} from "../firebase.jsx";
-import { useState, useEffect} from "react";
+// import {db} from "../firebase.jsx";
+// import { useState, useEffect} from "react";
 
 function Home() {
   const navigate = useNavigate();
-  const [titles, setTitles] = useState([]);
-  useEffect(() => {
-    db.collection("algorithms")
-    .onSnapshot((snapshot) => {
-      setTitles(snapshot.docs.map((doc) => doc.data()))
-    })
-  }, [])
+  // const [titles, setTitles] = useState([]);
+  // useEffect(() => {
+  //   db.collection("algorithms")
+  //   .onSnapshot((snapshot) => {
+  //     setTitles(snapshot.docs.map((doc) => doc.data()))
+  //   })
+  // }, [])
 
   return (
     <div className="home">
@@ -60,12 +60,7 @@ function Home() {
         </div>
         <div className="add">
           <h3>その他のアルゴリズム</h3>
-          <div className="addAlgo">
-            {titles.length === 0 ? <p>nodata</p>:
-              titles.map((algo, index) => (<p className="addAlgoTitle" key={index} onClick={() => navigate("/NewAlgorithm", { state: { title: algo.title,  text: algo.text} })}>{algo.title}</p>))
-            }
-            
-          </div>
+          <button onClick={() => navigate("/AddClone")}>testoo</button>
           <button onClick={() => navigate("/AddAlgorithm")}>追加する</button>
         </div>
       </div>
@@ -74,3 +69,7 @@ function Home() {
 }
 
 export default Home
+// {titles.length === 0 ? <p>nodata</p>:
+//               titles.map((algo, index) => (<p className="addAlgoTitle" key={index} onClick={() => navigate("/NewAlgorithm", { state: { title: algo.title,  text: algo.text} })}>{algo.title}</p>))
+//             }
+//             {console.log(titles)}

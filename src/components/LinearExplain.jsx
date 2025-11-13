@@ -1,6 +1,8 @@
 import './LinearExplain.css';
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
+import { useEffect} from 'react';
+import {db} from "../firebase.jsx";
 import cardBack from "../img/cardBack.jpg" ;
 import card02 from "../img/card02.jpg" ;
 import card03 from "../img/card03.jpg" ;
@@ -10,6 +12,22 @@ import card07 from "../img/card07.jpg" ;
 
 
 function LinearExplain() {
+  const [title, setTitle] = useState("");
+  const [text01, setText01] = useState("");
+  const [text02, setText02] = useState("");
+
+  useEffect(() => {
+      const fetch = async () => {
+        const ref = db.collection("algorithms").doc("naSyKL4rsYKA67xBqFXg");
+        const doc = await ref.get();
+       
+        setTitle(doc.get("title"));
+        setText01(doc.get("text01"));
+        setText02(doc.get("text02"));
+      };
+
+      fetch();
+    }, [])
   
   const [nextIndex, setNextIndex] = useState(0);
   const cards = [card05,card03,card02,card07,card06];
@@ -43,7 +61,7 @@ function LinearExplain() {
       <div className="liContainer">
         <div className="liExplain">
           <h2>線形探索</h2>
-          <p>線形探索は並べられたデータを先頭から順番に調べていく方法です。例えば0~9の数字が書かれたカードの中からランダムに5枚選んで並べ、この中から7のカードを探す時を考えます。</p>
+          <p>{text01}</p>
           <p>{text}</p>
           <div className="linearFigure">
             {cards.map((card, index) => (
@@ -56,12 +74,12 @@ function LinearExplain() {
               ))}
           </div>
           {nextIndex >= 4 && ( 
-            <p>今回の例では4回目の探索で7のカードを見つけたため、探索回数は4回となります。線形探索では、目的のデータが先頭にあれば1回で見つかるのに対し、最後にある場合はデータの数と同じ回数探す必要があります。
-            つまりデータの数がn個のとき最大の探索回数はn回となり、データが多いと探索回数も多くなるという特徴があります。続いて線形探索を疑似言語で実装してみましょう。</p>
+            <p>{text02}</p>
           )}
         </div>
         <div className='linkArea'>
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
+          <p className="toLinearExEdit" onClick={() => navigate("/LinearExplainEdit", { state: {title, text01,  text02}})}>編集</p>
           <p className="toLinearCodea" onClick={() => navigate("/LinearCode")}>疑似言語で実装する⇒</p>
         </div> 
       </div>
