@@ -13,9 +13,8 @@ import HashCode from "./components/HashCode"
 import LinearPractice from "./components/LinearPractice"
 import BinaryPractice from "./components/BinaryPractice"
 import HashPractice from "./components/HashPractice"
-import AddAlgorithm from "./components/AddAlgorithm"
 import ScrollToTop  from './components/ScrollToTop'
-import AddClone  from './components/AddClone'
+
 
 function App() {
   return (
@@ -35,8 +34,6 @@ function App() {
           <Route path="/LinearPractice" element={<LinearPractice />} />
           <Route path="/BinaryPractice" element={<BinaryPractice />} />
           <Route path="/HashPractice" element={<HashPractice />} />
-          <Route path="/AddAlgorithm" element={<AddAlgorithm />} />
-          <Route path="/AddClone" element={<AddClone />} />
         </Routes>
     </BrowserRouter>
   );

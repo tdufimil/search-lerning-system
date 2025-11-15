@@ -1,17 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import './Home.css';
-// import {db} from "../firebase.jsx";
-// import { useState, useEffect} from "react";
 
 function Home() {
   const navigate = useNavigate();
-  // const [titles, setTitles] = useState([]);
-  // useEffect(() => {
-  //   db.collection("algorithms")
-  //   .onSnapshot((snapshot) => {
-  //     setTitles(snapshot.docs.map((doc) => doc.data()))
-  //   })
-  // }, [])
+  
 
   return (
     <div className="home">
@@ -58,18 +50,10 @@ function Home() {
           <p>以下のリンクからアンケートの回答をお願いします。</p>
           <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=ixIOAf0kL06CbvxAt5p-YWUrbDyN8qtLmjvYfIJZ-g9UQk9NMzVBUDc0VFQ4VFhYM1AwR1NMNkZRUC4u">https://forms.office.com/r/wB2Zc0Lpim</a>
         </div>
-        <div className="add">
-          <h3>その他のアルゴリズム</h3>
-          <button onClick={() => navigate("/AddClone")}>testoo</button>
-          <button onClick={() => navigate("/AddAlgorithm")}>追加する</button>
-        </div>
       </div>
     </div>
   )
 }
 
 export default Home
-// {titles.length === 0 ? <p>nodata</p>:
-//               titles.map((algo, index) => (<p className="addAlgoTitle" key={index} onClick={() => navigate("/NewAlgorithm", { state: { title: algo.title,  text: algo.text} })}>{algo.title}</p>))
-//             }
-//             {console.log(titles)}
+
