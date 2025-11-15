@@ -6,6 +6,7 @@ import BinaryExplain from "./components/BinaryExplain"
 import HashExplain from "./components/HashExplain"
 import LinearExplainEdit from "./components/LinearExplainEdit"
 import BinaryExplainEdit from "./components/BinaryExplainEdit"
+import HashExplainEdit from "./components/HashExplainEdit"
 import LinearCode from "./components/LinearCode"
 import BinaryCode from "./components/BinaryCode"
 import HashCode from "./components/HashCode"
@@ -27,6 +28,7 @@ function App() {
           <Route path="/HashExplain" element={<HashExplain />} />
           <Route path="/LinearExplainEdit" element={<LinearExplainEdit />} />
           <Route path="/BinaryExplainEdit" element={<BinaryExplainEdit />} />
+          <Route path="/HashExplainEdit" element={<HashExplainEdit />} />
           <Route path="/LinearCode" element={<LinearCode />} />
           <Route path="/BinaryCode" element={<BinaryCode />} />
           <Route path="/HashCode" element={<HashCode />} />
