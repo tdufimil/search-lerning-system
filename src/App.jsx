@@ -10,6 +10,9 @@ import HashExplainEdit from "./components/HashExplainEdit"
 import LinearCode from "./components/LinearCode"
 import BinaryCode from "./components/BinaryCode"
 import HashCode from "./components/HashCode"
+import LinearCodeEdit from "./components/LinearCodeEdit"
+import BinaryCodeEdit from "./components/BinaryCodeEdit"
+import HashCodeEdit from "./components/HashCodeEdit"
 import LinearPractice from "./components/LinearPractice"
 import BinaryPractice from "./components/BinaryPractice"
 import HashPractice from "./components/HashPractice"
@@ -31,6 +34,9 @@ function App() {
           <Route path="/LinearCode" element={<LinearCode />} />
           <Route path="/BinaryCode" element={<BinaryCode />} />
           <Route path="/HashCode" element={<HashCode />} />
+          <Route path="/LinearCodeEdit" element={<LinearCodeEdit />} />
+          <Route path="/BinaryCodeEdit" element={<BinaryCodeEdit />} />
+          <Route path="/HashCodeEdit" element={<HashCodeEdit />} />
           <Route path="/LinearPractice" element={<LinearPractice />} />
           <Route path="/BinaryPractice" element={<BinaryPractice />} />
           <Route path="/HashPractice" element={<HashPractice />} />

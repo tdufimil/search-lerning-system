@@ -2,9 +2,9 @@ import { useState} from 'react';
 import { useLocation } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import {db} from "../firebase.jsx";
-import './LinearExplainEdit.css';
+import './HashCodeEdit.css';
 
-function LinearExplainEdit(){
+function HashCodeEdit(){
   const navigate = useNavigate();  
   const location = useLocation();
   const title = location.state.title;
@@ -18,14 +18,14 @@ function LinearExplainEdit(){
     text01: text01,
     text02: text02
     });
-    navigate("/LinearExplain");
+    navigate("/binaryCode");
   }  
 
   return(
     <>
-      <div className="linearRoot">
-        <div className="liContainer">
-          <div className="liExplainEdit">
+      <div className="hashRoot">
+        <div className="haContainer">
+          <div className="haCodeEdit">
             <p>説明1:</p>
             <textarea defaultValue={text01}  type='text' onChange={(e) => setText01(e.target.value)} rows={10}/>
             <p>説明2:</p>
@@ -34,11 +34,13 @@ function LinearExplainEdit(){
           </div>
             <div className='linkArea'>
               <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-              <p className="toBLinearExplain" onClick={() => navigate("/LinearExplain")}>解説へ戻る</p>
+              <p className="toBHashCode" onClick={() => navigate("/HashCode")}>疑似言語の解説へ戻る</p>
             </div> 
           </div>
         </div>
-      </>
+        </>
+    
+
   ) 
 } 
-export default LinearExplainEdit
+export default HashCodeEdit

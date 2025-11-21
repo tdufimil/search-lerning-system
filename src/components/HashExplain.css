@@ -63,7 +63,7 @@
     cursor: pointer;
 }
 
-.toExEdit:hover{
+.toHashExEdit:hover{
     color: rgb(100, 100, 100);
     border-bottom: 1px solid rgb(100, 100, 100);
 }

@@ -1,57 +1,68 @@
 import './LinearCode.css';
 import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
+import { useState } from 'react';
+import {db} from "../firebase.jsx";
 
 function LinearCode() {
+  const [text01, setText01] = useState("");
+  const [text02, setText02] = useState("");
+  const [text03, setText03] = useState("");
+  const [code01, setCode01] = useState("");
+  const [code02, setCode02] = useState("");
+  const [code03, setCode03] = useState("");
+  const [result, setResult] = useState("");
 
+
+  useEffect(() => {
+      const fetch = async () => {
+        const ref = db.collection("algorithms").doc("eTfYr1urtkB6VtqL2Tyv");
+        const doc = await ref.get();
+       
+        setText01(doc.get("text01"));
+        setText02(doc.get("text02"));
+        setText03(doc.get("text03"));
+        setCode01(doc.get("code01"));
+        setCode02(doc.get("code02"));
+        setCode03(doc.get("code03"));
+        setResult(doc.get("result"));
+      };
+
+      fetch();
+    }, [])
+  
   const navigate = useNavigate();
 
   return(
   <>
-  <div className="linearRoot">
+  <div className="linearCRoot">
     <div className="liContainer">
-      <div className="liCodeArea">
+      <div className="liCodeArea" style={{ whiteSpace: "pre-wrap" }}>
         <h2>疑似言語で実装</h2>
-        <p>線形探索を疑似言語で実装してみます。配列の要素番号は1から始まるものとします。具体的にはデータ群の各要素を順に調べて探したいデータと同じものがあればその要素の番号を、見つからなければ -1 を出力します。</p>
-        <p>まず探索対象のデータ群(array)、探したいデータ(target)、データ群の要素番号(i)、結果をいれる変数(result)を定義します。</p>
+        <p>{text01}</p>
         <div className="liCode">
-          <p>整数型の配列:&ensp;array ← {"{9, 2, 8, 5, 13}"}</p>
-          <p>整数型:&ensp;target ← 8</p>
-          <p>整数型:&ensp;i ← 1</p>
-          <p>整数型:&ensp;result ← -1</p>
+          <p>{code01}</p>
         </div>
-        <p>つぎに探索をしていきます。arrayの各要素を順番にtargetを比較していきます。もし同じ値を見つけたら、その要素番号をresultに代入し探索を終了します。</p>
+        <p>{text02}</p>
         <div className="liCode">
-          <p>while&ensp;(iがarrayの要素数以下 かつ resultが-1)</p>
-          <p>&ensp;&ensp;if&ensp;(array[i]がtargetと同じならば)</p>            
-          <p>&ensp;&ensp;&ensp;&ensp;result←i</p>   
-          <p>&ensp;&ensp;endif</p>
-          <p>&ensp;&ensp;i ← i + 1</p>
-          <p>endwhile</p>
+          <p>{code02}</p>
         </div>
-        <p>最後に探索結果を出力します。print()はかっこの中の変数に代入されている値を出力します。</p>
+        <p>{text03}</p>
         <div className="liCode">
-          <p>print(result)</p>
+          <p>{code03}</p>
         </div>
         <p>説明を省いて疑似言語の部分だけを書くと次のようになります。</p>
         <div className="liCode">
-          <p>整数型の配列:&ensp;array ← {"{9, 2, 8, 5, 13}"}</p>
-          <p>整数型:&ensp;target ← 8</p>
-          <p>整数型:&ensp;i ← 1</p>
-          <p>整数型:&ensp;result ← -1</p>
-          <p>while&ensp;(iがarrayの要素数以下 かつ resultが-1)</p>
-          <p>&ensp;&ensp;if&ensp;(array[i]がtargetと同じならば)</p>            
-          <p>&ensp;&ensp;&ensp;&ensp;result←i</p>   
-          <p>&ensp;&ensp;endif</p>
-          <p>&ensp;&ensp;i ← i + 1</p>
-          <p>endwhile</p>
-          <p>print(result)</p>
-          <p>&ensp;</p>
-          <p>実行結果：3</p>
+          <p>{code01}</p>
+          <p>{code02}</p>
+          <p>{code03}</p>
+          <p>{result}</p>
         </div>
         <p>最後に問題を解いて線形探索の復習をしましょう。</p>  
       </div>
       <div className='linkArea'>
         <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
+        <p className="toLinearCoEdit" onClick={() => navigate("/LinearCodeEdit", { state: {text01,  text02, text03, code01, code02, code03, result}})}>編集</p>
         <p className="toLinearPractice" onClick={() => navigate("/LinearPractice")}>問題を解く⇒</p>
       </div>  
     </div>
