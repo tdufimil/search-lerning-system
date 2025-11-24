@@ -2,7 +2,7 @@
    background-color: #F6F9FD;
    padding-top: 3%;
    padding-bottom: 0%;
-   height: 200vh;
+   height: 230vh;
 }
 
 .biContainer {
@@ -76,4 +76,33 @@
 
 .toBinaryPractice:hover{
     border-bottom: 1px solid blue;
+}
+
+.biComContainer {
+   text-align: center;
+   margin-left: 25%;
+   margin-right: 25%;
+   margin-top: 5%;
+   background-color: white;
+   border: 1px solid #cdcdcd;
+   border-radius: 10px;
+   box-shadow: 0px 0px 7px #dcdcdc;
+}
+
+.biCocom{
+    text-align: left;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.biCocom h2{
+    margin-top: 0%;
+    margin-bottom: 3%;
+}
+
+.coms p{
+    margin-top: 0%;
+    margin-bottom: 1%;
 }

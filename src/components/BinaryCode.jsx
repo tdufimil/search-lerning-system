@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
 import { useState } from 'react';
 import {db} from "../firebase.jsx";
+import { doc, updateDoc, arrayUnion} from "firebase/firestore";
 
 function BinaryCode() {
   const [text01, setText01] = useState("");
@@ -12,6 +13,9 @@ function BinaryCode() {
   const [code02, setCode02] = useState("");
   const [code03, setCode03] = useState("");
   const [result, setResult] = useState("");
+  const [comArr, setComArr] = useState([]);
+  const [newCom, setNewCom] = useState("");
+
 
 
   useEffect(() => {
@@ -26,12 +30,23 @@ function BinaryCode() {
         setCode02(doc.get("code02"));
         setCode03(doc.get("code03"));
         setResult(doc.get("result"));
+        const arrayData = doc.data().comes;
+        setComArr(arrayData);
       };
 
       fetch();
     }, [])
   
   const navigate = useNavigate();
+
+  async function addCom(){
+    const arrayRef = doc(db, "algorithms", "F8GztP0AROZiQPS7Jn4U");
+    await updateDoc(arrayRef, {
+    comes: arrayUnion(newCom)
+    });
+    setNewCom("");
+    window.location.reload();
+  }
 
   return(
     
@@ -65,6 +80,16 @@ function BinaryCode() {
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
           <p className="toBinaryCoEdit" onClick={() => navigate("/LinearCodeEdit", { state: {text01,  text02, text03, code01, code02, code03, result}})}>編集</p>
           <p className="toBinaryPractice" onClick={() => navigate("/BinaryPractice")}>問題を解く⇒</p>
+        </div>
+      </div>
+      <div className="biComContainer">
+        <div className="biCocom">
+          <h2>質問</h2>
+          <div className='coms'>
+            {comArr.length !== 0 ? comArr.map((com, index) => (<p key={index}>{index + 1}:{com}</p>)) : <p>投稿されていません</p>}
+          </div>
+          <textarea placeholder="質問を入力"  type='text' onChange={(e) => setNewCom(e.target.value)} rows={2} cols={97}/>
+          <button onClick={addCom}>投稿する</button> 
         </div>
       </div>
     </div>      

@@ -1,6 +1,9 @@
 import "./LinearPractice.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useEffect} from 'react';
+import {db} from "../firebase.jsx";
+import { doc, updateDoc, arrayUnion} from "firebase/firestore";
 import cardBack from "../img/cardBack.jpg" ;
 import card01 from "../img/card01.jpg" ;
 import card02 from "../img/card02.jpg" ;
@@ -15,6 +18,20 @@ import liq4ans from "../img/liq4ans.jpg" ;
 
 
 function LinearPractice(){
+  const [comArr, setComArr] = useState([]);
+  const [newCom, setNewCom] = useState("");
+
+  useEffect(() => {
+      const fetch = async () => {
+        const ref = db.collection("algorithms").doc("bZeSHUU8RgXeTbVTaQ64");
+        const doc = await ref.get();
+        const arrayData = doc.data().comes;
+        setComArr(arrayData);
+      };
+
+      fetch();
+    }, [])
+
   const nums = [1, 2, 3, 4, 5, 6, 7, 8];
   const cardsQ1 = [card06, card02, card08, card03, card01];
   const cardsQ2 = [cardBack, cardBack, cardBack, cardBack, cardBack, cardBack];
@@ -93,6 +110,15 @@ function LinearPractice(){
         setMessageQ4("どちらも違います")
       }
     }
+  }
+
+  async function addCom(){
+    const arrayRef = doc(db, "algorithms", "bZeSHUU8RgXeTbVTaQ64");
+    await updateDoc(arrayRef, {
+    comes: arrayUnion(newCom)
+    });
+    setNewCom("");
+    window.location.reload();
   }
 
   return(
@@ -206,6 +232,16 @@ function LinearPractice(){
           <p className="toLinearCode" onClick={() => navigate("/LinearCode")}>疑似言語での実装へ戻る</p>
         </div>
       </div> 
+      <div className="liComContainer">
+        <div className="liPrcom">
+          <h2>質問</h2>
+          <div className='coms'>
+            {comArr.length !== 0 ? comArr.map((com, index) => (<p key={index}>{index + 1}:{com}</p>)) : <p>投稿されていません</p>}
+          </div>
+          <textarea placeholder="質問を入力"  type='text' onChange={(e) => setNewCom(e.target.value)} rows={2} cols={97}/>
+          <button onClick={addCom}>投稿する</button> 
+        </div>
+      </div>
     </div>
     </>
   )

@@ -2,6 +2,7 @@ import "./HashExplain.css"
 import { useState } from "react"
 import { useEffect} from 'react';
 import {db} from "../firebase.jsx";
+import { doc, updateDoc, arrayUnion} from "firebase/firestore";
 import hafig1 from "../img/hafig1.JPG" 
 import hafig2 from "../img/hafig2.JPG" 
 import hafig3 from "../img/hafig3.jpg" 
@@ -12,6 +13,9 @@ function HashExplain() {
   const [title, setTitle] = useState("");
   const [text01, setText01] = useState("");
   const [text02, setText02] = useState("");
+  const [comArr, setComArr] = useState([]);
+  const [newCom, setNewCom] = useState("");
+
 
   useEffect(() => {
       const fetch = async () => {
@@ -21,6 +25,8 @@ function HashExplain() {
         setTitle(doc.get("title"));
         setText01(doc.get("text01"));
         setText02(doc.get("text02"));
+        const arrayData = doc.data().comes;
+        setComArr(arrayData);
       };
 
       fetch();
@@ -31,6 +37,15 @@ function HashExplain() {
 
   const clickButton = () => {
     setCount(count + 1);
+  }
+
+  async function addCom(){
+    const arrayRef = doc(db, "algorithms", "3MifJwWfhMoMWr9YTcC9");
+    await updateDoc(arrayRef, {
+    comes: arrayUnion(newCom)
+    });
+    setNewCom("");
+    window.location.reload();
   }
 
   return (
@@ -68,6 +83,16 @@ function HashExplain() {
             <p className="toHashPractice" onClick={() => navigate("/HashCode")}>疑似言語で実装する⇒</p>
           </div>
         </div>
+        <div className="haComContainer">
+        <div className="haExcom">
+          <h2>質問</h2>
+          <div className='coms'>
+            {comArr.length !== 0 ? comArr.map((com, index) => (<p key={index}>{index + 1}:{com}</p>)) : <p>投稿されていません</p>}
+          </div>
+          <textarea placeholder="質問を入力"  type='text' onChange={(e) => setNewCom(e.target.value)} rows={2} cols={97}/>
+          <button onClick={addCom}>投稿する</button> 
+        </div>
+      </div>
       </div>
   )
 }

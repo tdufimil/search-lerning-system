@@ -44,6 +44,7 @@ function LinearCode() {
     comes: arrayUnion(newCom)
     });
     setNewCom("");
+    window.location.reload();
   }
 
   return(

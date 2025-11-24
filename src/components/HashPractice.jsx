@@ -1,12 +1,28 @@
 import "./HashPractice.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useEffect} from 'react';
+import {db} from "../firebase.jsx";
+import { doc, updateDoc, arrayUnion} from "firebase/firestore";
 import hashQ1 from "../img/hashQ1.jpg" ;
 import hashQ2 from "../img/hashQ2.jpg" ;
 import hashQ3 from "../img/hashQ3.jpg" ;
 import haQ4Ans from "../img/haq4ans.jpg";
 
 function HashPractice(){
+  const [comArr, setComArr] = useState([]);
+  const [newCom, setNewCom] = useState("");
+
+  useEffect(() => {
+      const fetch = async () => {
+        const ref = db.collection("algorithms").doc("GtjJMbqXODsI7gtOqmcH");
+        const doc = await ref.get();
+        const arrayData = doc.data().comes;
+        setComArr(arrayData);
+      };
+
+      fetch();
+    }, [])
 
   const [answerQ1, setAnswerQ1] = useState("");
   const [answerQ2, setAnswerQ2] = useState("");
@@ -72,6 +88,15 @@ function HashPractice(){
         setMessageQ4("どちらも違います")
       }
     }
+  }
+
+  async function addCom(){
+    const arrayRef = doc(db, "algorithms", "GtjJMbqXODsI7gtOqmcH");
+    await updateDoc(arrayRef, {
+    comes: arrayUnion(newCom)
+    });
+    setNewCom("");
+    window.location.reload();
   }
 
   return(
@@ -220,6 +245,16 @@ function HashPractice(){
           <p className="toHashCode" onClick={() => navigate("/HashCode")}>疑似言語での実装へ戻る</p>
         </div>
       </div>  
+      <div className="haComContainer">
+        <div className="haPrcom">
+          <h2>質問</h2>
+          <div className='coms'>
+            {comArr.length !== 0 ? comArr.map((com, index) => (<p key={index}>{index + 1}:{com}</p>)) : <p>投稿されていません</p>}
+          </div>
+          <textarea placeholder="質問を入力"  type='text' onChange={(e) => setNewCom(e.target.value)} rows={2} cols={97}/>
+          <button onClick={addCom}>投稿する</button> 
+        </div>
+      </div>
     </div>    
     </>
     )

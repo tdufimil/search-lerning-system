@@ -59,12 +59,13 @@ function LinearExplain() {
     }
   }
 
-   async function addCom(){
+  async function addCom(){
     const arrayRef = doc(db, "algorithms", "naSyKL4rsYKA67xBqFXg");
     await updateDoc(arrayRef, {
     comes: arrayUnion(newCom)
     });
     setNewCom("");
+    window.location.reload();
   }
 
   return (

@@ -1,6 +1,9 @@
 import "./BinaryPractice.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useEffect} from 'react';
+import {db} from "../firebase.jsx";
+import { doc, updateDoc, arrayUnion} from "firebase/firestore";
 import cardBack from "../img/cardBack.jpg" ;
 import card01 from "../img/card01.jpg" ;
 import card02 from "../img/card02.jpg" ;
@@ -15,6 +18,20 @@ import card10 from "../img/card10.jpg" ;
 import biq4ans from "../img/biq4ans.jpg" ;
 
 function BinaryPractice(){
+  const [comArr, setComArr] = useState([]);
+  const [newCom, setNewCom] = useState("");
+
+  useEffect(() => {
+      const fetch = async () => {
+        const ref = db.collection("algorithms").doc("pyfwRJRVYPQfZWuB2rBh");
+        const doc = await ref.get();
+        const arrayData = doc.data().comes;
+        setComArr(arrayData);
+      };
+
+      fetch();
+    }, [])
+
   const nums = [1, 2, 3, 4, 5, 6, 7, 8];
   const cardsQ1 = [card02, card05, card08, card09, card10];
   const cardsQ2 = [card01, card02, card04, card07, card08, card09];
@@ -105,6 +122,15 @@ function BinaryPractice(){
       }
     }
   }
+
+  async function addCom(){
+    const arrayRef = doc(db, "algorithms", "pyfwRJRVYPQfZWuB2rBh");
+    await updateDoc(arrayRef, {
+    comes: arrayUnion(newCom)
+    });
+    setNewCom("");
+    window.location.reload();
+  }  
 
   return(
     <>
@@ -225,6 +251,16 @@ function BinaryPractice(){
           <p className="toBinaryExplain" onClick={() => navigate("/BinaryExplain")}>解説へ戻る</p>
           <p className="toBinaryCode" onClick={() => navigate("/BinaryCode")}>疑似言語での実装へ戻る</p>
         </div>        
+      </div>
+      <div className="biComContainer">
+        <div className="biPrcom">
+          <h2>質問</h2>
+          <div className='coms'>
+            {comArr.length !== 0 ? comArr.map((com, index) => (<p key={index}>{index + 1}:{com}</p>)) : <p>投稿されていません</p>}
+          </div>
+          <textarea placeholder="質問を入力"  type='text' onChange={(e) => setNewCom(e.target.value)} rows={2} cols={97}/>
+          <button onClick={addCom}>投稿する</button> 
+        </div>
       </div>
     </div>
     </>

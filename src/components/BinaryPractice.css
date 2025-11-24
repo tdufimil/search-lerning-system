@@ -2,7 +2,7 @@
    background-color: #F6F9FD;
    padding-top: 3%;
    padding-bottom: 75%;
-   height: 100vh;
+   height: 130vh;
 }
 
 .biPraContainer {
@@ -149,8 +149,8 @@
 }
 
 .toBinaryExplain{
-    margin-left: auto;
-    margin-right: 0%;
+    margin-left: 47%;
+    margin-right: 5%;
     color: gray;
     cursor: pointer;
 }
@@ -170,3 +170,34 @@
     color: rgb(100, 100, 100);
     border-bottom: 1px solid rgb(100, 100, 100);
 }
+
+.biComContainer {
+   text-align: center;
+   margin-left: 25%;
+   margin-right: 25%;
+   margin-top: 5%;
+   background-color: white;
+   border: 1px solid #cdcdcd;
+   border-radius: 10px;
+   box-shadow: 0px 0px 7px #dcdcdc;
+}
+
+.biPrcom{
+    text-align: left;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.biPrcom h2{
+    margin-top: 0%;
+    margin-bottom: 3%;
+}
+
+.coms p{
+    margin-top: 0%;
+    margin-bottom: 1%;
+}
+
+
