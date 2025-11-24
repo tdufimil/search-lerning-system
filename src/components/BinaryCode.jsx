@@ -1,84 +1,74 @@
 import './BinaryCode.css';
 import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
+import { useState } from 'react';
+import {db} from "../firebase.jsx";
 
 function BinaryCode() {
+  const [text01, setText01] = useState("");
+  const [text02, setText02] = useState("");
+  const [text03, setText03] = useState("");
+  const [code01, setCode01] = useState("");
+  const [code02, setCode02] = useState("");
+  const [code03, setCode03] = useState("");
+  const [result, setResult] = useState("");
 
+
+  useEffect(() => {
+      const fetch = async () => {
+        const ref = db.collection("algorithms").doc("F8GztP0AROZiQPS7Jn4U");
+        const doc = await ref.get();
+       
+        setText01(doc.get("text01"));
+        setText02(doc.get("text02"));
+        setText03(doc.get("text03"));
+        setCode01(doc.get("code01"));
+        setCode02(doc.get("code02"));
+        setCode03(doc.get("code03"));
+        setResult(doc.get("result"));
+      };
+
+      fetch();
+    }, [])
+  
   const navigate = useNavigate();
 
   return(
-    <>
-    <div className="binaryRoot">
+    
+    <div className="binaryCRoot">
       <div className="biContainer">
-        <div className="biCodeArea">
+        <div className="biCodeArea" style={{ whiteSpace: "pre-wrap" }}>
           <h2>疑似言語で実装</h2>
-          <p>二分探索を疑似言語で実装してみます。配列の要素番号は1から始まるものとします。具体的にはデータ群に二分探索を行い探したいデータと同じものがあればその要素の番号を、見つからなければ -1 を出力します。</p>
-          <p>まず探索対象のデータ群(array)、探したいデータ(target)、結果をいれる変数(result)を定義します。また、探索範囲の左端となる要素番号(left)、右端となる要素番号(right)、
-            探索範囲の中央の要素番号(mid)も定義します。</p>
+          <p>{text01}</p>
           <div className="biCode">
-          <p>整数型の配列:&ensp;array ← {"{2, 4, 7, 9, 10, 11}"}</p>
-          <p>整数型:&ensp;target ← 11</p>
-          <p>整数型:&ensp;result ← -1</p>
-          <p>整数型:&ensp;left ← 1</p>
-          <p>整数型:&ensp;right ← arrayの要素数</p>
-          <p>整数型:&ensp;mid</p>
+          <p>整数型の配列:&ensp;array ← {code01}</p>
           </div>
-          <p>続いて探索部分を実装していきます。二分探索は探索範囲の中央の要素を目的のデータと比較し目的のデータでなければ探索範囲を絞るというのを繰り返します。
-            そのためまずは、(high+low)/2で中央の要素番号（探索対象）を決め、求めた番号はmidに入れておきます(小数点以下は切り捨て)。次にtargetと比較し、同じならmidの値をresultに入れます。
-            targetと違う場合はleftまたはrightを更新し探索範囲を絞りmidを求めるところからもう一度繰り返します。
-          </p>
+          <p>{text02}</p>
           <div className="biCode">
-            <p>while&ensp;(leftがright以下 かつ resultが-1)</p>
-            <p>&ensp;&ensp;mid ← (left + right) / 2</p>            
-            <p>&ensp;&ensp;if&ensp;(array[mid]がtargetと同じならば)</p>   
-            <p>&ensp;&ensp;&ensp;&ensp;result ← mid</p>
-            <p>&ensp;&ensp;endif</p>
-            <p>&ensp;&ensp;if&ensp;(array[mid]がtargetよりも大きいならば)</p>
-            <p>&ensp;&ensp;&ensp;&ensp;right ← mid - 1</p>
-            <p>&ensp;&ensp;endif</p>
-            <p>&ensp;&ensp;if&ensp;(array[mid]がtargetよりも小さいならば)</p>
-            <p>&ensp;&ensp;&ensp;&ensp;left ← mid + 1</p>
-            <p>&ensp;&ensp;endif</p>
-            <p>endwhile</p>
+            <p>{code02}</p>
           </div>
-          <p>最後に探索結果を出力します。print()はかっこの中の変数の値を出力するします。</p>
+          <p>{text03}</p>
           <div className="biCode">
-            <p>print(result)</p>
+            <p>{code03}</p>
           </div>
           <p>説明を省いて疑似言語の部分だけを書くと次のようになります。</p>
           <div className="liCode">
-            <p>整数型の配列:&ensp;array ← {"{2, 4, 7, 9, 10, 11}"}</p>
-            <p>整数型:&ensp;target ← 11</p>
-            <p>整数型:&ensp;result ← -1</p>
-            <p>整数型:&ensp;left ← 1</p>
-            <p>整数型:&ensp;right ← arrayの要素数</p>
-            <p>整数型:&ensp;mid</p>
-            <p>&ensp;</p>
-            <p>while&ensp;(leftがright以下 かつ resultが-1)</p>
-            <p>&ensp;&ensp;mid ← (left+right)/2</p>            
-            <p>&ensp;&ensp;if&ensp;(array[mid]がtargetと同じならば)</p>   
-            <p>&ensp;&ensp;&ensp;&ensp;result ← mid</p>
-            <p>&ensp;&ensp;endif</p>
-            <p>&ensp;&ensp;if&ensp;(array[mid]がtargetよりも大きいならば)</p>
-            <p>&ensp;&ensp;&ensp;&ensp;right ← mid - 1</p>
-            <p>&ensp;&ensp;endif</p>
-            <p>&ensp;&ensp;if&ensp;(array[mid]がtargetよりも小さいならば)</p>
-            <p>&ensp;&ensp;&ensp;&ensp;left ← mid + 1</p>
-            <p>&ensp;&ensp;endif</p>
-            <p>endwhile</p>
-            <p>&ensp;</p>
-            <p>print(result)</p>
-            <p>&ensp;</p>
-            <p>実行結果：6</p>
+            <p>{code01}</p>
+            <p>{code02}</p>
+            <p>{code03}</p>
+            <p> </p>
+            <p>{result}</p>
           </div>
           <p>最後に問題を解いて二分探索の復習をしましょう。</p>
         </div>
         <div className="linkArea">
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
+          <p className="toBinaryCoEdit" onClick={() => navigate("/LinearCodeEdit", { state: {text01,  text02, text03, code01, code02, code03, result}})}>編集</p>
           <p className="toBinaryPractice" onClick={() => navigate("/BinaryPractice")}>問題を解く⇒</p>
         </div>
       </div>
     </div>      
-    </>
+    
   )
 } 
 export default BinaryCode   

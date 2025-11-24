@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
 import { useState } from 'react';
 import {db} from "../firebase.jsx";
+import { doc, updateDoc, arrayUnion} from "firebase/firestore";
 
 function LinearCode() {
   const [text01, setText01] = useState("");
@@ -12,6 +13,8 @@ function LinearCode() {
   const [code02, setCode02] = useState("");
   const [code03, setCode03] = useState("");
   const [result, setResult] = useState("");
+  const [comArr, setComArr] = useState([]);
+  const [newCom, setNewCom] = useState("");
 
 
   useEffect(() => {
@@ -26,6 +29,8 @@ function LinearCode() {
         setCode02(doc.get("code02"));
         setCode03(doc.get("code03"));
         setResult(doc.get("result"));
+        const arrayData = doc.data().comes;
+        setComArr(arrayData);
       };
 
       fetch();
@@ -33,8 +38,16 @@ function LinearCode() {
   
   const navigate = useNavigate();
 
+  async function addCom(){
+    const arrayRef = doc(db, "algorithms", "eTfYr1urtkB6VtqL2Tyv");
+    await updateDoc(arrayRef, {
+    comes: arrayUnion(newCom)
+    });
+    setNewCom("");
+  }
+
   return(
-  <>
+  
   <div className="linearCRoot">
     <div className="liContainer">
       <div className="liCodeArea" style={{ whiteSpace: "pre-wrap" }}>
@@ -66,8 +79,18 @@ function LinearCode() {
         <p className="toLinearPractice" onClick={() => navigate("/LinearPractice")}>問題を解く⇒</p>
       </div>  
     </div>
+    <div className="liComContainer">
+      <div className="liCocom">
+        <h2>質問</h2>
+        <div className='coms'>
+          {comArr.length !== 0 ? comArr.map((com, index) => (<p key={index}>{index + 1}:{com}</p>)) : <p>投稿されていません</p>}
+        </div>
+        <textarea placeholder="質問を入力"  type='text' onChange={(e) => setNewCom(e.target.value)} rows={2} cols={97}/>
+        <button onClick={addCom}>投稿する</button> 
+      </div>
+    </div>
   </div>
-  </>
+  
   )  
 }
 

@@ -1,8 +1,8 @@
-.binaryRoot {
+.binaryCRoot {
    background-color: #F6F9FD;
    padding-top: 3%;
-   padding-bottom: 60%;
-   height: 100vh;
+   padding-bottom: 0%;
+   height: 200vh;
 }
 
 .biContainer {
@@ -52,6 +52,17 @@
 }
 
 .toHome:hover{
+    color: rgb(100, 100, 100);
+    border-bottom: 1px solid rgb(100, 100, 100);
+}
+
+.toBinaryCoEdit{
+    margin-left: 5%;
+    color: gray;
+    cursor: pointer;
+}
+
+.toBinaryCoEdit:hover{
     color: rgb(100, 100, 100);
     border-bottom: 1px solid rgb(100, 100, 100);
 }

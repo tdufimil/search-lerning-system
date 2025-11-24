@@ -30,7 +30,7 @@ function LinearCodeEdit(){
   }  
 
   return(
-    <>
+    
       <div className="linearCERoot">
         <div className="liContainer">
           <div className="liCodeEdit">
@@ -56,7 +56,7 @@ function LinearCodeEdit(){
             </div> 
           </div>
         </div>
-        </>
+        
     
 
   ) 

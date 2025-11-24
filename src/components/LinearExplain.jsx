@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import { useEffect} from 'react';
 import {db} from "../firebase.jsx";
+import { doc, updateDoc, arrayUnion} from "firebase/firestore";
 import cardBack from "../img/cardBack.jpg" ;
 import card02 from "../img/card02.jpg" ;
 import card03 from "../img/card03.jpg" ;
@@ -15,6 +16,8 @@ function LinearExplain() {
   const [title, setTitle] = useState("");
   const [text01, setText01] = useState("");
   const [text02, setText02] = useState("");
+  const [comArr, setComArr] = useState([]);
+  const [newCom, setNewCom] = useState("");
 
   useEffect(() => {
       const fetch = async () => {
@@ -24,6 +27,8 @@ function LinearExplain() {
         setTitle(doc.get("title"));
         setText01(doc.get("text01"));
         setText02(doc.get("text02"));
+        const arrayData = doc.data().comes;
+        setComArr(arrayData);
       };
 
       fetch();
@@ -52,7 +57,14 @@ function LinearExplain() {
         setText("7のカードを見つけたので探索終了です。");
       }
     }
+  }
 
+   async function addCom(){
+    const arrayRef = doc(db, "algorithms", "naSyKL4rsYKA67xBqFXg");
+    await updateDoc(arrayRef, {
+    comes: arrayUnion(newCom)
+    });
+    setNewCom("");
   }
 
   return (
@@ -82,6 +94,16 @@ function LinearExplain() {
           <p className="toLinearExEdit" onClick={() => navigate("/LinearExplainEdit", { state: {title, text01,  text02}})}>編集</p>
           <p className="toLinearCodea" onClick={() => navigate("/LinearCode")}>疑似言語で実装する⇒</p>
         </div> 
+      </div>
+      <div className="liComContainer">
+        <div className="liExcom">
+          <h2>質問</h2>
+          <div className='coms'>
+            {comArr.length !== 0 ? comArr.map((com, index) => (<p key={index}>{index + 1}:{com}</p>)) : <p>投稿されていません</p>}
+          </div>
+          <textarea placeholder="質問を入力"  type='text' onChange={(e) => setNewCom(e.target.value)} rows={2} cols={97}/>
+          <button onClick={addCom}>投稿する</button> 
+        </div>
       </div>
     </div>
     </>

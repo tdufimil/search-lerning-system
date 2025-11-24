@@ -36,7 +36,7 @@ function HashExplain() {
   return (
       <div className="hashRoot">
         <div className="haContainer">
-          <div className="haExplain">
+          <div className="haExplain" style={{ whiteSpace: "pre-wrap" }}>
             <h2>ハッシュ法</h2>
             <p>{text01}</p>
             <p>例えば探し出すデータを31、ハッシュ関数を「データを10で割った余り」だとします。31÷10の余りは1であるためハッシュ表の1番を探索します。</p>
