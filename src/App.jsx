@@ -16,7 +16,6 @@ import HashCodeEdit from "./components/HashCodeEdit"
 import LinearPractice from "./components/LinearPractice"
 import BinaryPractice from "./components/BinaryPractice"
 import HashPractice from "./components/HashPractice"
-import Asd from "./components/Asd"
 import ScrollToTop  from './components/ScrollToTop'
 
 
@@ -41,7 +40,6 @@ function App() {
           <Route path="/LinearPractice" element={<LinearPractice />} />
           <Route path="/BinaryPractice" element={<BinaryPractice />} />
           <Route path="/HashPractice" element={<HashPractice />} />
-          <Route path="/Asd" element={<Asd />} />
         </Routes>
     </BrowserRouter>
   );

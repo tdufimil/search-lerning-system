@@ -200,7 +200,7 @@ function BinaryPractice(){
           <>
           <div className="biQuestion4">
             <h3>問4</h3>
-            <p>以下のプログラムはarrayに二分探索を行いtargetと同じものがあればその要素が何番目かを出力し、見つからなければ-1を出力する。プログラム中の(a)と(b)に入る正しい組み合わせを選択肢から選んで答えなさい。また、実行結果を答えなさい。要素番号は1から始まるものとする。</p>
+            <p>以下のプログラムはarrayに二分探索を行いtargetと同じ値が存在すればその要素が何番目かを出力し、見つからなければ-1を出力する。プログラム中の(a)と(b)に入る正しい組み合わせを選択肢から選んで答えなさい。また、実行結果を答えなさい。要素番号は1から始まるものとする。</p>
             <div className="biQ4Code">
               <p>整数型の配列:&ensp;array ← {"{1, 4, 5, 9, 11, 15, 17, 18}"}</p>
               <p>整数型:&ensp;target ← 15</p>
@@ -241,7 +241,12 @@ function BinaryPractice(){
                    ))}
                </select>
                <button onClick={q4answerCheck}>回答する</button>
-               {messageQ4.includes("正解！") ? <h3 className="biQ4AnsMess" style={{color : "green"}}>{messageQ4}</h3> : <p className="biQ4AnsMess" style={{color : "red"}}>{messageQ4}</p>}
+               {messageQ4.includes("正解！") ? 
+               <>
+               <h3 className="biQ4AnsMess" style={{color : "green"}}>{messageQ4}</h3>
+               <p>ホームに戻りアンケートに回答した後、次の科目を学習しましょう。</p>
+               </>
+                : <p className="biQ4AnsMess" style={{color : "red"}}>{messageQ4}</p>}
             </div>
           </div>
           </>

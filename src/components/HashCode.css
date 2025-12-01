@@ -2,7 +2,7 @@
    background-color: #F6F9FD;
    padding-top: 3%;
    padding-bottom: 160%;
-   height: 140vh;
+   height: 170vh;
 }
 
 .haContainer {
@@ -25,6 +25,12 @@
 
 .haCodeArea h2{
     margin-top: 0%;
+}
+
+.haCodeArea h3{
+    margin-top: 5%;
+    margin-bottom: 1%;
+
 }
 
 .haCodeArea p{

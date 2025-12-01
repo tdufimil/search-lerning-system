@@ -38,6 +38,11 @@ function BinaryCode() {
     }, [])
   
   const navigate = useNavigate();
+  const [count, setCount] = useState(0);
+
+  const clickButton = () => {
+    setCount(count + 1);
+  }
 
   async function addCom(){
     const arrayRef = doc(db, "algorithms", "F8GztP0AROZiQPS7Jn4U");
@@ -54,10 +59,14 @@ function BinaryCode() {
       <div className="biContainer">
         <div className="biCodeArea" style={{ whiteSpace: "pre-wrap" }}>
           <h2>疑似言語で実装</h2>
+          <h3>概要と変数の定義</h3>
           <p>{text01}</p>
           <div className="biCode">
-          <p>整数型の配列:&ensp;array ← {code01}</p>
+          <p>{code01}</p>
           </div>
+          {count >= 1 &&(
+          <>
+          <h3>探索部分と出力の実装</h3>
           <p>{text02}</p>
           <div className="biCode">
             <p>{code02}</p>
@@ -66,19 +75,28 @@ function BinaryCode() {
           <div className="biCode">
             <p>{code03}</p>
           </div>
-          <p>説明を省いて疑似言語の部分だけを書くと次のようになります。</p>
-          <div className="liCode">
-            <p>{code01}</p>
-            <p>{code02}</p>
-            <p>{code03}</p>
-            <p> </p>
-            <p>{result}</p>
-          </div>
-          <p>最後に問題を解いて二分探索の復習をしましょう。</p>
+          </>)}
+        
+         {count >= 2 && (
+         <>
+         <h3>全体の疑似言語と実行結果</h3>
+         <p>説明を省いて疑似言語の部分だけを書くと次のようになります。</p>
+         <div className="liCode">
+           <p>{code01}</p>
+           <p>{code02}</p>
+           <p>{code03}</p>
+           <p> </p>
+           <p>{result}</p>
+         </div>
+         <p>最後に問題を解いて二分探索の復習をしましょう。</p>
+         </>
+         )}
+          
+          {count < 2 && (<button onClick={clickButton}>次へ</button>)}  
         </div>
         <div className="linkArea">
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-          <p className="toBinaryCoEdit" onClick={() => navigate("/LinearCodeEdit", { state: {text01,  text02, text03, code01, code02, code03, result}})}>編集</p>
+          <p className="toBinaryCoEdit" onClick={() => navigate("/BinaryCodeEdit", { state: {text01,  text02, text03, code01, code02, code03, result}})}>編集</p>
           <p className="toBinaryPractice" onClick={() => navigate("/BinaryPractice")}>問題を解く⇒</p>
         </div>
       </div>

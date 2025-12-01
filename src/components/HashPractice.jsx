@@ -234,7 +234,12 @@ function HashPractice(){
                 <option value="{8, 2, 3, -1, -1, -1, -1}">{`{8, 2, 3, -1, -1, -1, -1}`}</option>
               </select>
                <button onClick={q4answerCheck}>回答する</button>
-               {messageQ4.includes("正解！") ? <h3 className="haQ4AnsMess" style={{color : "green"}}>{messageQ4}</h3> : <p className="haQ4AnsMess" style={{color : "red"}}>{messageQ4}</p>}
+               {messageQ4.includes("正解！") ? 
+               <>
+               <h3 className="haQ4AnsMess" style={{color : "green"}}>{messageQ4}</h3>
+               <p className="haQ4LastMess">ホームに戻りアンケートの回答をお願いします</p>
+               </>
+               : <p className="haQ4AnsMess" style={{color : "red"}}>{messageQ4}</p>}
             </div>
           </div>
           </>

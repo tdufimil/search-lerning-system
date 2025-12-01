@@ -45,6 +45,12 @@ function HashCode(){
     }, [])
 
   const navigate = useNavigate();
+  const [count, setCount] = useState(0);
+
+  const clickButton = () => {
+    setCount(count + 1);
+  }
+
 
   async function addCom(){
     const arrayRef = doc(db, "algorithms", "PbWkNrlWe76Pb8rdWMA3");
@@ -61,26 +67,50 @@ function HashCode(){
     <div className="haContainer">
       <div className="haCodeArea" style={{ whiteSpace: "pre-wrap" }}>
         <h2>疑似言語で実装</h2>
+        <h3>概要と変数の定義</h3>
         <p>{text01}</p>
         <div className="haCode">
           <p>{code01}</p>  
         </div>
+        {count >= 1&& (
+        <>
+        <h3>ハッシュ関数の実装</h3>
         <p>{text02}</p>
         <div className="haCode">
           <p>{code02}</p>
         </div>
+        </>  
+        )}
+        { count >= 2 && (
+        <>
+        <h3>ハッシュ表へ追加</h3>
         <p>{text03}</p>
         <div className="haCode">
           <p>{code03}</p>
         </div>
+        </>          
+        )}
+        {count >= 3 && (
+        <>
+        <h3>ハッシュ表を探索</h3>
         <p>{text04}</p>
         <div className="haCode">
           <p>{code04}</p>
         </div>
+        </>  
+        )}
+        {count >= 4 && (
+        <>
+        <h3>出力</h3>
         <p>{text05}</p>
         <div className="haCode">
           <p>{code05}</p>
         </div>
+        </>  
+        )}
+        {count >=5 &&(
+        <>
+        <h3>全体の疑似言語と実行結果</h3>
         <p>説明を省いて疑似言語の部分だけを書くと次のようになります。</p>
         <div className="haCode">
           <p>{code01}</p>
@@ -96,6 +126,10 @@ function HashCode(){
           <p>{result}</p>
         </div>
         <p>最後に問題を解いてハッシュ法の復習をしましょう。</p>
+        </>  
+        )}
+        
+        {count < 5 && (<button onClick={clickButton}>次へ</button>)}  
       </div>
       <div className="linkArea">
         <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>

@@ -37,6 +37,11 @@ function LinearCode() {
     }, [])
   
   const navigate = useNavigate();
+  const [count, setCount] = useState(0);
+
+  const clickButton = () => {
+    setCount(count + 1);
+  }
 
   async function addCom(){
     const arrayRef = doc(db, "algorithms", "eTfYr1urtkB6VtqL2Tyv");
@@ -53,26 +58,37 @@ function LinearCode() {
     <div className="liContainer">
       <div className="liCodeArea" style={{ whiteSpace: "pre-wrap" }}>
         <h2>疑似言語で実装</h2>
+        <h3>概要と変数の定義</h3>
         <p>{text01}</p>
         <div className="liCode">
           <p>{code01}</p>
         </div>
-        <p>{text02}</p>
-        <div className="liCode">
-          <p>{code02}</p>
-        </div>
-        <p>{text03}</p>
-        <div className="liCode">
-          <p>{code03}</p>
-        </div>
-        <p>説明を省いて疑似言語の部分だけを書くと次のようになります。</p>
-        <div className="liCode">
-          <p>{code01}</p>
-          <p>{code02}</p>
-          <p>{code03}</p>
-          <p>{result}</p>
-        </div>
-        <p>最後に問題を解いて線形探索の復習をしましょう。</p>  
+        {count >=1 && (
+        <>
+          <h3>探索部分と出力の実装</h3>
+          <p>{text02}</p>
+          <div className="liCode">
+            <p>{code02}</p>
+          </div>
+          <p>{text03}</p>
+          <div className="liCode">
+            <p>{code03}</p>
+          </div>
+        </>)}
+
+        {count >=2 && (
+        <>
+          <h3>全体の疑似言語と実行結果</h3>
+          <p>説明を省いて疑似言語の部分だけを書くと次のようになります。</p>
+          <div className="liCode">
+            <p>{code01}</p>
+            <p>{code02}</p>
+            <p>{code03}</p>
+            <p>{result}</p>
+          </div>
+          <p>最後に問題を解いて線形探索の復習をしましょう。</p>
+        </>)}
+        {count <2 && (<button onClick={clickButton}>次へ</button>)}  
       </div>
       <div className='linkArea'>
         <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>

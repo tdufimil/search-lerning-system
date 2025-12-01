@@ -191,7 +191,7 @@ function LinearPractice(){
         {isCorrectQ3 && (
           <div className="liQuestion4">
             <h3>問4</h3>
-            <p>以下のプログラムはarrayに線形探索を行いtargetと同じものがあればその要素が何番目かを出力し、見つからなければ -1 を出力する。プログラム中の(a)と(b)に入る正しい組み合わせを選択肢から選んで答えなさい。また、実行結果を答えなさい。要素番号は1から始まるものとする。</p>
+            <p>以下のプログラムはarrayに線形探索を行いtargetと同じ値が存在すればその要素が何番目かを出力し、見つからなければ -1 を出力する。プログラム中の(a)と(b)に入る正しい組み合わせを選択肢から選んで答えなさい。また、実行結果を答えなさい。要素番号は1から始まるものとする。</p>
             <div className="liQ4Code">
               <p>整数型の配列:&ensp;array ← {"{10, 3, 15, 4, 1, 11, 7, 18}"}</p>
               <p>整数型:&ensp;target ← 11</p>
@@ -222,7 +222,12 @@ function LinearPractice(){
                 ))}
               </select>
               <button onClick={q4answerCheck}>回答する</button>
-              {messageQ4.includes("正解！") ? <h3 className="liQ4AnsMess" style={{color : "green"}}>{messageQ4}</h3> : <p className="liQ4AnsMess" style={{color : "red"}}>{messageQ4}</p>}
+              {messageQ4.includes("正解！") ?
+              <>
+              <h3 className="liQ4AnsMess" style={{color : "green"}}>{messageQ4}</h3> 
+              <p>ホームに戻りアンケートに回答した後、次の科目を学習しましょう。</p>
+              </> 
+              : <p className="liQ4AnsMess" style={{color : "red"}}>{messageQ4}</p>}
             </div>
           </div>
         )}
