@@ -13,7 +13,7 @@ import card05 from "../img/card05.jpg" ;
 import card06 from "../img/card06.jpg" ;
 import card07 from "../img/card07.jpg" ;
 import card08 from "../img/card08.jpg" ;
-import liq4ans from "../img/liq4ans.jpg" ;
+//import liq4ans from "../img/liq4ans.jpg" ;
 
 
 
@@ -32,7 +32,7 @@ function LinearPractice(){
       fetch();
     }, [])
 
-  const nums = [1, 2, 3, 4, 5, 6, 7, 8];
+  //const nums = [1, 2, 3, 4, 5, 6, 7, 8];
   const cardsQ1 = [card06, card02, card08, card03, card01];
   const cardsQ2 = [cardBack, cardBack, cardBack, cardBack, cardBack, cardBack];
   const cardsQ3 = [card03, card08, card02, card01, card05, card07, card04];
@@ -41,6 +41,7 @@ function LinearPractice(){
   const [answerQ3, setAnswerQ3] = useState("");
   const [answerQ4_1, setAnswerQ4_1] = useState("");
   const [answerQ4_2, setAnswerQ4_2] = useState("");
+  const [answerQ4_3, setAnswerQ4_3] = useState("");
   const [messageQ1, setMessageQ1] = useState("");
   const [messageQ2, setMessageQ2] = useState("");
   const [messageQ3, setMessageQ3] = useState("");
@@ -92,23 +93,34 @@ function LinearPractice(){
         setMessageQ3("正解！");
         setIsCorrectQ3(true);
       }else{
-        setMessageQ3("違います")
+        setMessageQ3("違います");
       }
     }
   }
 
   const q4answerCheck = () => {
+    const normalized4_2 = answerQ4_2.replace(/\s/g, "");
+    const normalized4_3 = answerQ4_3.replace(/\s/g, "");
+    const q4_2 = normalized4_2.includes("result←i");
+    const q4_3 = normalized4_3.includes("i←i+1");
+
     if(!isCorrectQ4){
-      if(answerQ4_1.includes("1") && answerQ4_2.includes("6")){
-        setMessageQ4("正解！");
-        setIsCorrectQ4(true);
-      }else if(!answerQ4_1.includes("1") && answerQ4_2.includes("6")){
-        setMessageQ4("(a)(b)の組み合わせが違います")
-      }else if(answerQ4_1.includes("1") && !answerQ4_2.includes("6")){
-        setMessageQ4("実行結果が違います")
-      }else{
-        setMessageQ4("どちらも違います")
+      let msg = "";
+      if(!answerQ4_1.includes("かつ")){
+        msg+="(a)";
       }
+      if(!q4_2){
+        msg+="(b)";
+      }
+      if(!q4_3){
+        msg+="(c)";
+      }
+      msg+="が違います";
+      if(answerQ4_1.includes("かつ") && q4_2 && q4_3){
+        msg="正解！";
+        setIsCorrectQ4(true);
+      }
+      setMessageQ4(msg);
     }
   }
 
@@ -136,7 +148,7 @@ function LinearPractice(){
                 className="liQ1Image"
                 alt={`${index + 1}枚目のカード`}
                 onClick={() => cardClickQ1(index)}
-              />
+                />
               ))}
               {messageQ1.includes("正解！") ? <h3 style={{color : "green"}}>{messageQ1}</h3> : <p style={{color : "red"}}>{messageQ1}</p>}
           </div>
@@ -153,7 +165,7 @@ function LinearPractice(){
                 className="liQ2Image"
                 alt={`${index + 1}枚目のカード`}
                 onClick={() => cardClickQ2(index)}
-              />
+                />
               ))}
               {messageQ2.includes("正解！") ? <h3 style={{color : "green"}}>{messageQ2}</h3> : <p style={{color : "red"}}>{messageQ2}</p>}
            </div> 
@@ -191,7 +203,7 @@ function LinearPractice(){
         {isCorrectQ3 && (
           <div className="liQuestion4">
             <h3>問4</h3>
-            <p>以下のプログラムはarrayに線形探索を行いtargetと同じ値が存在すればその要素が何番目かを出力し、見つからなければ -1 を出力する。プログラム中の(a)と(b)に入る正しい組み合わせを選択肢から選んで答えなさい。また、実行結果を答えなさい。要素番号は1から始まるものとする。</p>
+            <p>以下のプログラムはarrayに線形探索を行いtargetと同じ値が存在すればその要素が何番目かを出力し、見つからなければ -1 を出力する。プログラム中の(a)にあてまはるものを選択肢から選び、(b)(c)に入るコードを書きなさい。要素番号は1から始まるものとする。</p>
             <div className="liQ4Code">
               <p>整数型の配列:&ensp;array ← {"{10, 3, 15, 4, 1, 11, 7, 18}"}</p>
               <p>整数型:&ensp;target ← 11</p>
@@ -199,33 +211,25 @@ function LinearPractice(){
               <p>整数型:&ensp;result ← -1</p>
               <p>while&ensp;(iがarrayの要素数以下 (a) resultが-1)</p>
               <p>&ensp;&ensp;if&ensp;(array[i]がtargetと同じならば)</p>            
-              <p>&ensp;&ensp;&ensp;&ensp;result←i</p>   
+              <p>&ensp;&ensp;&ensp;&ensp;(b)</p>   
               <p>&ensp;&ensp;endif</p>
-              <p>&ensp;&ensp;(b)</p>
+              <p>&ensp;&ensp;(c)</p>
               <p>endwhile</p>
               <p>print(result)</p>
             </div>
             <div className="liQ4Answer">
-              <p>選択肢</p>
-              <img src={liq4ans} className="liQ4Image" alt="選択肢" />
               <select value={answerQ4_1} onChange={(e) => setAnswerQ4_1(e.target.value)}>
                 <option value="">組み合わせを選択</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
+                <option value="または">または</option>
+                <option value="かつ">かつ</option>
               </select>
-              <select value={answerQ4_2} onChange={(e) => setAnswerQ4_2(e.target.value)}>
-                <option value="">実行結果を選択</option>
-                {nums.map((num) => (
-                  <option value={num}>{num}</option>
-                ))}
-              </select>
+              <textarea placeholder="(b)の回答を入力"  type='text' onChange={(e) => setAnswerQ4_2(e.target.value)} rows={1} cols={50}/>
+              <textarea placeholder="(c)の回答を入力"  type='text' onChange={(e) => setAnswerQ4_3(e.target.value)} rows={1} cols={50}/>
               <button onClick={q4answerCheck}>回答する</button>
               {messageQ4.includes("正解！") ?
               <>
               <h3 className="liQ4AnsMess" style={{color : "green"}}>{messageQ4}</h3> 
-              <p>ホームに戻りアンケートに回答した後、次の科目を学習しましょう。</p>
+              <p>ホームに戻りアンケートに回答した後、次のアルゴリズムを学習しましょう。</p>
               </> 
               : <p className="liQ4AnsMess" style={{color : "red"}}>{messageQ4}</p>}
             </div>

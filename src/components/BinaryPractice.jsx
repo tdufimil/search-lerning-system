@@ -15,7 +15,7 @@ import card07 from "../img/card07.jpg" ;
 import card08 from "../img/card08.jpg" ;
 import card09 from "../img/card09.jpg" ;
 import card10 from "../img/card10.jpg" ;
-import biq4ans from "../img/biq4ans.jpg" ;
+//import biq4ans from "../img/biq4ans.jpg" ;
 
 function BinaryPractice(){
   const [comArr, setComArr] = useState([]);
@@ -32,7 +32,7 @@ function BinaryPractice(){
       fetch();
     }, [])
 
-  const nums = [1, 2, 3, 4, 5, 6, 7, 8];
+  //const nums = [1, 2, 3, 4, 5, 6, 7, 8];
   const cardsQ1 = [card02, card05, card08, card09, card10];
   const cardsQ2 = [card01, card02, card04, card07, card08, card09];
   const cardsQ3 = [card01, card03, card04, card06, card07, card08, card10];
@@ -42,6 +42,7 @@ function BinaryPractice(){
   const [answerQ3, setAnswerQ3] = useState("");
   const [answerQ4_1, setAnswerQ4_1] = useState("");
   const [answerQ4_2, setAnswerQ4_2] = useState("");
+  const [answerQ4_3, setAnswerQ4_3] = useState("");
   const [messageQ1, setMessageQ1] = useState("");
   const [messageQ2, setMessageQ2] = useState("");
   const [messageQ3, setMessageQ3] = useState("");
@@ -110,16 +111,29 @@ function BinaryPractice(){
   
   const q4answerCheck = () => {
     if(!isCorrectQ4){
-      if(answerQ4_1.includes("2") && answerQ4_2.includes("6")){
-        setMessageQ4("正解！");
-        setIsCorrectQ4(true);
-      }else if(!answerQ4_1.includes("2") && answerQ4_2.includes("6")){
-        setMessageQ4("(a)(b)の組み合わせが違います")
-      }else if(answerQ4_1.includes("2") && !answerQ4_2.includes("6")){
-        setMessageQ4("実行結果が違います")
-      }else{
-        setMessageQ4("どちらも違います")
+      const normalized4_1 = answerQ4_1.replace(/\s/g, "");
+      const normalized4_2 = answerQ4_2.replace(/\s/g, "");
+      const normalized4_3 = answerQ4_3.replace(/\s/g, "");
+      const q4_1 = normalized4_1.includes("(left+right)/2");
+      const q4_2 = normalized4_2.includes("mid-1");
+      const q4_3 = normalized4_3.includes("mid+1");
+
+      let msg = "";
+      if(!q4_1){
+        msg+="(a)";
       }
+      if(!q4_2){
+        msg+="(b)";
+      }
+      if(!q4_3){
+        msg+="(c)";
+      }
+      msg+="が違います";
+      if(q4_1 && q4_2 && q4_3){
+        msg="正解！";
+        setIsCorrectQ4(true);
+      }
+      setMessageQ4(msg);
     }
   }
 
@@ -200,7 +214,7 @@ function BinaryPractice(){
           <>
           <div className="biQuestion4">
             <h3>問4</h3>
-            <p>以下のプログラムはarrayに二分探索を行いtargetと同じ値が存在すればその要素が何番目かを出力し、見つからなければ-1を出力する。プログラム中の(a)と(b)に入る正しい組み合わせを選択肢から選んで答えなさい。また、実行結果を答えなさい。要素番号は1から始まるものとする。</p>
+            <p>以下のプログラムはarrayに二分探索を行いtargetと同じ値が存在すればその要素が何番目かを出力し、見つからなければ-1を出力する。プログラム中の(a)(b)(c)に入るコード答えなさい。要素番号は1から始まるものとする。</p>
             <div className="biQ4Code">
               <p>整数型の配列:&ensp;array ← {"{1, 4, 5, 9, 11, 15, 17, 18}"}</p>
               <p>整数型:&ensp;target ← 15</p>
@@ -210,41 +224,31 @@ function BinaryPractice(){
               <p>整数型:&ensp;mid</p>
               <p>&ensp;</p>
               <p>while&ensp;(leftがright以下 かつ resultが-1)</p>
-              <p>&ensp;&ensp;mid ← (left+right)/2</p>            
+              <p>&ensp;&ensp;mid ← (a)</p>            
               <p>&ensp;&ensp;if&ensp;(array[mid]がtargetと同じならば)</p>   
               <p>&ensp;&ensp;&ensp;&ensp;result ← mid</p>
               <p>&ensp;&ensp;endif</p>
               <p>&ensp;&ensp;if&ensp;(array[mid]がtargetよりも大きいならば)</p>
-              <p>&ensp;&ensp;&ensp;&ensp;right ← (a)</p>
+              <p>&ensp;&ensp;&ensp;&ensp;right ← (b)</p>
               <p>&ensp;&ensp;endif</p>
               <p>&ensp;&ensp;if&ensp;(array[mid]がtargetよりも小さいならば)</p>
-              <p>&ensp;&ensp;&ensp;&ensp;left ← (b)</p>
+              <p>&ensp;&ensp;&ensp;&ensp;left ← (c)</p>
               <p>&ensp;&ensp;endif</p>
               <p>endwhile</p>
               <p>&ensp;</p>
               <p>print(result)</p>
             </div>
             <div className="biQ4Answer">
-               <p>選択肢</p>
-               <img src={biq4ans} className="biQ4Image" alt="選択肢" />
-               <select value={answerQ4_1} onChange={(e) => setAnswerQ4_1(e.target.value)}>
-                 <option value="">組み合わせを選択</option>
-                 <option value="1">1</option>
-                 <option value="2">2</option>
-                 <option value="3">3</option>
-                 <option value="4">4</option>
-               </select>
-               <select value={answerQ4_2} onChange={(e) => setAnswerQ4_2(e.target.value)}>
-                 <option value="">実行結果を選択</option>
-                   {nums.map((num) => (
-                     <option value={num}>{num}</option>
-                   ))}
-               </select>
+               <textarea className="biQ4_1" placeholder="(a)の回答を入力"  type='text' onChange={(e) => setAnswerQ4_1(e.target.value)} rows={1} cols={50}/>
+               <textarea placeholder="(b)の回答を入力"  type='text' onChange={(e) => setAnswerQ4_2(e.target.value)} rows={1} cols={50}/>
+               <textarea placeholder="(c)の回答を入力"  type='text' onChange={(e) => setAnswerQ4_3(e.target.value)} rows={1} cols={50}/>
+               
+              
                <button onClick={q4answerCheck}>回答する</button>
                {messageQ4.includes("正解！") ? 
                <>
                <h3 className="biQ4AnsMess" style={{color : "green"}}>{messageQ4}</h3>
-               <p>ホームに戻りアンケートに回答した後、次の科目を学習しましょう。</p>
+               <p>ホームに戻りアンケートに回答した後、次のアルゴリズムを学習しましょう。</p>
                </>
                 : <p className="biQ4AnsMess" style={{color : "red"}}>{messageQ4}</p>}
             </div>

@@ -118,10 +118,15 @@
     margin-bottom: 2%;
 }
 
-.biQ4Answer select{
+.biQ4_1{
+    margin-top: 2%;
+}
+
+.biQ4Answer button{
     display: flex;
     flex-direction: column; 
 }
+
 
 .biQ4AnsMess{
     margin: auto;

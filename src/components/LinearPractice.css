@@ -121,6 +121,13 @@
 .liQ4Answer select{
     display: flex;
     flex-direction: column; 
+    margin-bottom: 1%;
+    margin-top: 2%;
+}
+
+.liQ4Answer button{
+    display: flex;
+    flex-direction: column; 
 }
 
 .liQ4AnsMess{
