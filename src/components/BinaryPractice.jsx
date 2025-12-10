@@ -1,6 +1,7 @@
 import "./BinaryPractice.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useEffect} from 'react';
 import {db} from "../firebase.jsx";
 import { doc, updateDoc, arrayUnion} from "firebase/firestore";
@@ -20,19 +21,7 @@ import card10 from "../img/card10.jpg" ;
 function BinaryPractice(){
   const [comArr, setComArr] = useState([]);
   const [newCom, setNewCom] = useState("");
-
-  useEffect(() => {
-      const fetch = async () => {
-        const ref = db.collection("algorithms").doc("pyfwRJRVYPQfZWuB2rBh");
-        const doc = await ref.get();
-        const arrayData = doc.data().comes;
-        setComArr(arrayData);
-      };
-
-      fetch();
-    }, [])
-
-  //const nums = [1, 2, 3, 4, 5, 6, 7, 8];
+  const location = useLocation();
   const cardsQ1 = [card02, card05, card08, card09, card10];
   const cardsQ2 = [card01, card02, card04, card07, card08, card09];
   const cardsQ3 = [card01, card03, card04, card06, card07, card08, card10];
@@ -47,12 +36,37 @@ function BinaryPractice(){
   const [messageQ2, setMessageQ2] = useState("");
   const [messageQ3, setMessageQ3] = useState("");
   const [messageQ4, setMessageQ4] = useState("");
-  const [isCorrectQ1, setIsCorrectQ1] = useState(false);
-  const [isCorrectQ2, setIsCorrectQ2] = useState(false);
-  const [isCorrectQ3, setIsCorrectQ3] = useState(false);
-  const [isCorrectQ4, setIsCorrectQ4] = useState(false);
-  
+  const [isCorrectQ1, setIsCorrectQ1] = useState(location.state.isCorrectQ1);
+  const [isCorrectQ2, setIsCorrectQ2] = useState(location.state.isCorrectQ2);
+  const [isCorrectQ3, setIsCorrectQ3] = useState(location.state.isCorrectQ3);
+  const [isCorrectQ4, setIsCorrectQ4] = useState(location.state.isCorrectQ4);
 
+  useEffect(() => {
+      const fetch = async () => {
+        const ref = db.collection("algorithms").doc("pyfwRJRVYPQfZWuB2rBh");
+        const doc = await ref.get();
+        const arrayData = doc.data().comes;
+        setComArr(arrayData);
+
+        if(isCorrectQ1){
+          setMessageQ1("正解！")
+        }
+        if(isCorrectQ2){
+          setMessageQ2("正解！")
+        }
+        if(isCorrectQ3){
+          setMessageQ3("正解！")
+        }
+        if(isCorrectQ4){
+          setMessageQ4("正解！")
+        }
+      };
+
+      fetch();
+    }, [])
+
+  //const nums = [1, 2, 3, 4, 5, 6, 7, 8];
+  
   const navigate = useNavigate();
 
   const cardClickQ1 = (index) => {
@@ -257,8 +271,8 @@ function BinaryPractice(){
         )}
         <div className="linkArea">
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-          <p className="toBinaryExplain" onClick={() => navigate("/BinaryExplain")}>解説へ戻る</p>
-          <p className="toBinaryCode" onClick={() => navigate("/BinaryCode")}>疑似言語での実装へ戻る</p>
+          <p className="toBinaryExplain" onClick={() => navigate("/BinaryExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>解説へ戻る</p>
+          <p className="toBinaryCode" onClick={() => navigate("/BinaryCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語での実装へ戻る</p>
         </div>        
       </div>
       <div className="biComContainer">

@@ -2,6 +2,11 @@ import { useNavigate } from "react-router-dom";
 import './Home.css';
 
 function Home() {
+  const isCorrectQ1 = false;
+  const isCorrectQ2 = false;
+  const isCorrectQ3 = false;
+  const isCorrectQ4 = false;
+
   const navigate = useNavigate();
   
   return (
@@ -36,13 +41,13 @@ function Home() {
         <div className="list">
           <h3>アルゴリズム一覧</h3>
           <div className="arg">      
-           <div className="sennkei" onClick={() => navigate("/LinearExplain")}>
+           <div className="sennkei" onClick={() => navigate("/LinearExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>
             <p>線形探索</p>
            </div>            
-           <div className="nibu" onClick={() => navigate("/BinaryExplain")}>
+           <div className="nibu" onClick={() => navigate("/BinaryExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>
              <p>二分探索</p>
            </div>
-           <div className="hash" onClick={() => navigate("/HashExplain")}>
+           <div className="hash" onClick={() => navigate("/HashExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>
              <p>ハッシュ法</p>
            </div>
           </div>   

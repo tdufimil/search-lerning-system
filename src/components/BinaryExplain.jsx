@@ -1,5 +1,6 @@
 import "./BinaryExplain.css"
 import { useNavigate } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import { useState } from "react"; 
 import { useEffect} from 'react';
 import {db} from "../firebase.jsx";
@@ -19,6 +20,16 @@ function BinaryExplain() {
   const [text02, setText02] = useState("");
   const [comArr, setComArr] = useState([]);
   const [newCom, setNewCom] = useState("");
+  const [nextIndex, setNextIndex] = useState(3);
+  const cards = [card01,card02,card03,card09,card13,card18,card01];
+  const [flipped, setFlipped] = useState(Array(cards.length).fill(false));
+  const [text, setText] = useState("まず全体の中央のカード（4枚目）をめくります。");
+  const [islast, setIsLast] = useState(false);
+  const location = useLocation();
+  const isCorrectQ1 = location.state.isCorrectQ1;
+  const isCorrectQ2 = location.state.isCorrectQ2;
+  const isCorrectQ3 = location.state.isCorrectQ3;
+  const isCorrectQ4 = location.state.isCorrectQ4;
 
   useEffect(() => {
       const fetch = async () => {
@@ -35,11 +46,7 @@ function BinaryExplain() {
       fetch();
     }, [])
 
-  const [nextIndex, setNextIndex] = useState(3);
-  const cards = [card01,card02,card03,card09,card13,card18,card01];
-  const [flipped, setFlipped] = useState(Array(cards.length).fill(false));
-  const [text, setText] = useState("まず全体の中央のカード（4枚目）をめくります。");
-  const [islast, setIsLast] = useState(false);
+  
   const navigate = useNavigate();
   
   const cardClick = (index) => {
@@ -97,7 +104,7 @@ function BinaryExplain() {
           <div className="linkArea">
             <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
             <p className="toBinaryExEdit" onClick={() => navigate("/BinaryExplainEdit", { state: {title, text01,  text02}})}>編集</p>
-            <p className="toBinaryCodea" onClick={() => navigate("/BinaryCode")}>疑似言語で実装する⇒</p>
+            <p className="toBinaryCodea" onClick={() => navigate("/BinaryCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語で実装する⇒</p>
           </div>
         </div>
         <div className="biComContainer">

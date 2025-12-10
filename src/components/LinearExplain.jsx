@@ -1,5 +1,6 @@
 import './LinearExplain.css';
 import { useNavigate } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect} from 'react';
 import {db} from "../firebase.jsx";
@@ -18,6 +19,11 @@ function LinearExplain() {
   const [text02, setText02] = useState("");
   const [comArr, setComArr] = useState([]);
   const [newCom, setNewCom] = useState("");
+  const location = useLocation();
+  const isCorrectQ1 = location.state.isCorrectQ1;
+  const isCorrectQ2 = location.state.isCorrectQ2;
+  const isCorrectQ3 = location.state.isCorrectQ3;
+  const isCorrectQ4 = location.state.isCorrectQ4;
 
   useEffect(() => {
       const fetch = async () => {
@@ -93,7 +99,7 @@ function LinearExplain() {
         <div className='linkArea'>
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
           <p className="toLinearExEdit" onClick={() => navigate("/LinearExplainEdit", { state: {title, text01,  text02}})}>編集</p>
-          <p className="toLinearCodea" onClick={() => navigate("/LinearCode")}>疑似言語で実装する⇒</p>
+          <p className="toLinearCodea" onClick={() => navigate("/LinearCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語で実装する⇒</p>
         </div> 
       </div>
       <div className="liComContainer">

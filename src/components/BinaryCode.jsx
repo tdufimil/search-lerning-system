@@ -1,5 +1,6 @@
 import './BinaryCode.css';
 import { useNavigate } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import {db} from "../firebase.jsx";
@@ -15,6 +16,12 @@ function BinaryCode() {
   const [result, setResult] = useState("");
   const [comArr, setComArr] = useState([]);
   const [newCom, setNewCom] = useState("");
+  const [count, setCount] = useState(0);
+  const location = useLocation();
+  const isCorrectQ1 = location.state.isCorrectQ1;
+  const isCorrectQ2 = location.state.isCorrectQ2;
+  const isCorrectQ3 = location.state.isCorrectQ3;
+  const isCorrectQ4 = location.state.isCorrectQ4;
 
 
 
@@ -38,7 +45,7 @@ function BinaryCode() {
     }, [])
   
   const navigate = useNavigate();
-  const [count, setCount] = useState(0);
+  
 
   const clickButton = () => {
     setCount(count + 1);
@@ -97,7 +104,7 @@ function BinaryCode() {
         <div className="linkArea">
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
           <p className="toBinaryCoEdit" onClick={() => navigate("/BinaryCodeEdit", { state: {text01,  text02, text03, code01, code02, code03, result}})}>編集</p>
-          <p className="toBinaryPractice" onClick={() => navigate("/BinaryPractice")}>問題を解く⇒</p>
+          <p className="toBinaryPractice" onClick={() => navigate("/BinaryPractice", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>問題を解く⇒</p>
         </div>
       </div>
       <div className="biComContainer">

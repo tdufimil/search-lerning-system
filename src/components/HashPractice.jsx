@@ -1,6 +1,7 @@
 import "./HashPractice.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useEffect} from 'react';
 import {db} from "../firebase.jsx";
 import { doc, updateDoc, arrayUnion} from "firebase/firestore";
@@ -12,18 +13,7 @@ import hashQ3 from "../img/hashQ3.jpg" ;
 function HashPractice(){
   const [comArr, setComArr] = useState([]);
   const [newCom, setNewCom] = useState("");
-
-  useEffect(() => {
-      const fetch = async () => {
-        const ref = db.collection("algorithms").doc("GtjJMbqXODsI7gtOqmcH");
-        const doc = await ref.get();
-        const arrayData = doc.data().comes;
-        setComArr(arrayData);
-      };
-
-      fetch();
-    }, [])
-
+  const location = useLocation();
   const [answerQ1, setAnswerQ1] = useState("");
   const [answerQ2, setAnswerQ2] = useState("");
   const [answerQ3, setAnswerQ3] = useState("");
@@ -35,10 +25,36 @@ function HashPractice(){
   const [messageQ2, setMessageQ2] = useState("");
   const [messageQ3, setMessageQ3] = useState("");
   const [messageQ4, setMessageQ4] = useState("");
-  const [isCorrectQ1, setIsCorrectQ1] = useState(false);
-  const [isCorrectQ2, setIsCorrectQ2] = useState(false);
-  const [isCorrectQ3, setIsCorrectQ3] = useState(false);
-  const [isCorrectQ4, setIsCorrectQ4] = useState(false);
+  const [isCorrectQ1, setIsCorrectQ1] = useState(location.state.isCorrectQ1);
+  const [isCorrectQ2, setIsCorrectQ2] = useState(location.state.isCorrectQ2);
+  const [isCorrectQ3, setIsCorrectQ3] = useState(location.state.isCorrectQ3);
+  const [isCorrectQ4, setIsCorrectQ4] = useState(location.state.isCorrectQ4);
+
+  useEffect(() => {
+      const fetch = async () => {
+        const ref = db.collection("algorithms").doc("GtjJMbqXODsI7gtOqmcH");
+        const doc = await ref.get();
+        const arrayData = doc.data().comes;
+        setComArr(arrayData);
+
+        if(isCorrectQ1){
+          setMessageQ1("正解！")
+        }
+        if(isCorrectQ2){
+          setMessageQ2("正解！")
+        }
+        if(isCorrectQ3){
+          setMessageQ3("正解！")
+        }
+        if(isCorrectQ4){
+          setMessageQ4("正解！")
+        }
+      };
+
+      fetch();
+    }, [])
+
+  
 
   const navigate = useNavigate();
 
@@ -247,8 +263,8 @@ function HashPractice(){
         )}
         <div className="linkArea">
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-          <p className="toHashExplain" onClick={() => navigate("/HashExplain")}>解説へ戻る</p>
-          <p className="toHashCode" onClick={() => navigate("/HashCode")}>疑似言語での実装へ戻る</p>
+          <p className="toHashExplain" onClick={() => navigate("/HashExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>解説へ戻る</p>
+          <p className="toHashCode" onClick={() => navigate("/HashCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語での実装へ戻る</p>
         </div>
       </div>  
       <div className="haComContainer">
