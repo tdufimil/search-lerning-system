@@ -79,14 +79,17 @@ function HashExplain() {
                 <img src={hafig4} className="hashImage2" alt="オープンアドレス法" style={{marginLeft : "5%"}} />
                 <p>{text02}</p>
                 </>
-              )}            
+              )}
+              {count >=2 && (localStorage.getItem('mode') === "a" ? <p>続いて問題を解いてみましょう</p> : <p>続いて線形探索を疑似言語で実装してみましょう。</p>)}            
             </div>
             {count <2 && (<button onClick={clickButton}>次へ</button>)}
           </div>
           <div className="linkArea">
             <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-            <p className="toHashExEdit" onClick={() => navigate("/HashExplainEdit", { state: {title, text01,  text02}})}>編集</p>
-            <p className="toHashPractice" onClick={() => navigate("/HashCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語で実装する⇒</p>
+            <p className="toHashExEdit" onClick={() => navigate("/HashExplainEdit", { state: {title, text01,  text02, isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>編集</p>
+            
+            {localStorage.getItem('mode') === "a" ? <p className="toHashPractice" onClick={() => navigate("/HashPractice", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>問題を解く⇒</p>
+             :  <p className="toHashCodea" onClick={() => navigate("/HashCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語で実装する⇒</p>}
           </div>
         </div>
         <div className="haComContainer">

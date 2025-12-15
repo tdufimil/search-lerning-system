@@ -10,6 +10,10 @@ function BinaryExplainEdit(){
   const title = location.state.title;
   const [text01, setText01] = useState(location.state.text01);
   const [text02, setText02] = useState(location.state.text02);
+  const isCorrectQ1 = location.state.isCorrectQ1;
+  const isCorrectQ2 = location.state.isCorrectQ2;
+  const isCorrectQ3 = location.state.isCorrectQ3;
+  const isCorrectQ4 = location.state.isCorrectQ4;
   
   async function confirm() {
     const ref = db.collection("algorithms").doc("Dj3qHR2p1OcPvS5ClfEb");
@@ -34,7 +38,7 @@ function BinaryExplainEdit(){
           </div>
           <div className='linkArea'>
             <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-            <p className="toBBinaryExplain" onClick={() => navigate("/binaryExplain")}>解説へ戻る</p>
+            <p className="toBBinaryExplain" onClick={() => navigate("/binaryExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>解説へ戻る</p>
           </div> 
         </div>
       </div>

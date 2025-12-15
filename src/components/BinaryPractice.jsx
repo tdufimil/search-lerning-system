@@ -221,10 +221,11 @@ function BinaryPractice(){
               </select>
               <button onClick={q3answerCheck}>回答する</button>
               {messageQ3.includes("正解！") ? <h3 style={{color : "green"}}>{messageQ3}</h3> : <p style={{color : "red"}}>{messageQ3}</p>}
+              {messageQ3.includes("正解！") && localStorage.getItem('mode') === 'a' ? <p>ホームに戻りアンケートに回答した後、次のアルゴリズムを学習しましょう。</p> : <p></p>}
             </div>    
           </div>  
         )}
-        {isCorrectQ3 && (
+        {isCorrectQ3 && localStorage.getItem('mode') === 'b' && (
           <>
           <div className="biQuestion4">
             <h3>問4</h3>
@@ -238,15 +239,15 @@ function BinaryPractice(){
               <p>整数型:&ensp;mid</p>
               <p>&ensp;</p>
               <p>while&ensp;(leftがright以下 かつ resultが-1)</p>
-              <p>&ensp;&ensp;mid ← (a)</p>            
+              <p>&ensp;&ensp;mid ← <span>(a)</span></p>            
               <p>&ensp;&ensp;if&ensp;(array[mid]がtargetと同じならば)</p>   
               <p>&ensp;&ensp;&ensp;&ensp;result ← mid</p>
               <p>&ensp;&ensp;endif</p>
               <p>&ensp;&ensp;if&ensp;(array[mid]がtargetよりも大きいならば)</p>
-              <p>&ensp;&ensp;&ensp;&ensp;right ← (b)</p>
+              <p>&ensp;&ensp;&ensp;&ensp;right ← <span>(b)</span></p>
               <p>&ensp;&ensp;endif</p>
               <p>&ensp;&ensp;if&ensp;(array[mid]がtargetよりも小さいならば)</p>
-              <p>&ensp;&ensp;&ensp;&ensp;left ← (c)</p>
+              <p>&ensp;&ensp;&ensp;&ensp;left ← <span>(c)</span></p>
               <p>&ensp;&ensp;endif</p>
               <p>endwhile</p>
               <p>&ensp;</p>
@@ -256,8 +257,6 @@ function BinaryPractice(){
                <textarea className="biQ4_1" placeholder="(a)の回答を入力"  type='text' onChange={(e) => setAnswerQ4_1(e.target.value)} rows={1} cols={50}/>
                <textarea placeholder="(b)の回答を入力"  type='text' onChange={(e) => setAnswerQ4_2(e.target.value)} rows={1} cols={50}/>
                <textarea placeholder="(c)の回答を入力"  type='text' onChange={(e) => setAnswerQ4_3(e.target.value)} rows={1} cols={50}/>
-               
-              
                <button onClick={q4answerCheck}>回答する</button>
                {messageQ4.includes("正解！") ? 
                <>

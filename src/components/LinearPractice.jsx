@@ -211,10 +211,11 @@ function LinearPractice(){
               </select>
               <button onClick={q3answerCheck}>回答する</button>
               {messageQ3.includes("正解！") ? <h3 style={{color : "green"}}>{messageQ3}</h3> : <p style={{color : "red"}}>{messageQ3}</p>}
+              {messageQ3.includes("正解！") && localStorage.getItem('mode') === 'a' ? <p>ホームに戻りアンケートに回答した後、次のアルゴリズムを学習しましょう。</p> : <p></p>}
             </div>  
           </div>
         )}
-        {isCorrectQ3 && (
+        {isCorrectQ3 && localStorage.getItem('mode') === 'b' && (
           <div className="liQuestion4">
             <h3>問4</h3>
             <p>以下のプログラムはarrayに線形探索を行いtargetと同じ値が存在すればその要素が何番目かを出力し、見つからなければ -1 を出力する。プログラム中の(a)にあてまはるものを選択肢から選び、(b)(c)に入るコードを書きなさい。要素番号は1から始まるものとする。</p>
@@ -223,11 +224,11 @@ function LinearPractice(){
               <p>整数型:&ensp;target ← 11</p>
               <p>整数型:&ensp;i ← 1</p>
               <p>整数型:&ensp;result ← -1</p>
-              <p>while&ensp;(iがarrayの要素数以下 (a) resultが-1)</p>
+              <p>while&ensp;(iがarrayの要素数以下 <span>(a)</span> resultが-1)</p>
               <p>&ensp;&ensp;if&ensp;(array[i]がtargetと同じならば)</p>            
-              <p>&ensp;&ensp;&ensp;&ensp;(b)</p>   
+              <p>&ensp;&ensp;&ensp;&ensp;<span>(b)</span></p>   
               <p>&ensp;&ensp;endif</p>
-              <p>&ensp;&ensp;(c)</p>
+              <p>&ensp;&ensp;<span>(c)</span></p>
               <p>endwhile</p>
               <p>print(result)</p>
             </div>
@@ -252,7 +253,7 @@ function LinearPractice(){
         <div className="linkArea">
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
           <p className="toLinearExplain" onClick={() => navigate("/LinearExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>解説へ戻る</p>
-          <p className="toLinearCode" onClick={() => navigate("/LinearCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語での実装へ戻る</p>
+          {localStorage.getItem('mode') === 'b' ? <p className="toLinearCode" onClick={() => navigate("/LinearCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語での実装へ戻る</p> : <p></p>}
         </div>
       </div> 
       <div className="liComContainer">

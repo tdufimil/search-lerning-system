@@ -14,6 +14,10 @@ function LinearCodeEdit(){
   const [code02, setCode02] = useState(location.state.code02);
   const [code03, setCode03] = useState(location.state.code03);
   const [result, setResult] = useState(location.state.result);
+  const isCorrectQ1 = location.state.isCorrectQ1;
+  const isCorrectQ2 = location.state.isCorrectQ2;
+  const isCorrectQ3 = location.state.isCorrectQ3;
+  const isCorrectQ4 = location.state.isCorrectQ4;
   
   async function confirm() {
     const ref = db.collection("algorithms").doc("eTfYr1urtkB6VtqL2Tyv");
@@ -52,7 +56,7 @@ function LinearCodeEdit(){
           </div>
             <div className='linkArea'>
               <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-              <p className="toBLinearCode" onClick={() => navigate("/LinearCode")}>疑似言語の解説へ戻る</p>
+              <p className="toBLinearCode" onClick={() => navigate("/LinearCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語の解説へ戻る</p>
             </div> 
           </div>
         </div>

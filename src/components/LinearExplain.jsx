@@ -95,11 +95,14 @@ function LinearExplain() {
           {nextIndex >= 4 && ( 
             <p>{text02}</p>
           )}
+          {nextIndex >= 4 && (localStorage.getItem('mode') === "a" ? <p>続いて問題を解いてみましょう</p> : <p>続いて線形探索を疑似言語で実装してみましょう。</p>)}
         </div>
         <div className='linkArea'>
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-          <p className="toLinearExEdit" onClick={() => navigate("/LinearExplainEdit", { state: {title, text01,  text02}})}>編集</p>
-          <p className="toLinearCodea" onClick={() => navigate("/LinearCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語で実装する⇒</p>
+          <p className="toLinearExEdit" onClick={() => navigate("/LinearExplainEdit", { state: {title, text01, text02, isCorrectQ1, isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>編集</p>
+          
+          {localStorage.getItem('mode') === "a" ? <p className="toLinearPractice" onClick={() => navigate("/LinearPractice", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>問題を解く⇒</p>
+          : <p className="toLinearCodea" onClick={() => navigate("/LinearCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語で実装する⇒</p>}
         </div> 
       </div>
       <div className="liComContainer">

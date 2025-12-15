@@ -18,6 +18,10 @@ function HashCodeEdit(){
   const [code04, setCode04] = useState(location.state.code04);
   const [code05, setCode05] = useState(location.state.code05);
   const [result, setResult] = useState(location.state.result);
+  const isCorrectQ1 = location.state.isCorrectQ1;
+  const isCorrectQ2 = location.state.isCorrectQ2;
+  const isCorrectQ3 = location.state.isCorrectQ3;
+  const isCorrectQ4 = location.state.isCorrectQ4;
   
   async function confirm() {
     const ref = db.collection("algorithms").doc("PbWkNrlWe76Pb8rdWMA3");
@@ -68,7 +72,7 @@ function HashCodeEdit(){
           </div>
             <div className='linkArea'>
               <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-              <p className="toBHashCode" onClick={() => navigate("/HashCode")}>疑似言語の解説へ戻る</p>
+              <p className="toBHashCode" onClick={() => navigate("/HashCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語の解説へ戻る</p>
             </div> 
           </div>
         </div>

@@ -77,6 +77,17 @@
     border-bottom: 1px solid blue;
 }
 
+.toBinaryPractice{
+    margin-left: auto;
+    margin-right: 0%;
+    color: blue;
+    cursor: pointer;
+}
+
+.toBinaryPractice:hover{
+    border-bottom: 1px solid blue;
+}
+
 .biComContainer {
    text-align: center;
    margin-left: 25%;

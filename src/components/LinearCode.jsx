@@ -98,7 +98,7 @@ function LinearCode() {
       </div>
       <div className='linkArea'>
         <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-        <p className="toLinearCoEdit" onClick={() => navigate("/LinearCodeEdit", { state: {text01,  text02, text03, code01, code02, code03, result}})}>編集</p>
+        <p className="toLinearCoEdit" onClick={() => navigate("/LinearCodeEdit", { state: {text01,  text02, text03, code01, code02, code03, result, isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>編集</p>
         <p className="toLinearPractice" onClick={() => navigate("/LinearPractice", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>問題を解く⇒</p>
       </div>  
     </div>

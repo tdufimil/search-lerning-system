@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
 import './Home.css';
 
 function Home() {
@@ -6,9 +8,34 @@ function Home() {
   const isCorrectQ2 = false;
   const isCorrectQ3 = false;
   const isCorrectQ4 = false;
+  const [mode, setMode] = useState('');
+  
+
+  useEffect(() => {
+   if (localStorage.getItem('mode') !== null) {
+     setMode(localStorage.getItem('mode'));
+   }else{
+     setMode('a');
+   }
+
+  }, []);
 
   const navigate = useNavigate();
   
+  const handleRadio = (e) => {
+    if(e.target.value === 'A'){
+      localStorage.clear();
+      localStorage.setItem('mode', 'a');
+      setMode('a');
+      console.log(mode);
+    }else{
+      localStorage.clear();
+      localStorage.setItem('mode', 'b');
+      setMode('b');
+      console.log(mode);
+    }
+  };
+
   return (
     <div className="home">
       <header className="title">
@@ -31,12 +58,16 @@ function Home() {
               2.解説を読みアルゴリズムの仕組みや特徴を理解します。
             </li>
             <li>
-              3.疑似言語による実装方法を読んで、処理の流れを理解します。
-            </li>
-            <li>
-              4.演習問題に取り組み、実際に使いながら理解を深めます。
+              3.演習問題に取り組み、実際に使いながら理解を深めます。
             </li>
           </ol>
+        </div>
+        <div className="groupselect">
+          <h3>グループ</h3>
+          <label>グループA</label>
+          <input type='radio' name="group" value='A' onChange={handleRadio}  checked={mode === "a"}/>
+          <label>グループB</label>
+          <input type='radio' name="group" value='B' onChange={handleRadio} checked={mode === "b"}/>      
         </div>
         <div className="list">
           <h3>アルゴリズム一覧</h3>
@@ -54,13 +85,26 @@ function Home() {
         </div>
         <div className="research">
           <h3>アンケート</h3>
-          <p>以下のリンクからアンケートの回答をお願いします。</p>
-          <p>線形探索</p>
-          <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=ixIOAf0kL06CbvxAt5p-YWUrbDyN8qtLmjvYfIJZ-g9UQk9NMzVBUDc0VFQ4VFhYM1AwR1NMNkZRUC4u">https://forms.office.com/r/wB2Zc0Lpim</a>
-          <p>二分探索</p>
-          <a href="https://forms.office.com/r/gSBi260KRr">https://forms.office.com/r/gSBi260KRr</a>
-          <p>ハッシュ法</p>
-          <a href="https://forms.office.com/r/m8ihnxJ2Hm">https://forms.office.com/r/m8ihnxJ2Hm</a>
+          <p className="researchtxt">以下のリンクからアンケートの回答をお願いします。</p>
+          {localStorage.getItem('mode') === 'a' ?
+          <>
+            <p>線形探索</p>
+            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=ixIOAf0kL06CbvxAt5p-YWUrbDyN8qtLmjvYfIJZ-g9UQk9NMzVBUDc0VFQ4VFhYM1AwR1NMNkZRUC4u">https://forms.office.com/r/wB2Zc0Lpim</a>
+            <p>二分探索</p>
+            <a href="https://forms.office.com/r/gSBi260KRr">https://forms.office.com/r/gSBi260KRr</a>
+            <p>ハッシュ法</p>
+            <a href="https://forms.office.com/r/m8ihnxJ2Hm">https://forms.office.com/r/m8ihnxJ2Hm</a>
+          </>  
+            :
+          <>
+            <p>線形探索</p>
+            <a href="https://forms.office.com/r/63nexUHGBC">https://forms.office.com/r/63nexUHGBC</a>
+            <p>二分探索</p>
+            <a href="https://forms.office.com/r/V4EmwqjAjN">https://forms.office.com/r/V4EmwqjAjN</a>
+            <p>ハッシュ法</p>
+            <a href="https://forms.office.com/r/htQbTkzypj">https://forms.office.com/r/htQbTkzypj</a>
+          </>
+          }
         </div>
       </div>
     </div>

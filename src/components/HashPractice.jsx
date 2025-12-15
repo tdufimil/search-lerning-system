@@ -185,16 +185,17 @@ function HashPractice(){
               </select>
               <button onClick={answerCheckQ3}>回答する</button>
               {messageQ3.includes("正解！") ? <h3 style={{color : "green"}}>{messageQ3}</h3> : <p style={{color : "red"}}>{messageQ3}</p>}
+              {messageQ3.includes("正解！") && localStorage.getItem('mode') === 'a' ? <p>ホームに戻りアンケートに回答した後、次のアルゴリズムを学習しましょう。</p> : <p></p>}
             </div>
           </div>
         )}
-        {isCorrectQ3 && (
+        {isCorrectQ3 && localStorage.getItem('mode') === 'b' && (
           <>
           <div className="haQuestion4">
             <h3>問4</h3>
             <p>以下のプログラムはハッシュ法による探索、格納を行う。関数addはarrayに格納できればtrueを返しできなければfalseを返す。また、関数searchは引数valueがarrayに格納されているか探索し格納されていればその要素番号を返し、格納されていなければ
               -1を返す。</p>
-            <p>手続きtestの実行結果の空欄(a)、(b)に入る正しい組み合わせを選択肢から選んで答えなさい。また、手続きtest実行後のarrayの内容を答えなさい。配列の要素番号は0からはじまる。</p>
+            <p>手続きtestの実行結果の空欄(a)(b)(c)に入る正しい組み合わせを選択肢から選んで答えなさい。また、手続きtest実行後のarrayの内容を答えなさい。配列の要素番号は0からはじまる。</p>
             <div className="haQ4Code">
               <p>○整数型:&ensp;calcHash1(整数型:&ensp;value)</p>
               <p>&ensp;&ensp;return&ensp;value mod arrayの要素数</p>
@@ -203,26 +204,28 @@ function HashPractice(){
               <p>&ensp;&ensp;return&ensp;(value + 1) mod arrayの要素数 </p>
               <p>&ensp;</p>
               <p>○論理型:&ensp;add(整数型:&ensp;value)</p>
-              <p>&ensp;&ensp;整数型:&ensp;i ← (a)</p>
+              <p>&ensp;&ensp;整数型:&ensp;i ← <span>(a)</span></p>
               <p>&ensp;&ensp;if(array[i]が-1ならば)</p>
-              <p>&ensp;&ensp;&ensp;&ensp;array[i] ← (b)</p>
+              <p>&ensp;&ensp;&ensp;&ensp;array[i] ← <span>(b)</span></p>
               <p>&ensp;&ensp;&ensp;&ensp;return&ensp;true</p>
               <p>&ensp;&ensp;endif</p>
+              <p>&ensp;</p>
               <p>&ensp;&ensp;i ← calcHash2(value)</p>
               <p>&ensp;&ensp;if(array[i]が-1ならば)</p>
-              <p>&ensp;&ensp;&ensp;&ensp;array[i] ← (b)</p>
+              <p>&ensp;&ensp;&ensp;&ensp;array[i] ← <span>(b)</span></p>
               <p>&ensp;&ensp;&ensp;&ensp;return&ensp;true</p>
               <p>&ensp;&ensp;endif</p>
               <p>&ensp;&ensp;return false</p>
               <p>&ensp;</p>
               <p>○整数型:&ensp;search(整数型:&ensp;value)</p>
-              <p>&ensp;&ensp;整数型:&ensp;i ← (a)</p>
+              <p>&ensp;&ensp;整数型:&ensp;i ← <span>(a)</span></p>
               <p>&ensp;&ensp;if&ensp;(array[i]がvalueと同じならば)</p>
-              <p>&ensp;&ensp;&ensp;&ensp;return&ensp;(c)</p>
+              <p>&ensp;&ensp;&ensp;&ensp;return&ensp;<span>(c)</span></p>
               <p>&ensp;&ensp;endif</p>
+              <p>&ensp;</p>
               <p>&ensp;&ensp;i ← calcHash2(value)</p>
               <p>&ensp;&ensp;if&ensp;(array[i]がvalueと同じならば)</p>
-              <p>&ensp;&ensp;&ensp;&ensp;return&ensp;(c)</p>
+              <p>&ensp;&ensp;&ensp;&ensp;return&ensp;<span>(c)</span></p>
               <p>&ensp;&ensp;endif</p>
               <p>&ensp;&ensp;return&ensp;-1</p>
               <p>&ensp;</p>

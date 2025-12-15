@@ -99,12 +99,15 @@ function BinaryExplain() {
             {islast && (
              <p>{text02}</p>
             )}
-            
+            {islast && (localStorage.getItem('mode') === "a" ? <p>続いて問題を解いてみましょう</p> : <p>続いて線形探索を疑似言語で実装してみましょう。</p>)}
           </div>
           <div className="linkArea">
             <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-            <p className="toBinaryExEdit" onClick={() => navigate("/BinaryExplainEdit", { state: {title, text01,  text02}})}>編集</p>
-            <p className="toBinaryCodea" onClick={() => navigate("/BinaryCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語で実装する⇒</p>
+            <p className="toBinaryExEdit" onClick={() => navigate("/BinaryExplainEdit", { state: {title, text01,  text02, isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>編集</p>
+            
+            {localStorage.getItem('mode') === "a" ? <p className="toBinaryPractice" onClick={() => navigate("/BinaryPractice", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>問題を解く⇒</p>
+             : <p className="toBinaryCodea" onClick={() => navigate("/BinaryCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語で実装する⇒</p>}
+        
           </div>
         </div>
         <div className="biComContainer">

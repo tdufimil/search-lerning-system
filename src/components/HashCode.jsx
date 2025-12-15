@@ -140,7 +140,7 @@ function HashCode(){
       </div>
       <div className="linkArea">
         <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-        <p className="toHashCoEdit" onClick={() => navigate("/HashCodeEdit", { state: {text01,  text02, text03,  text04, text05, code01, code02, code03, code04, code05,result}})}>編集</p>
+        <p className="toHashCoEdit" onClick={() => navigate("/HashCodeEdit", { state: {text01,  text02, text03,  text04, text05, code01, code02, code03, code04, code05,result, isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>編集</p>
         <p className="toBinaryPractice" onClick={() => navigate("/HashPractice", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>問題を解く⇒</p>
       </div>  
     </div>
