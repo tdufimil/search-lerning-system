@@ -193,9 +193,9 @@ function HashPractice(){
           <>
           <div className="haQuestion4">
             <h3>問4</h3>
-            <p>以下のプログラムはハッシュ法による探索、格納を行う。関数addはarrayに格納できればtrueを返しできなければfalseを返す。また、関数searchは引数valueがarrayに格納されているか探索し格納されていればその要素番号を返し、格納されていなければ
+            <p>以下のプログラムはハッシュ法による探索、格納を行う。関数addは引数valueがarrayに格納できればtrueを返しできなければfalseを返す。また、関数searchは引数valueがarrayに格納されているか探索し格納されていればその要素番号を返し、格納されていなければ
               -1を返す。</p>
-            <p>手続きtestの実行結果の空欄(a)(b)(c)に入る正しい組み合わせを選択肢から選んで答えなさい。また、手続きtest実行後のarrayの内容を答えなさい。配列の要素番号は0からはじまる。</p>
+            <p>プログラム中の空欄(a)(b)(c)に入るコード答えなさい。配列の要素番号は0からはじまる。</p>
             <div className="haQ4Code">
               <p>○整数型:&ensp;calcHash1(整数型:&ensp;value)</p>
               <p>&ensp;&ensp;return&ensp;value mod arrayの要素数</p>

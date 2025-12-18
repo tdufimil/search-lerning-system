@@ -88,8 +88,9 @@ function BinaryCode() {
          <>
          <h3>全体の疑似言語と実行結果</h3>
          <p>説明を省いて疑似言語の部分だけを書くと次のようになります。</p>
-         <div className="liCode">
+         <div className="biCode">
            <p>{code01}</p>
+           <p>   </p>
            <p>{code02}</p>
            <p>{code03}</p>
            <p> </p>

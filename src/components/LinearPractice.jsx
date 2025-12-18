@@ -234,7 +234,7 @@ function LinearPractice(){
             </div>
             <div className="liQ4Answer">
               <select value={answerQ4_1} onChange={(e) => setAnswerQ4_1(e.target.value)}>
-                <option value="">組み合わせを選択</option>
+                <option value="">(a)の回答を選択</option>
                 <option value="または">または</option>
                 <option value="かつ">かつ</option>
               </select>
