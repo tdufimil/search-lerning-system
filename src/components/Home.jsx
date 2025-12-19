@@ -3,6 +3,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 import './Home.css';
 
+{/* <p>線形探索</p>
+            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=ixIOAf0kL06CbvxAt5p-YWUrbDyN8qtLmjvYfIJZ-g9UQk9NMzVBUDc0VFQ4VFhYM1AwR1NMNkZRUC4u">https://forms.office.com/r/wB2Zc0Lpim</a>
+            <p>二分探索</p>
+            <a href="https://forms.office.com/r/gSBi260KRr">https://forms.office.com/r/gSBi260KRr</a>
+            <p>ハッシュ法</p>
+            <a href="https://forms.office.com/r/m8ihnxJ2Hm">https://forms.office.com/r/m8ihnxJ2Hm</a> */}
+
 function Home() {
   const isCorrectQ1 = false;
   const isCorrectQ2 = false;
@@ -86,25 +93,14 @@ function Home() {
         <div className="research">
           <h3>アンケート</h3>
           <p className="researchtxt">以下のリンクからアンケートの回答をお願いします。</p>
-          {localStorage.getItem('mode') === 'a' ?
-          <>
-            <p>線形探索</p>
-            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=ixIOAf0kL06CbvxAt5p-YWUrbDyN8qtLmjvYfIJZ-g9UQk9NMzVBUDc0VFQ4VFhYM1AwR1NMNkZRUC4u">https://forms.office.com/r/wB2Zc0Lpim</a>
-            <p>二分探索</p>
-            <a href="https://forms.office.com/r/gSBi260KRr">https://forms.office.com/r/gSBi260KRr</a>
-            <p>ハッシュ法</p>
-            <a href="https://forms.office.com/r/m8ihnxJ2Hm">https://forms.office.com/r/m8ihnxJ2Hm</a>
-          </>  
-            :
-          <>
+          
             <p>線形探索</p>
             <a href="https://forms.office.com/r/63nexUHGBC">https://forms.office.com/r/63nexUHGBC</a>
             <p>二分探索</p>
             <a href="https://forms.office.com/r/V4EmwqjAjN">https://forms.office.com/r/V4EmwqjAjN</a>
             <p>ハッシュ法</p>
             <a href="https://forms.office.com/r/htQbTkzypj">https://forms.office.com/r/htQbTkzypj</a>
-          </>
-          }
+          
         </div>
       </div>
     </div>

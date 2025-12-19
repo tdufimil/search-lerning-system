@@ -221,11 +221,11 @@ function BinaryPractice(){
               </select>
               <button onClick={q3answerCheck}>回答する</button>
               {messageQ3.includes("正解！") ? <h3 style={{color : "green"}}>{messageQ3}</h3> : <p style={{color : "red"}}>{messageQ3}</p>}
-              {messageQ3.includes("正解！") && localStorage.getItem('mode') === 'a' ? <p>ホームに戻りアンケートに回答した後、次のアルゴリズムを学習しましょう。</p> : <p></p>}
+              {messageQ3.includes("正解！") && localStorage.getItem('mode') === 'a' ? <p></p> : <p></p>}
             </div>    
           </div>  
         )}
-        {isCorrectQ3 && localStorage.getItem('mode') === 'b' && (
+        {isCorrectQ3 &&  (
           <>
           <div className="biQuestion4">
             <h3>問4</h3>

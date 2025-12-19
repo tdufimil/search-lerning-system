@@ -211,11 +211,11 @@ function LinearPractice(){
               </select>
               <button onClick={q3answerCheck}>回答する</button>
               {messageQ3.includes("正解！") ? <h3 style={{color : "green"}}>{messageQ3}</h3> : <p style={{color : "red"}}>{messageQ3}</p>}
-              {messageQ3.includes("正解！") && localStorage.getItem('mode') === 'a' ? <p>ホームに戻りアンケートに回答した後、次のアルゴリズムを学習しましょう。</p> : <p></p>}
+              {messageQ3.includes("正解！") && localStorage.getItem('mode') === 'a' ? <p></p> : <p></p>}
             </div>  
           </div>
         )}
-        {isCorrectQ3 && localStorage.getItem('mode') === 'b' && (
+        {isCorrectQ3 &&(
           <div className="liQuestion4">
             <h3>問4</h3>
             <p>以下のプログラムはarrayに線形探索を行いtargetと同じ値が存在すればその要素が何番目かを出力し、見つからなければ -1 を出力する。プログラム中の(a)にあてまはるものを選択肢から選び、(b)(c)に入るコードを書きなさい。要素番号は1から始まるものとする。</p>
