@@ -271,7 +271,7 @@ function BinaryPractice(){
         <div className="linkArea">
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
           <p className="toBinaryExplain" onClick={() => navigate("/BinaryExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>解説へ戻る</p>
-          {localStorage.getItem('mode') === 'b' ? <p className="toBinaryCode" onClick={() => navigate("/BinaryCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語での実装へ戻る</p> : <p></p>}
+          <p className="toBinaryCode" onClick={() => navigate("/BinaryCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語での実装へ戻る</p>
           
         </div>        
       </div>

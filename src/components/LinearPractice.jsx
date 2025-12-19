@@ -253,7 +253,7 @@ function LinearPractice(){
         <div className="linkArea">
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
           <p className="toLinearExplain" onClick={() => navigate("/LinearExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>解説へ戻る</p>
-          {localStorage.getItem('mode') === 'b' ? <p className="toLinearCode" onClick={() => navigate("/LinearCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語での実装へ戻る</p> : <p></p>}
+          <p className="toLinearCode" onClick={() => navigate("/LinearCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語での実装へ戻る</p> 
         </div>
       </div> 
       <div className="liComContainer">
