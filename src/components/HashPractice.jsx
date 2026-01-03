@@ -29,6 +29,8 @@ function HashPractice(){
   const [isCorrectQ2, setIsCorrectQ2] = useState(location.state.isCorrectQ2);
   const [isCorrectQ3, setIsCorrectQ3] = useState(location.state.isCorrectQ3);
   const [isCorrectQ4, setIsCorrectQ4] = useState(location.state.isCorrectQ4);
+  const mode = location.state.mode;
+
 
   useEffect(() => {
       const fetch = async () => {
@@ -97,9 +99,9 @@ function HashPractice(){
       const normalized4_1 = answerQ4_1.replace(/\s/g, "");
       const normalized4_2 = answerQ4_2.replace(/\s/g, "");
       const normalized4_3 = answerQ4_3.replace(/\s/g, "");
-      const q4_1 = normalized4_1.includes("calcHash1(value)");
-      const q4_2 = normalized4_2.includes("value");
-      const q4_3 = normalized4_3.includes("i");
+      const q4_1 = normalized4_1 == ("calcHash1(value);");
+      const q4_2 = normalized4_2 == ("value;");
+      const q4_3 = normalized4_3 == ("i;");
       let msg = "";
       if(!q4_1){
         msg+="(a)";
@@ -185,59 +187,64 @@ function HashPractice(){
               </select>
               <button onClick={answerCheckQ3}>回答する</button>
               {messageQ3.includes("正解！") ? <h3 style={{color : "green"}}>{messageQ3}</h3> : <p style={{color : "red"}}>{messageQ3}</p>}
-              {messageQ3.includes("正解！") && localStorage.getItem('mode') === 'a' ? <p></p> : <p></p>}
+              {messageQ3.includes("正解！") && mode !== 'a' ? <p>ホームに戻りアンケートの回答をお願いします</p> : <p></p>}
             </div>
           </div>
         )}
-        {isCorrectQ3 && (
+        {isCorrectQ3 && mode === 'a'  && (
           <>
           <div className="haQuestion4">
             <h3>問4</h3>
             <p>以下のプログラムはハッシュ法による探索、格納を行う。関数addは引数valueがarrayに格納できればtrueを返しできなければfalseを返す。また、関数searchは引数valueがarrayに格納されているか探索し格納されていればその要素番号を返し、格納されていなければ
               -1を返す。</p>
-            <p>プログラム中の空欄(a)(b)(c)に入るコード答えなさい。配列の要素番号は0からはじまる。</p>
+            <p>プログラム中の空欄(a)(b)(c)に入るコード答えなさい。</p>
             <div className="haQ4Code">
-              <p>○整数型:&ensp;calcHash1(整数型:&ensp;value)</p>
-              <p>&ensp;&ensp;return&ensp;value mod arrayの要素数</p>
+              <p>int&ensp;calcHash1(int&ensp;value){"{"}</p>
+              <p>&ensp;&ensp;return&ensp;value % array.length;</p>
+              <p>{"}"}</p>
               <p>&ensp;</p>
-              <p>○整数型:&ensp;calcHash2(整数型:&ensp;value)</p>
-              <p>&ensp;&ensp;return&ensp;(value + 1) mod arrayの要素数 </p>
+              <p>int&ensp;calcHash2(int&ensp;value){"{"}</p>
+              <p>&ensp;&ensp;return&ensp;(value + 1) % array.length; </p>
+              <p>{"}"}</p>
               <p>&ensp;</p>
-              <p>○論理型:&ensp;add(整数型:&ensp;value)</p>
-              <p>&ensp;&ensp;整数型:&ensp;i ← <span>(a)</span></p>
-              <p>&ensp;&ensp;if(array[i]が-1ならば)</p>
-              <p>&ensp;&ensp;&ensp;&ensp;array[i] ← <span>(b)</span></p>
-              <p>&ensp;&ensp;&ensp;&ensp;return&ensp;true</p>
-              <p>&ensp;&ensp;endif</p>
+              <p>boolean&ensp;add(int&ensp;value){"{"}</p>
+              <p>&ensp;&ensp;int&ensp;i = <span>(a)</span></p>
+              <p>&ensp;&ensp;if(array[i] == -1){"{"}</p>
+              <p>&ensp;&ensp;&ensp;&ensp;array[i] = <span>(b)</span></p>
+              <p>&ensp;&ensp;&ensp;&ensp;return&ensp;true;</p>
+              <p>&ensp;&ensp;{"}"}</p>
               <p>&ensp;</p>
-              <p>&ensp;&ensp;i ← calcHash2(value)</p>
-              <p>&ensp;&ensp;if(array[i]が-1ならば)</p>
-              <p>&ensp;&ensp;&ensp;&ensp;array[i] ← <span>(b)</span></p>
-              <p>&ensp;&ensp;&ensp;&ensp;return&ensp;true</p>
-              <p>&ensp;&ensp;endif</p>
-              <p>&ensp;&ensp;return false</p>
+              <p>&ensp;&ensp;i = calcHash2(value);</p>
+              <p>&ensp;&ensp;if(array[i] == -1){"{"}</p>
+              <p>&ensp;&ensp;&ensp;&ensp;array[i] = <span>(b)</span></p>
+              <p>&ensp;&ensp;&ensp;&ensp;return&ensp;true;</p>
+              <p>&ensp;&ensp;{"}"}</p>
+              <p>&ensp;&ensp;return false;</p>
+              <p>{"}"}</p>
               <p>&ensp;</p>
-              <p>○整数型:&ensp;search(整数型:&ensp;value)</p>
-              <p>&ensp;&ensp;整数型:&ensp;i ← <span>(a)</span></p>
-              <p>&ensp;&ensp;if&ensp;(array[i]がvalueと同じならば)</p>
+              <p>int&ensp;search(int&ensp;value){"{"}</p>
+              <p>&ensp;&ensp;int&ensp;i = <span>(a)</span></p>
+              <p>&ensp;&ensp;if&ensp;(array[i] == value){"{"}</p>
               <p>&ensp;&ensp;&ensp;&ensp;return&ensp;<span>(c)</span></p>
-              <p>&ensp;&ensp;endif</p>
+              <p>&ensp;&ensp;{"}"}</p>
               <p>&ensp;</p>
-              <p>&ensp;&ensp;i ← calcHash2(value)</p>
-              <p>&ensp;&ensp;if&ensp;(array[i]がvalueと同じならば)</p>
+              <p>&ensp;&ensp;i = calcHash2(value);</p>
+              <p>&ensp;&ensp;if&ensp;(array[i] == value){"{"}</p>
               <p>&ensp;&ensp;&ensp;&ensp;return&ensp;<span>(c)</span></p>
-              <p>&ensp;&ensp;endif</p>
-              <p>&ensp;&ensp;return&ensp;-1</p>
+              <p>&ensp;&ensp;{"}"}</p>
+              <p>&ensp;&ensp;return&ensp;-1;</p>
+              <p>{"}"}</p>
               <p>&ensp;</p>
-              <p>○test</p>
-              <p>&ensp;&ensp;array ← {"{-1, -1, -1, -1, -1, -1, -1}"}</p>
-              <p>&ensp;&ensp;print(add(2))</p>
-              <p>&ensp;&ensp;print(add(3))</p>
-              <p>&ensp;&ensp;print(add(8))</p>
-              <p>&ensp;&ensp;print(add(9))</p>
-              <p>&ensp;&ensp;print(search(0))</p>
-              <p>&ensp;&ensp;print(search(3))</p>
-              <p>&ensp;&ensp;print(search(8))</p>
+              <p>void&ensp;test(){"{"}</p>
+              <p>&ensp;&ensp;array = new int[]{"{-1, -1, -1, -1, -1, -1, -1}"}</p>
+              <p>&ensp;&ensp;println(add(2));</p>
+              <p>&ensp;&ensp;println(add(3));</p>
+              <p>&ensp;&ensp;println(add(8));</p>
+              <p>&ensp;&ensp;println(add(9));</p>
+              <p>&ensp;&ensp;println(search(0));</p>
+              <p>&ensp;&ensp;println(search(3));</p>
+              <p>&ensp;&ensp;println(search(8));</p>
+              <p>{"}"}</p>
               <p>&ensp;</p>
               <p>testを実行した結果:</p>
               <p>true</p>
@@ -266,8 +273,8 @@ function HashPractice(){
         )}
         <div className="linkArea">
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-          <p className="toHashExplain" onClick={() => navigate("/HashExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>解説へ戻る</p>
-          <p className="toHashCode" onClick={() => navigate("/HashCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語での実装へ戻る</p>
+          <p className="toHashExplain" onClick={() => navigate("/HashExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>解説へ戻る</p>
+          <p className="toHashCode" onClick={() => navigate("/HashCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>疑似言語での実装へ戻る</p>
           
         </div>
       </div>  

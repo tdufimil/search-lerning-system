@@ -30,6 +30,7 @@ function BinaryExplain() {
   const isCorrectQ2 = location.state.isCorrectQ2;
   const isCorrectQ3 = location.state.isCorrectQ3;
   const isCorrectQ4 = location.state.isCorrectQ4;
+  const mode = location.state.mode;
 
   useEffect(() => {
       const fetch = async () => {
@@ -99,14 +100,13 @@ function BinaryExplain() {
             {islast && (
              <p>{text02}</p>
             )}
-            {islast && (localStorage.getItem('mode') === "a" ? <p>続いて線形探索を疑似言語で実装してみましょう。</p> : <p>続いて線形探索を疑似言語で実装してみましょう。</p>)}
+            {islast && (mode === "a" ? <p>続いて二分探索をprocesssingで実装してみましょう。</p> : <p>最後に二分探索の問題を解いてみましょう。</p>)}
           </div>
           <div className="linkArea">
             <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-            <p className="toBinaryExEdit" onClick={() => navigate("/BinaryExplainEdit", { state: {title, text01,  text02, isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>編集</p>
-            
-             <p className="toBinaryCodea" onClick={() => navigate("/BinaryCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語で実装する⇒</p>
-        
+            <p className="toBinaryExEdit" onClick={() => navigate("/BinaryExplainEdit", { state: {title, text01,  text02, isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>編集</p>
+            {mode === "a" ? <p className="toBinaryCodea" onClick={() => navigate("/BinaryCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>processingで実装する⇒</p>
+            : <p className="toBinaryPractice" onClick={() => navigate("/BinaryPractice", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>問題を解く⇒</p>}        
           </div>
         </div>
         <div className="biComContainer">

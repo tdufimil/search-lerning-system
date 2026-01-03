@@ -40,6 +40,8 @@ function BinaryPractice(){
   const [isCorrectQ2, setIsCorrectQ2] = useState(location.state.isCorrectQ2);
   const [isCorrectQ3, setIsCorrectQ3] = useState(location.state.isCorrectQ3);
   const [isCorrectQ4, setIsCorrectQ4] = useState(location.state.isCorrectQ4);
+  const mode = location.state.mode;
+
 
   useEffect(() => {
       const fetch = async () => {
@@ -128,9 +130,9 @@ function BinaryPractice(){
       const normalized4_1 = answerQ4_1.replace(/\s/g, "");
       const normalized4_2 = answerQ4_2.replace(/\s/g, "");
       const normalized4_3 = answerQ4_3.replace(/\s/g, "");
-      const q4_1 = normalized4_1.includes("(left+right)/2");
-      const q4_2 = normalized4_2.includes("mid-1");
-      const q4_3 = normalized4_3.includes("mid+1");
+      const q4_1 = normalized4_1 ==("(left+right)/2;");
+      const q4_2 = normalized4_2 == ("mid-1;");
+      const q4_3 = normalized4_3 == ("mid+1;");
 
       let msg = "";
       if(!q4_1){
@@ -221,37 +223,37 @@ function BinaryPractice(){
               </select>
               <button onClick={q3answerCheck}>回答する</button>
               {messageQ3.includes("正解！") ? <h3 style={{color : "green"}}>{messageQ3}</h3> : <p style={{color : "red"}}>{messageQ3}</p>}
-              {messageQ3.includes("正解！") && localStorage.getItem('mode') === 'a' ? <p></p> : <p></p>}
+              {messageQ3.includes("正解！") && mode !== 'a' ? <p>ホームに戻りアンケートに回答した後、次のアルゴリズムを学習しましょう。</p> : <p></p>}
             </div>    
           </div>  
         )}
-        {isCorrectQ3 &&  (
+        {isCorrectQ3 &&  mode === 'a' && (
           <>
           <div className="biQuestion4">
             <h3>問4</h3>
-            <p>以下のプログラムはarrayに二分探索を行いtargetと同じ値が存在すればその要素が何番目かを出力し、見つからなければ-1を出力する。プログラム中の(a)(b)(c)に入るコード答えなさい。要素番号は1から始まるものとする。</p>
+            <p>以下のプログラムはarrayに二分探索を行いtargetと同じ値が存在すればその要素が何番目かを出力し、見つからなければ-1を出力する。プログラム中の(a)(b)(c)に入るコード答えなさい。</p>
             <div className="biQ4Code">
-              <p>整数型の配列:&ensp;array ← {"{1, 4, 5, 9, 11, 15, 17, 18}"}</p>
-              <p>整数型:&ensp;target ← 15</p>
-              <p>整数型:&ensp;result ← -1</p>
-              <p>整数型:&ensp;left ← 1</p>
-              <p>整数型:&ensp;right ← arrayの要素数</p>
-              <p>整数型:&ensp;mid</p>
+              <p>int[]&ensp;array = {"{1, 4, 5, 9, 11, 15, 17, 18}"};</p>
+              <p>int&ensp;target = 15;</p>
+              <p>int&ensp;result = -1;</p>
+              <p>int&ensp;left = 0;</p>
+              <p>int&ensp;right = array.length - 1;</p>
+              <p>int&ensp;mid;</p>
               <p>&ensp;</p>
-              <p>while&ensp;(leftがright以下 かつ resultが-1)</p>
-              <p>&ensp;&ensp;mid ← <span>(a)</span></p>            
-              <p>&ensp;&ensp;if&ensp;(array[mid]がtargetと同じならば)</p>   
-              <p>&ensp;&ensp;&ensp;&ensp;result ← mid</p>
-              <p>&ensp;&ensp;endif</p>
-              <p>&ensp;&ensp;if&ensp;(array[mid]がtargetよりも大きいならば)</p>
-              <p>&ensp;&ensp;&ensp;&ensp;right ← <span>(b)</span></p>
-              <p>&ensp;&ensp;endif</p>
-              <p>&ensp;&ensp;if&ensp;(array[mid]がtargetよりも小さいならば)</p>
-              <p>&ensp;&ensp;&ensp;&ensp;left ← <span>(c)</span></p>
-              <p>&ensp;&ensp;endif</p>
-              <p>endwhile</p>
+              <p>while&ensp;(left {"<="} right && result == -1){"{"}</p>
+              <p>&ensp;&ensp;mid = <span>(a)</span></p>            
+              <p>&ensp;&ensp;if&ensp;(array[mid] == target){"{"}</p>   
+              <p>&ensp;&ensp;&ensp;&ensp;result = mid;</p>
+              <p>&ensp;&ensp;{"}"}</p>
+              <p>&ensp;&ensp;if&ensp;(array[mid] {">"} target){"{"}</p>
+              <p>&ensp;&ensp;&ensp;&ensp;right = <span>(b)</span></p>
+              <p>&ensp;&ensp;{"}"}</p>
+              <p>&ensp;&ensp;if&ensp;(array[mid] {"<"} target){"{"}</p>
+              <p>&ensp;&ensp;&ensp;&ensp;left = <span>(c)</span></p>
+              <p>&ensp;&ensp;{"}"}</p>
+              <p>{"}"}</p>
               <p>&ensp;</p>
-              <p>print(result)</p>
+              <p>printin(result);</p>
             </div>
             <div className="biQ4Answer">
                <textarea className="biQ4_1" placeholder="(a)の回答を入力"  type='text' onChange={(e) => setAnswerQ4_1(e.target.value)} rows={1} cols={50}/>
@@ -270,8 +272,8 @@ function BinaryPractice(){
         )}
         <div className="linkArea">
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-          <p className="toBinaryExplain" onClick={() => navigate("/BinaryExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>解説へ戻る</p>
-          <p className="toBinaryCode" onClick={() => navigate("/BinaryCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語での実装へ戻る</p>
+          <p className="toBinaryExplain" onClick={() => navigate("/BinaryExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>解説へ戻る</p>
+          {mode === 'a' ? <p className="toBinaryCode" onClick={() => navigate("/BinaryCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>疑似言語での実装へ戻る</p> : <p></p>}
           
         </div>        
       </div>

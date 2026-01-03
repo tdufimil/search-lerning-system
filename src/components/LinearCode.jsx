@@ -21,6 +21,7 @@ function LinearCode() {
   const isCorrectQ2 = location.state.isCorrectQ2;
   const isCorrectQ3 = location.state.isCorrectQ3;
   const isCorrectQ4 = location.state.isCorrectQ4;
+  const mode = location.state.mode;
 
 
   useEffect(() => {
@@ -63,7 +64,7 @@ function LinearCode() {
   <div className="linearCRoot">
     <div className="liContainer">
       <div className="liCodeArea" style={{ whiteSpace: "pre-wrap" }}>
-        <h2>疑似言語で実装</h2>
+        <h2>processingで実装</h2>
         <h3>概要と変数の定義</h3>
         <p>{text01}</p>
         <div className="liCode">
@@ -84,8 +85,8 @@ function LinearCode() {
 
         {count >=2 && (
         <>
-          <h3>全体の疑似言語と実行結果</h3>
-          <p>説明を省いて疑似言語の部分だけを書くと次のようになります。</p>
+          <h3>全体のコードと実行結果</h3>
+          <p>説明を省いてコードの部分だけを書くと次のようになります。</p>
           <div className="liCode">
             <p>{code01}</p>
             <p>{code02}</p>
@@ -98,8 +99,8 @@ function LinearCode() {
       </div>
       <div className='linkArea'>
         <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-        <p className="toLinearCoEdit" onClick={() => navigate("/LinearCodeEdit", { state: {text01,  text02, text03, code01, code02, code03, result, isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>編集</p>
-        <p className="toLinearPractice" onClick={() => navigate("/LinearPractice", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>問題を解く⇒</p>
+        <p className="toLinearCoEdit" onClick={() => navigate("/LinearCodeEdit", { state: {text01,  text02, text03, code01, code02, code03, result, isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>編集</p>
+        <p className="toLinearPractice" onClick={() => navigate("/LinearPractice", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>問題を解く⇒</p>
       </div>  
     </div>
     <div className="liComContainer">

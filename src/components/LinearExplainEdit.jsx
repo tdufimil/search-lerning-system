@@ -14,6 +14,7 @@ function LinearExplainEdit(){
   const isCorrectQ2 = location.state.isCorrectQ2;
   const isCorrectQ3 = location.state.isCorrectQ3;
   const isCorrectQ4 = location.state.isCorrectQ4;
+  const mode = location.state.mode;
   
   async function confirm() {
     const ref = db.collection("algorithms").doc("naSyKL4rsYKA67xBqFXg");
@@ -38,7 +39,7 @@ function LinearExplainEdit(){
           </div>
             <div className='linkArea'>
               <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-              <p className="toBLinearExplain" onClick={() => navigate("/LinearExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>解説へ戻る</p>
+              <p className="toBLinearExplain" onClick={() => navigate("/LinearExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>解説へ戻る</p>
             </div> 
           </div>
         </div>

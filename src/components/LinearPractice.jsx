@@ -39,6 +39,7 @@ function LinearPractice(){
   const [messageQ2, setMessageQ2] = useState("");
   const [messageQ3, setMessageQ3] = useState("");
   const [messageQ4, setMessageQ4] = useState("");
+  const mode = location.state.mode;
 
   useEffect(() => {
       const fetch = async () => {
@@ -115,8 +116,8 @@ function LinearPractice(){
   const q4answerCheck = () => {
     const normalized4_2 = answerQ4_2.replace(/\s/g, "");
     const normalized4_3 = answerQ4_3.replace(/\s/g, "");
-    const q4_2 = normalized4_2.includes("result←i");
-    const q4_3 = normalized4_3.includes("i←i+1");
+    const q4_2 = normalized4_2 == ("result=i;");
+    const q4_3 = normalized4_3 == ("i=i+1;");
 
     if(!isCorrectQ4){
       let msg = "";
@@ -211,32 +212,32 @@ function LinearPractice(){
               </select>
               <button onClick={q3answerCheck}>回答する</button>
               {messageQ3.includes("正解！") ? <h3 style={{color : "green"}}>{messageQ3}</h3> : <p style={{color : "red"}}>{messageQ3}</p>}
-              {messageQ3.includes("正解！") && localStorage.getItem('mode') === 'a' ? <p></p> : <p></p>}
+              {messageQ3.includes("正解！") && mode !== 'a' ? <p>ホームに戻りアンケートに回答した後、次のアルゴリズムを学習しましょう。</p> : <p></p>}
             </div>  
           </div>
         )}
-        {isCorrectQ3 &&(
+        {isCorrectQ3 && mode === 'a' && (
           <div className="liQuestion4">
             <h3>問4</h3>
-            <p>以下のプログラムはarrayに線形探索を行いtargetと同じ値が存在すればその要素が何番目かを出力し、見つからなければ -1 を出力する。プログラム中の(a)にあてまはるものを選択肢から選び、(b)(c)に入るコードを書きなさい。要素番号は1から始まるものとする。</p>
+            <p>以下のプログラムはarrayに線形探索を行いtargetと同じ値が存在すればその要素が何番目かを出力し、見つからなければ -1 を出力する。プログラム中の(a)にあてまはるものを選択肢から選び、(b)(c)に入るコードを書きなさい。</p>
             <div className="liQ4Code">
-              <p>整数型の配列:&ensp;array ← {"{10, 3, 15, 4, 1, 11, 7, 18}"}</p>
-              <p>整数型:&ensp;target ← 11</p>
-              <p>整数型:&ensp;i ← 1</p>
-              <p>整数型:&ensp;result ← -1</p>
-              <p>while&ensp;(iがarrayの要素数以下 <span>(a)</span> resultが-1)</p>
-              <p>&ensp;&ensp;if&ensp;(array[i]がtargetと同じならば)</p>            
+              <p>int[]&ensp;array = {"{10, 3, 15, 4, 1, 11, 7, 18}"};</p>
+              <p>int&ensp;target = 11;</p>
+              <p>int&ensp;i = 0;</p>
+              <p>int&ensp;result = -1;</p>
+              <p>while&ensp;({"i < array.length"} <span>(a)</span> {"result == -1"}){"{"}</p>
+              <p>&ensp;&ensp;if&ensp;(array[i] == target){"{"}</p>            
               <p>&ensp;&ensp;&ensp;&ensp;<span>(b)</span></p>   
-              <p>&ensp;&ensp;endif</p>
+              <p>&ensp;&ensp;{"}"}</p>
               <p>&ensp;&ensp;<span>(c)</span></p>
-              <p>endwhile</p>
-              <p>print(result)</p>
+              <p>{"}"}</p>
+              <p>println(result);</p>
             </div>
             <div className="liQ4Answer">
               <select value={answerQ4_1} onChange={(e) => setAnswerQ4_1(e.target.value)}>
                 <option value="">(a)の回答を選択</option>
-                <option value="または">または</option>
-                <option value="かつ">かつ</option>
+                <option value="または">||</option>
+                <option value="かつ">&&</option>
               </select>
               <textarea placeholder="(b)の回答を入力"  type='text' onChange={(e) => setAnswerQ4_2(e.target.value)} rows={1} cols={50}/>
               <textarea placeholder="(c)の回答を入力"  type='text' onChange={(e) => setAnswerQ4_3(e.target.value)} rows={1} cols={50}/>
@@ -252,8 +253,8 @@ function LinearPractice(){
         )}
         <div className="linkArea">
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-          <p className="toLinearExplain" onClick={() => navigate("/LinearExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>解説へ戻る</p>
-          <p className="toLinearCode" onClick={() => navigate("/LinearCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語での実装へ戻る</p> 
+          <p className="toLinearExplain" onClick={() => navigate("/LinearExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>解説へ戻る</p>
+          {mode === 'a' ? <p className="toLinearCode" onClick={() => navigate("/LinearCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>疑似言語での実装へ戻る</p> : <p></p>}
         </div>
       </div> 
       <div className="liComContainer">

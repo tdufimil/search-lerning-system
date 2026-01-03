@@ -18,6 +18,7 @@ function BinaryCodeEdit(){
   const isCorrectQ2 = location.state.isCorrectQ2;
   const isCorrectQ3 = location.state.isCorrectQ3;
   const isCorrectQ4 = location.state.isCorrectQ4;
+  const mode = location.state.mode;
   
   async function confirm() {
     const ref = db.collection("algorithms").doc("F8GztP0AROZiQPS7Jn4U");
@@ -56,7 +57,7 @@ function BinaryCodeEdit(){
           </div>
             <div className='linkArea'>
               <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-              <p className="toBBinaryCode" onClick={() => navigate("/BinaryCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語の解説へ戻る</p>
+              <p className="toBBinaryCode" onClick={() => navigate("/BinaryCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>疑似言語の解説へ戻る</p>
             </div> 
           </div>
         </div>

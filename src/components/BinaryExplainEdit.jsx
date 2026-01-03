@@ -14,7 +14,8 @@ function BinaryExplainEdit(){
   const isCorrectQ2 = location.state.isCorrectQ2;
   const isCorrectQ3 = location.state.isCorrectQ3;
   const isCorrectQ4 = location.state.isCorrectQ4;
-  
+  const mode = location.state.mode;
+
   async function confirm() {
     const ref = db.collection("algorithms").doc("Dj3qHR2p1OcPvS5ClfEb");
     await ref.set({
@@ -38,7 +39,7 @@ function BinaryExplainEdit(){
           </div>
           <div className='linkArea'>
             <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-            <p className="toBBinaryExplain" onClick={() => navigate("/binaryExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>解説へ戻る</p>
+            <p className="toBBinaryExplain" onClick={() => navigate("/binaryExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>解説へ戻る</p>
           </div> 
         </div>
       </div>

@@ -22,6 +22,7 @@ function HashExplain() {
   const isCorrectQ2 = location.state.isCorrectQ2;
   const isCorrectQ3 = location.state.isCorrectQ3;
   const isCorrectQ4 = location.state.isCorrectQ4;
+  const mode = location.state.mode;
 
   useEffect(() => {
       const fetch = async () => {
@@ -79,15 +80,15 @@ function HashExplain() {
                 <p>{text02}</p>
                 </>
               )}
-              {count >=2 && (localStorage.getItem('mode') === "a" ? <p>続いて線形探索を疑似言語で実装してみましょう。</p> : <p>続いて線形探索を疑似言語で実装してみましょう。</p>)}            
+              {count >=2 && (mode === "a" ? <p>続いて線形探索をprocessingで実装してみましょう。</p> : <p>最後にハッシュ法の問題を解いてみましょう。</p>)}            
             </div>
             {count <2 && (<button onClick={clickButton}>次へ</button>)}
           </div>
           <div className="linkArea">
             <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-            <p className="toHashExEdit" onClick={() => navigate("/HashExplainEdit", { state: {title, text01,  text02, isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>編集</p>
-            
-             <p className="toHashCodea" onClick={() => navigate("/HashCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語で実装する⇒</p>
+            <p className="toHashExEdit" onClick={() => navigate("/HashExplainEdit", { state: {title, text01,  text02, isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>編集</p>
+            {mode === "a" ? <p className="toHashCodea" onClick={() => navigate("/HashCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>processingで実装する⇒</p>
+          : <p className="toBinaryPractice" onClick={() => navigate("/HashPractice", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>問題を解く⇒</p>}
           </div>
         </div>
         <div className="haComContainer">

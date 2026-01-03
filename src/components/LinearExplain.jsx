@@ -24,6 +24,7 @@ function LinearExplain() {
   const isCorrectQ2 = location.state.isCorrectQ2;
   const isCorrectQ3 = location.state.isCorrectQ3;
   const isCorrectQ4 = location.state.isCorrectQ4;
+  const mode = location.state.mode;
 
   useEffect(() => {
       const fetch = async () => {
@@ -95,12 +96,13 @@ function LinearExplain() {
           {nextIndex >= 4 && ( 
             <p>{text02}</p>
           )}
-          {nextIndex >= 4 && (localStorage.getItem('mode') === "a" ? <p>続いて線形探索を疑似言語で実装してみましょう。</p> : <p>続いて線形探索を疑似言語で実装してみましょう。</p>)}
+          {nextIndex >= 4 && (mode === "a" ? <p>続いて線形探索をprocesssingで実装してみましょう。</p> : <p>最後に線形探索の問題を解いてみましょう。</p>)}
         </div>
         <div className='linkArea'>
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
-          <p className="toLinearExEdit" onClick={() => navigate("/LinearExplainEdit", { state: {title, text01, text02, isCorrectQ1, isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>編集</p>
-           <p className="toLinearCodea" onClick={() => navigate("/LinearCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4}})}>疑似言語で実装する⇒</p>
+          <p className="toLinearExEdit" onClick={() => navigate("/LinearExplainEdit", { state: {title, text01, text02, isCorrectQ1, isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>編集</p>
+          {mode === "a" ? <p className="toLinearCodea" onClick={() => navigate("/LinearCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>processingで実装する⇒</p>
+          : <p className="toLinearPractice" onClick={() => navigate("/LinearPractice", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>問題を解く⇒</p>}
         </div> 
       </div>
       <div className="liComContainer">
