@@ -31,7 +31,7 @@ function Home() {
   const isCorrectQ2 = false;
   const isCorrectQ3 = false;
   const isCorrectQ4 = false;
-  const mode = 'b';
+  const mode = 'a';
   //const [mode, setMode] = useState('a');
 
   const navigate = useNavigate();
