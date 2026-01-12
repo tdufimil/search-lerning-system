@@ -57,10 +57,10 @@ function BinaryExplain() {
       setFlipped(newFlipped);
       
       if(nextIndex === 3){
-        setText("13よりも小さいカードであるため13は右半分にあることが分かります。次に右半分の中から真ん中のカード（6枚目）をめくります。");
+        setText("13よりも小さいカードであるため13は右半分にあることが分かります。次に右半分の中から真ん中のカード（左から6枚目）をめくります。");
         setNextIndex(5);
       }else if(nextIndex === 5){
-       setText("これは13より大きいので、探すカードはその左側にあることが分かります。次に5枚目のカードをめくります。");
+       setText("これは13より大きいので、探すカードはその左側にあることが分かります。次に左から5枚目のカードをめくります。");
        setNextIndex(4); 
       }else if(nextIndex === 4){
         setText("13のカードが見つかったため探索は成功です。");
@@ -100,12 +100,12 @@ function BinaryExplain() {
             {islast && (
              <p>{text02}</p>
             )}
-            {islast && (mode === "a" ? <p>続いて二分探索をprocesssingで実装してみましょう。</p> : <p>最後に二分探索の問題を解いてみましょう。</p>)}
+            {islast && (mode === "a" ? <p>続いて二分探索の実装方法を学びましょう。</p> : <p>最後に二分探索の問題を解いてみましょう。</p>)}
           </div>
           <div className="linkArea">
             <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
             <p className="toBinaryExEdit" onClick={() => navigate("/BinaryExplainEdit", { state: {title, text01,  text02, isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>編集</p>
-            {mode === "a" ? <p className="toBinaryCodea" onClick={() => navigate("/BinaryCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>processingで実装する⇒</p>
+            {mode === "a" ? <p className="toBinaryCodea" onClick={() => navigate("/BinaryCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>二分探索の実装⇒</p>
             : <p className="toBinaryPractice" onClick={() => navigate("/BinaryPractice", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>問題を解く⇒</p>}        
           </div>
         </div>

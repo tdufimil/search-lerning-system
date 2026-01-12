@@ -117,7 +117,7 @@ function LinearPractice(){
     const normalized4_2 = answerQ4_2.replace(/\s/g, "");
     const normalized4_3 = answerQ4_3.replace(/\s/g, "");
     const q4_2 = normalized4_2 == ("result=i;");
-    const q4_3 = normalized4_3 == ("i=i+1;");
+    const q4_3 = normalized4_3 == ("i=i+1;") || normalized4_3 == ("i+=1;") || normalized4_3 == ("i++;");
 
     if(!isCorrectQ4){
       let msg = "";

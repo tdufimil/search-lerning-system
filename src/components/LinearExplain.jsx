@@ -96,12 +96,12 @@ function LinearExplain() {
           {nextIndex >= 4 && ( 
             <p>{text02}</p>
           )}
-          {nextIndex >= 4 && (mode === "a" ? <p>続いて線形探索をprocesssingで実装してみましょう。</p> : <p>最後に線形探索の問題を解いてみましょう。</p>)}
+          {nextIndex >= 4 && (mode === "a" ? <p>続いて線形探索の実装方法を学びましょう。</p> : <p>最後に線形探索の問題を解いてみましょう。</p>)}
         </div>
         <div className='linkArea'>
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
           <p className="toLinearExEdit" onClick={() => navigate("/LinearExplainEdit", { state: {title, text01, text02, isCorrectQ1, isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>編集</p>
-          {mode === "a" ? <p className="toLinearCodea" onClick={() => navigate("/LinearCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>processingで実装する⇒</p>
+          {mode === "a" ? <p className="toLinearCodea" onClick={() => navigate("/LinearCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>線形探索の実装⇒</p>
           : <p className="toLinearPractice" onClick={() => navigate("/LinearPractice", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>問題を解く⇒</p>}
         </div> 
       </div>

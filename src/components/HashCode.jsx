@@ -73,7 +73,7 @@ function HashCode(){
   <div className="hashCRoot">
     <div className="haContainer">
       <div className="haCodeArea" style={{ whiteSpace: "pre-wrap" }}>
-        <h2>processingで実装</h2>
+        <h2>ハッシュ法の実装</h2>
         <h3>概要と変数の定義</h3>
         <p>{text01}</p>
         <div className="haCode">

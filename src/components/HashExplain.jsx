@@ -80,14 +80,14 @@ function HashExplain() {
                 <p>{text02}</p>
                 </>
               )}
-              {count >=2 && (mode === "a" ? <p>続いて線形探索をprocessingで実装してみましょう。</p> : <p>最後にハッシュ法の問題を解いてみましょう。</p>)}            
+              {count >=2 && (mode === "a" ? <p>続いてハッシュ法の実装方法を学びましょう。</p> : <p>最後にハッシュ法の問題を解いてみましょう。</p>)}            
             </div>
             {count <2 && (<button onClick={clickButton}>次へ</button>)}
           </div>
           <div className="linkArea">
             <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
             <p className="toHashExEdit" onClick={() => navigate("/HashExplainEdit", { state: {title, text01,  text02, isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>編集</p>
-            {mode === "a" ? <p className="toHashCodea" onClick={() => navigate("/HashCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>processingで実装する⇒</p>
+            {mode === "a" ? <p className="toHashCodea" onClick={() => navigate("/HashCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>ハッシュ法の実装⇒</p>
           : <p className="toBinaryPractice" onClick={() => navigate("/HashPractice", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>問題を解く⇒</p>}
           </div>
         </div>

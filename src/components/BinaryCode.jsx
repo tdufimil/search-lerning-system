@@ -65,7 +65,7 @@ function BinaryCode() {
     <div className="binaryCRoot">
       <div className="biContainer">
         <div className="biCodeArea" style={{ whiteSpace: "pre-wrap" }}>
-          <h2>pricessingで実装</h2>
+          <h2>二分探索の実装</h2>
           <h3>概要と変数の定義</h3>
           <p>{text01}</p>
           <div className="biCode">

@@ -64,7 +64,7 @@ function LinearCode() {
   <div className="linearCRoot">
     <div className="liContainer">
       <div className="liCodeArea" style={{ whiteSpace: "pre-wrap" }}>
-        <h2>processingで実装</h2>
+        <h2>線形探索の実装</h2>
         <h3>概要と変数の定義</h3>
         <p>{text01}</p>
         <div className="liCode">
@@ -91,6 +91,7 @@ function LinearCode() {
             <p>{code01}</p>
             <p>{code02}</p>
             <p>{code03}</p>
+            <p>   </p>
             <p>{result}</p>
           </div>
           <p>最後に問題を解いて線形探索の復習をしましょう。</p>
