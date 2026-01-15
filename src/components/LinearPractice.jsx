@@ -254,7 +254,7 @@ function LinearPractice(){
         <div className="linkArea">
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
           <p className="toLinearExplain" onClick={() => navigate("/LinearExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>解説へ戻る</p>
-          {mode === 'a' ? <p className="toLinearCode" onClick={() => navigate("/LinearCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>疑似言語での実装へ戻る</p> : <p></p>}
+          {mode === 'a' ? <p className="toLinearCode" onClick={() => navigate("/LinearCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>線形探索の実装へ戻る</p> : <p></p>}
         </div>
       </div> 
       <div className="liComContainer">

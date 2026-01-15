@@ -273,7 +273,7 @@ function BinaryPractice(){
         <div className="linkArea">
           <p className="toHome" onClick={() => navigate("/")}>ホームへ</p>
           <p className="toBinaryExplain" onClick={() => navigate("/BinaryExplain", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>解説へ戻る</p>
-          {mode === 'a' ? <p className="toBinaryCode" onClick={() => navigate("/BinaryCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>疑似言語での実装へ戻る</p> : <p></p>}
+          {mode === 'a' ? <p className="toBinaryCode" onClick={() => navigate("/BinaryCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>二分探索の実装へ戻る</p> : <p></p>}
           
         </div>        
       </div>
