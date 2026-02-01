@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useEffect} from 'react';
-import {db} from "../firebase.jsx";
-import { doc, updateDoc, arrayUnion} from "firebase/firestore";
+// import {db} from "../firebase.jsx";
+// import { doc, updateDoc, arrayUnion} from "firebase/firestore";
 import cardBack from "../img/cardBack.jpg" ;
 import card01 from "../img/card01.jpg" ;
 import card02 from "../img/card02.jpg" ;
@@ -19,8 +19,8 @@ import card08 from "../img/card08.jpg" ;
 
 
 function LinearPractice(){
-  const [comArr, setComArr] = useState([]);
-  const [newCom, setNewCom] = useState("");
+  //const [comArr, setComArr] = useState([]);
+  // const [newCom, setNewCom] = useState("");
   const location = useLocation();
   const cardsQ1 = [card06, card02, card08, card03, card01];
   const cardsQ2 = [cardBack, cardBack, cardBack, cardBack, cardBack, cardBack];
@@ -43,10 +43,10 @@ function LinearPractice(){
 
   useEffect(() => {
       const fetch = async () => {
-        const ref = db.collection("algorithms").doc("bZeSHUU8RgXeTbVTaQ64");
-        const doc = await ref.get();
-        const arrayData = doc.data().comes;
-        setComArr(arrayData);
+//         const ref = db.collection("algorithms").doc("bZeSHUU8RgXeTbVTaQ64");
+//         const doc = await ref.get();
+//         const arrayData = doc.data().comes;
+//         setComArr(arrayData);
         
         if(isCorrectQ1){
           setMessageQ1("正解！")
@@ -139,14 +139,14 @@ function LinearPractice(){
     }
   }
 
-  async function addCom(){
-    const arrayRef = doc(db, "algorithms", "bZeSHUU8RgXeTbVTaQ64");
-    await updateDoc(arrayRef, {
-    comes: arrayUnion(newCom)
-    });
-    setNewCom("");
-    window.location.reload();
-  }
+  // async function addCom(){
+  //   const arrayRef = doc(db, "algorithms", "bZeSHUU8RgXeTbVTaQ64");
+  //   await updateDoc(arrayRef, {
+  //   comes: arrayUnion(newCom)
+  //   });
+  //   setNewCom("");
+  //   window.location.reload();
+  // }
 
   return(
     <>
@@ -245,7 +245,7 @@ function LinearPractice(){
               {messageQ4.includes("正解！") ?
               <>
               <h3 className="liQ4AnsMess" style={{color : "green"}}>{messageQ4}</h3> 
-              <p>ホームに戻りアンケートに回答した後、次のアルゴリズムを学習しましょう。</p>
+              <p>ホームに戻り他のアルゴリズムを学習しましょう。</p>
               </> 
               : <p className="liQ4AnsMess" style={{color : "red"}}>{messageQ4}</p>}
             </div>
@@ -257,7 +257,7 @@ function LinearPractice(){
           {mode === 'a' ? <p className="toLinearCode" onClick={() => navigate("/LinearCode", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>線形探索の実装へ戻る</p> : <p></p>}
         </div>
       </div> 
-      <div className="liComContainer">
+     {/* <div className="liComContainer">
         <div className="liPrcom">
           <h2>質問</h2>
           <div className='coms'>
@@ -266,7 +266,7 @@ function LinearPractice(){
           <textarea placeholder="質問を入力"  type='text' onChange={(e) => setNewCom(e.target.value)} rows={2} cols={97}/>
           <button onClick={addCom}>投稿する</button> 
         </div>
-      </div>
+      </div>*/}
     </div>
     </>
   )

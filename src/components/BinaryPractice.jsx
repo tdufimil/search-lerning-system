@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useEffect} from 'react';
-import {db} from "../firebase.jsx";
-import { doc, updateDoc, arrayUnion} from "firebase/firestore";
+// import {db} from "../firebase.jsx";
+// import { doc, updateDoc, arrayUnion} from "firebase/firestore";
 import cardBack from "../img/cardBack.jpg" ;
 import card01 from "../img/card01.jpg" ;
 import card02 from "../img/card02.jpg" ;
@@ -19,8 +19,8 @@ import card10 from "../img/card10.jpg" ;
 //import biq4ans from "../img/biq4ans.jpg" ;
 
 function BinaryPractice(){
-  const [comArr, setComArr] = useState([]);
-  const [newCom, setNewCom] = useState("");
+  // const [comArr, setComArr] = useState([]);
+  // const [newCom, setNewCom] = useState("");
   const location = useLocation();
   const cardsQ1 = [card02, card05, card08, card09, card10];
   const cardsQ2 = [card01, card02, card04, card07, card08, card09];
@@ -45,10 +45,10 @@ function BinaryPractice(){
 
   useEffect(() => {
       const fetch = async () => {
-        const ref = db.collection("algorithms").doc("pyfwRJRVYPQfZWuB2rBh");
-        const doc = await ref.get();
-        const arrayData = doc.data().comes;
-        setComArr(arrayData);
+        // const ref = db.collection("algorithms").doc("pyfwRJRVYPQfZWuB2rBh");
+        // const doc = await ref.get();
+        // const arrayData = doc.data().comes;
+        // setComArr(arrayData);
 
         if(isCorrectQ1){
           setMessageQ1("正解！")
@@ -153,14 +153,14 @@ function BinaryPractice(){
     }
   }
 
-  async function addCom(){
-    const arrayRef = doc(db, "algorithms", "pyfwRJRVYPQfZWuB2rBh");
-    await updateDoc(arrayRef, {
-    comes: arrayUnion(newCom)
-    });
-    setNewCom("");
-    window.location.reload();
-  }  
+  // async function addCom(){
+  //   const arrayRef = doc(db, "algorithms", "pyfwRJRVYPQfZWuB2rBh");
+  //   await updateDoc(arrayRef, {
+  //   comes: arrayUnion(newCom)
+  //   });
+  //   setNewCom("");
+  //   window.location.reload();
+  // }  
 
   return(
     <>
@@ -223,7 +223,7 @@ function BinaryPractice(){
               </select>
               <button onClick={q3answerCheck}>回答する</button>
               {messageQ3.includes("正解！") ? <h3 style={{color : "green"}}>{messageQ3}</h3> : <p style={{color : "red"}}>{messageQ3}</p>}
-              {messageQ3.includes("正解！") && mode !== 'a' ? <p>ホームに戻りアンケートに回答した後、次のアルゴリズムを学習しましょう。</p> : <p></p>}
+              {messageQ3.includes("正解！") && mode !== 'a' ? <p>ホームに戻り他のアルゴリズムを学習しましょう。</p> : <p></p>}
             </div>    
           </div>  
         )}
@@ -277,7 +277,7 @@ function BinaryPractice(){
           
         </div>        
       </div>
-      <div className="biComContainer">
+      {/* <div className="biComContainer">
         <div className="biPrcom">
           <h2>質問</h2>
           <div className='coms'>
@@ -286,7 +286,7 @@ function BinaryPractice(){
           <textarea placeholder="質問を入力"  type='text' onChange={(e) => setNewCom(e.target.value)} rows={2} cols={97}/>
           <button onClick={addCom}>投稿する</button> 
         </div>
-      </div>
+      </div> */}
     </div>
     </>
   )

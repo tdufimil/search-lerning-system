@@ -3,16 +3,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useEffect} from 'react';
-import {db} from "../firebase.jsx";
-import { doc, updateDoc, arrayUnion} from "firebase/firestore";
+//import {db} from "../firebase.jsx";
+//import { doc, updateDoc, arrayUnion} from "firebase/firestore";
 import hashQ1 from "../img/hashQ1.jpg" ;
 import hashQ2 from "../img/hashQ2.jpg" ;
 import hashQ3 from "../img/hashQ3.jpg" ;
 //import haQ4Ans from "../img/haq4ans.jpg";
 
 function HashPractice(){
-  const [comArr, setComArr] = useState([]);
-  const [newCom, setNewCom] = useState("");
+//  const [comArr, setComArr] = useState([]);
+//  const [newCom, setNewCom] = useState("");
   const location = useLocation();
   const [answerQ1, setAnswerQ1] = useState("");
   const [answerQ2, setAnswerQ2] = useState("");
@@ -34,10 +34,10 @@ function HashPractice(){
 
   useEffect(() => {
       const fetch = async () => {
-        const ref = db.collection("algorithms").doc("GtjJMbqXODsI7gtOqmcH");
-        const doc = await ref.get();
-        const arrayData = doc.data().comes;
-        setComArr(arrayData);
+//        const ref = db.collection("algorithms").doc("GtjJMbqXODsI7gtOqmcH");
+//        const doc = await ref.get();
+        // const arrayData = doc.data().comes;
+//        setComArr(arrayData);
 
         if(isCorrectQ1){
           setMessageQ1("正解！")
@@ -121,14 +121,14 @@ function HashPractice(){
     }
   }
 
-  async function addCom(){
-    const arrayRef = doc(db, "algorithms", "GtjJMbqXODsI7gtOqmcH");
-    await updateDoc(arrayRef, {
-    comes: arrayUnion(newCom)
-    });
-    setNewCom("");
-    window.location.reload();
-  }
+  // async function addCom(){
+  //   const arrayRef = doc(db, "algorithms", "GtjJMbqXODsI7gtOqmcH");
+  //   await updateDoc(arrayRef, {
+  //   comes: arrayUnion(newCom)
+  //   });
+  //   setNewCom("");
+  //   window.location.reload();
+  // }
 
   return(
     <>
@@ -265,7 +265,7 @@ function HashPractice(){
               {messageQ4.includes("正解！") ? 
                <>
                <h3 className="haQ4AnsMess" style={{color : "green"}}>{messageQ4}</h3>
-               <p className="haQ4LastMess">ホームに戻りアンケートの回答をお願いします</p>
+               <p className="haQ4LastMess">ホームに戻り他のアルゴリズムも学習しましょう</p>
                </>
                : <p className="haQ4AnsMess" style={{color : "red"}}>{messageQ4}</p>
                }
@@ -281,7 +281,7 @@ function HashPractice(){
           
         </div>
       </div>  
-      <div className="haComContainer">
+      {/* <div className="haComContainer">
         <div className="haPrcom">
           <h2>質問</h2>
           <div className='coms'>
@@ -290,7 +290,7 @@ function HashPractice(){
           <textarea placeholder="質問を入力"  type='text' onChange={(e) => setNewCom(e.target.value)} rows={2} cols={97}/>
           <button onClick={addCom}>投稿する</button> 
         </div>
-      </div>
+      </div> */}
     </div>    
     </>
     )

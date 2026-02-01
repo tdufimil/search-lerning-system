@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect} from 'react';
 import {db} from "../firebase.jsx";
-import { doc, updateDoc, arrayUnion} from "firebase/firestore";
+//import { doc, updateDoc, arrayUnion} from "firebase/firestore";
 import cardBack from "../img/cardBack.jpg" ;
 import card02 from "../img/card02.jpg" ;
 import card03 from "../img/card03.jpg" ;
@@ -17,8 +17,8 @@ function LinearExplain() {
   const [title, setTitle] = useState("");
   const [text01, setText01] = useState("");
   const [text02, setText02] = useState("");
-  const [comArr, setComArr] = useState([]);
-  const [newCom, setNewCom] = useState("");
+  // const [comArr, setComArr] = useState([]);
+  // const [newCom, setNewCom] = useState("");
   const location = useLocation();
   const isCorrectQ1 = location.state.isCorrectQ1;
   const isCorrectQ2 = location.state.isCorrectQ2;
@@ -34,8 +34,8 @@ function LinearExplain() {
         setTitle(doc.get("title"));
         setText01(doc.get("text01"));
         setText02(doc.get("text02"));
-        const arrayData = doc.data().comes;
-        setComArr(arrayData);
+        // const arrayData = doc.data().comes;
+        // setComArr(arrayData);
       };
 
       fetch();
@@ -66,14 +66,14 @@ function LinearExplain() {
     }
   }
 
-  async function addCom(){
-    const arrayRef = doc(db, "algorithms", "naSyKL4rsYKA67xBqFXg");
-    await updateDoc(arrayRef, {
-    comes: arrayUnion(newCom)
-    });
-    setNewCom("");
-    window.location.reload();
-  }
+  // async function addCom(){
+  //   const arrayRef = doc(db, "algorithms", "naSyKL4rsYKA67xBqFXg");
+  //   await updateDoc(arrayRef, {
+  //   comes: arrayUnion(newCom)
+  //   });
+  //   setNewCom("");
+  //   window.location.reload();
+  // }
 
   return (
     <>
@@ -105,7 +105,7 @@ function LinearExplain() {
           : <p className="toLinearPractice" onClick={() => navigate("/LinearPractice", { state: {isCorrectQ1,  isCorrectQ2, isCorrectQ3, isCorrectQ4, mode}})}>問題を解く⇒</p>}
         </div> 
       </div>
-      <div className="liComContainer">
+      {/* <div className="liComContainer">
         <div className="liExcom">
           <h2>質問</h2>
           <div className='coms'>
@@ -114,7 +114,7 @@ function LinearExplain() {
           <textarea placeholder="質問を入力"  type='text' onChange={(e) => setNewCom(e.target.value)} rows={2} cols={97}/>
           <button onClick={addCom}>投稿する</button> 
         </div>
-      </div>
+      </div> */}
     </div>
     </>
   )
